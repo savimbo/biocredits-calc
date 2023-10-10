@@ -1,0 +1,7 @@
+config.json
+.DS_Store
+__pycache__/
+KML/
+SHP/
+*.html
+*.mp4
