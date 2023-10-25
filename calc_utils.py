@@ -2,6 +2,7 @@ import os
 import requests
 import shutil
 import json
+import time
 import subprocess
 import geopandas as gpd
 from shapely.geometry import Point, Polygon, MultiPolygon
@@ -102,10 +103,10 @@ def reorder_polygon(polygon):
 
 def set_z_to_zero(coord):
     """Given a coordinate tuple, set its Z value to zero."""
-    x, y, *_ = coord
+    x, y, _ = coord
     return (x, y, 0)
 
-def correct_shps(gdfs, reorder_lands=[]):
+def normalize_shps(gdfs, reorder_lands=[]):
     """
     Given a list with .shp files loaded as GeoDataFrames, then:
         1) ensure the third coordinates are zero
@@ -114,6 +115,8 @@ def correct_shps(gdfs, reorder_lands=[]):
         4) return a GeoDataFrame with the polygons 
     """
     lands = {}
+    point_shps = []
+    polygon_shps = []
     for key in gdfs.keys():
         geometries = gdfs[key]['geometry']
         if len(geometries) == 0:
@@ -121,13 +124,25 @@ def correct_shps(gdfs, reorder_lands=[]):
             continue
 
         # Convert the series of points to a list of coordinate tuples with Z set to zero
-        if isinstance(geometries.iloc[0], Point):      
+        if isinstance(geometries.iloc[0], Point): 
+            point_shps.append(key)     
             coords = [set_z_to_zero(point.coords[0]) for point in geometries]
         elif isinstance(geometries.iloc[0], Polygon):
+            polygon_shps.append(key)
             coords = [set_z_to_zero(coord) for coord in geometries.iloc[0].exterior.coords]
         else:
             raise ValueError("Unsupported geometry type!")
+        lands[key] = Polygon(coords)
         
+    insert_log_entry('Point KMLs:', str(point_shps))
+    insert_log_entry('Polygon KMLs:', str(polygon_shps))
+    return lands
+
+def reorder_polygons(gdfs, reorder_lands=[]):
+    lands = {}
+    for key in gdfs.keys():
+        polygon = gdfs[key]
+        coords = polygon.exterior.coords
         # Reorder the vertices in clockwise order if needed
         if key in reorder_lands:
             polygon = reorder_polygon(Polygon(coords))
@@ -142,9 +157,9 @@ def shp_to_land(lands, crs = "EPSG:4326"):
     lands.crs = crs
     return lands
 
-def plot_land(lands):
+def plot_land(lands, filename='lands.html'):
     # plot fincas with plotly
-    centroid = lands.unary_union.centroid
+    centroid = lands[lands['geometry'].is_valid].unary_union.centroid
     fig = px.choropleth_mapbox(lands, geojson=lands.geometry, locations=lands.index, color=lands.index,
                                 color_discrete_sequence=["red"], zoom=9.8, center = {"lat": centroid.coords.xy[1][0], "lon": centroid.coords.xy[0][0]},
                                 opacity=0.5, labels={'index':'Finca'})
@@ -155,8 +170,8 @@ def plot_land(lands):
     # make square
     fig.update_layout(height=600, width=600)
     # save 
-    fig.write_html("fincas.html")
-    fig.show()
+    fig.write_html(filename)
+    #fig.show()
 
 def download_observations():
     """
@@ -191,12 +206,12 @@ def download_observations():
         if not offset:
             break
 
-    print(f"Total records fetched: {len(all_records)}")
+    insert_log_entry('Total observations fetched:', str(len(all_records)))
 
     records = pd.DataFrame([r['fields'] for r in all_records])
     # keep records with NIVEL de CREDITO (from SPECIES (ES))
     records = records[[not r is np.nan for r in records["NIVEL de CREDITO (from SPECIES (ES))"]]]
-    print("Records with NIVEL de CREDITO (from SPECIES (ES)): ", len(records))
+    insert_log_entry('Observations with NIVEL de CREDITO (from SPECIES (ES)):', str(len(records)))
     # transform and create columns
     records['species_id'] = records['species_id'].apply(lambda x: x[0])
     records['name_common'] = records['SPECIES ID (EN) (from SPECIES (ES))'].apply(lambda x: x[0] if type(x) == list else x)
@@ -207,18 +222,20 @@ def download_observations():
 
     # filter records with radius > 0 and eco_long < 0
     records = records.query('radius>0')
-    print("Records with radius > 0: ", len(records))
+    insert_log_entry('Observations with radius > 0:', str(len(records)))
     records = records.query('eco_long<0')
-    print("Records with eco_long < 0: ", len(records))
+    insert_log_entry('Observations with eco_long < 0:', str(len(records)))
 
     # renaming and keeping columns
     records = records.rename(columns={'# ECO':'eco_id', 'eco_lat':'lat', 'eco_long':'long'})
-    keep_columns = ['eco_id','eco_date','species_id', 'name_common', 'name_latin', 'radius', 'score', 'lat','long','iNaturalist', 'LABEL iNATURALIST']
+    keep_columns = ['eco_id','eco_date','species_id', 'name_common', 'name_latin', 'radius', 'score', 'lat','long','iNaturalist']
     records = records[keep_columns].sort_values(by=['eco_date'])
     records['eco_date'] = pd.to_datetime(records['eco_date'])
     # filtering out observations older than 5 years
     records = records[records['eco_date'] >= (pd.Timestamp.now() - pd.DateOffset(years=5))]
-    print('Observations < 5 years old:', len(records))
+    insert_log_entry('Observations < 5 years old:', str(len(records)))
+    insert_log_entry('Observations WITHOUT iNaturalist:', str(records['iNaturalist'].isna().sum()))
+    insert_log_entry('Observations used:', str(len(records)))
     return records
 
 def observations_to_circles(records, default_crs=4326, buffer_crs=6262):
@@ -433,8 +450,106 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
 def monthly_attribution(attribution):
     # Group by month and finca, sum the scores, and divide by the constant
     attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'finca'])
-            .agg({'total_area': 'first', 'area_score': 'sum','eco_id': lambda x: list(set(sum(x, [])))}) #'eco_id': lambda x: list(set(x))
+            .agg({'total_area': 'first', 'area_score': 'sum','eco_id': lambda x: sorted(list(set(sum(x, []))))}) #'eco_id': lambda x: list(set(x))
             .reset_index())
-    attr_month['area_score'] = attr_month['area_score'] * (1/60)
+    attr_month['credits'] = attr_month['area_score'] * (1/60)
     attr_month.sort_values(by=['date', 'finca'], inplace=True)
     return attr_month
+
+def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
+    a = attr_month.copy()
+    if start_date is None:
+        start_date = a['date'].min() - pd.DateOffset(days=1)
+    else:
+        start_date = pd.Timestamp(start_date)  # Replace with your specific date
+    mask = (a['date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['date'] > start_date)
+    a = a[mask]
+    a = a.groupby('finca').agg({'date':'last','total_area':'first','credits':'sum', 'eco_id':lambda x: sorted(list(set(sum(x, []))))})
+    a.reset_index(inplace=True)
+    return a
+
+def delete_all_records_from_airtable(HEADERS, API_URL):
+    # Initialize an empty list to collect all record ids
+    all_record_ids = []
+
+    # First fetch to initialize pagination
+    response = requests.get(API_URL, headers=HEADERS)
+    if response.status_code != 200:
+        print("Error fetching record IDs:", response.text)
+        return False
+
+    records = response.json().get('records', [])
+    all_record_ids.extend([record['id'] for record in records])
+    
+    # Continue fetching records until we've got them all
+    while 'offset' in response.json():
+        offset = response.json().get('offset')
+        response = requests.get(f"{API_URL}?offset={offset}", headers=HEADERS)
+        records = response.json().get('records', [])
+        all_record_ids.extend([record['id'] for record in records])
+
+    # Delete the records using their IDs
+    for record_id in all_record_ids:
+        del_response = requests.delete(f"{API_URL}/{record_id}", headers=HEADERS)
+        time.sleep(0.2)
+        if del_response.status_code != 200:
+            print(f"Error deleting record {record_id}:", del_response.text)
+
+    return True
+
+
+def insert_gdf_to_airtable(gdf, table, insert_geo = False, delete_all = False):
+    gdf = gdf.copy()
+    config = load_config()
+    BASE_ID = config['BIOCREDITS-CALC']['BASE_ID']
+    PERSONAL_ACCESS_TOKEN = config['PAT_BIOCREDITS-CALC']
+
+    if insert_geo and 'geometry' in gdf.columns:
+        gdf['geometry'] = gdf['geometry'].apply(lambda x: x.wkt)
+    elif not insert_geo and 'geometry' in gdf.columns:
+        gdf.drop(columns=['geometry'], inplace=True)
+
+    for col in gdf.columns:
+        if gdf[col].dtype == 'datetime64[ns]':
+            gdf[col] = gdf[col].astype(str)
+        if gdf[col].dtype == 'O':
+            gdf[col] = gdf[col].astype(str)
+
+    gdf.fillna('', inplace=True)
+    # Convert GeoDataFrame to list of records
+    records = gdf.to_dict('records')
+
+    # API endpoint and headers
+    API_URL = f"https://api.airtable.com/v0/{BASE_ID}/{table}"
+    HEADERS = {
+        "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    
+    if delete_all:
+        # Delete all records
+        if not delete_all_records_from_airtable(HEADERS, API_URL):
+            print("Error deleting records. Aborting insertion.")
+            return
+
+
+    batch_size = 10
+    chunks = [records[i:i + batch_size] for i in range(0, len(records), batch_size)]
+
+    for chunk in chunks:
+        json_call = {"records": [{"fields": record} for record in chunk]}
+        response = requests.post(API_URL, headers=HEADERS, json=json_call)
+        time.sleep(0.2)
+        if response.status_code != 200:
+            print("Error:", response.text)
+
+def trigger_delete_webhook(table):
+    config = load_config()
+    HEADERS = {"Content-Type": "application/json"}
+    url = config["BIOCREDITS-CALC"]["DELETE_TABLE_WEBHOOK"][table]
+    response = requests.post(url, headers=HEADERS, data="{}")
+    print(response.text)
+
+def insert_log_entry(event, info):
+    df = pd.DataFrame({'Event': [event],'Info': [info]})
+    insert_gdf_to_airtable(df, "Logs", insert_geo=False, delete_all=False)
