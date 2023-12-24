@@ -1,4 +1,6 @@
+from logging import config
 import os
+from turtle import clear
 import requests
 import shutil
 import json
@@ -50,14 +52,15 @@ def download_kml_official(save_directory='KML/'):
         field = record['fields'].get(FIELD)
         if field:
             url = field[0]['url']
-            filename = field[0]['filename']
-            save_path = os.path.join(SAVE_DIRECTORY, filename)
+            plot_id = str(record['fields'].get('plot_id'))
+            plot_id = f"{plot_id:0>3}"
+            save_path = os.path.join(SAVE_DIRECTORY, plot_id+'.kml')
             
             with requests.get(url, stream=True) as file_response:
                 with open(save_path, 'wb') as file:
                     for chunk in file_response.iter_content(chunk_size=8192):
                         file.write(chunk)
-            print(f"Downloaded {filename}")
+            print(f"Downloaded plot_id {plot_id}")
 
 def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
     # Ensure the destination directory exists
@@ -80,7 +83,7 @@ def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
 def load_shp(directory='SHP/'):
     # Loop through all .shp files in the directory and load them
     gdfs = {}
-    for filename in os.listdir(directory):
+    for filename in sorted(os.listdir(directory)):
         if filename.endswith('.shp'):
             filepath = os.path.join(directory, filename)
             gdf = gpd.read_file(filepath)
@@ -106,7 +109,7 @@ def set_z_to_zero(coord):
     x, y, _ = coord
     return (x, y, 0)
 
-def normalize_shps(gdfs, reorder_lands=[]):
+def normalize_shps(gdfs):
     """
     Given a list with .shp files loaded as GeoDataFrames, then:
         1) ensure the third coordinates are zero
@@ -213,11 +216,11 @@ def download_observations():
     records = records[[not r is np.nan for r in records["NIVEL de CREDITO (from SPECIES (ES))"]]]
     insert_log_entry('Observations with NIVEL de CREDITO (from SPECIES (ES)):', str(len(records)))
     # transform and create columns
-    records['species_id'] = records['species_id'].apply(lambda x: x[0])
-    records['name_common'] = records['SPECIES ID (EN) (from SPECIES (ES))'].apply(lambda x: x[0] if type(x) == list else x)
-    records['name_latin'] = records['LATIN NAME/NOMBRE LATINO (from SPECIES (ES))'].apply(lambda x: x[0] if type(x) == list else x)
-    records['score'] = records['NIVEL de CREDITO (from SPECIES (ES))'].apply(lambda x: x[0])
-    records['radius'] = records['species_radius'].apply(lambda x: max(x))   # using max radius of row
+    records['species_id'] = records['species_id'].apply(lambda x: x[0] if len(x)==1 else str(x))
+    records['name_common'] = records['SPECIES ID (EN) (from SPECIES (ES))'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
+    records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
+    records['score'] = records['NIVEL de CREDITO (from SPECIES (ES))'].apply(lambda x: max(x) if type(x)==list else x)
+    records['radius'] = records['species_radius'].apply(lambda x: max(x) if type(x)==list else x)   # using max radius of row
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
     # filter records with radius > 0 and eco_long < 0
@@ -236,6 +239,9 @@ def download_observations():
     insert_log_entry('Observations < 5 years old:', str(len(records)))
     insert_log_entry('Observations WITHOUT iNaturalist:', str(records['iNaturalist'].isna().sum()))
     insert_log_entry('Observations used:', str(len(records)))
+    insert_log_entry('Scores seen:', str(list(np.sort(records['score' ].unique())[::-1])))
+    insert_log_entry('Radius seen:', str(list(np.sort(records['radius'].unique())[::-1])))
+    records.sort_values('eco_date', ascending=False, inplace=True)
     return records
 
 def observations_to_circles(records, default_crs=4326, buffer_crs=6262):
@@ -417,7 +423,7 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
         # Add to result dataframe
         temp_df = pd.DataFrame({
             'date': [date] * len(intersections),
-            'finca': intersections['finca_name'],
+            'plot_id': intersections['finca_name'],
             'score': [score] * len(intersections),
             'total_area': intersections['total_area'],
             'area_intersect': intersections['area']
@@ -429,7 +435,7 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     attribution = result_df.reset_index(drop=True)
     # Convert the 'date' column to a datetime object
     attribution['date'] = pd.to_datetime(attribution['date'])
-    attribution.sort_values(by=['date', 'finca','score'], inplace=True)
+    
     # Set the 'date' column as the index
     attribution = attribution.set_index('date')
 
@@ -439,33 +445,43 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     fincas_to_obs = (fincas_to_obs.groupby([fincas_to_obs.index, 'date', 'score'])
                 .agg({'eco_id': list})
                 .reset_index())
-    fincas_to_obs.rename(columns={'level_0': 'finca'}, inplace=True)
+    fincas_to_obs.rename(columns={'level_0': 'plot_id'}, inplace=True)
     attribution = attribution.merge(fincas_to_obs, 
-                               left_on=['date', 'finca', 'score'], 
-                               right_on=['date', 'finca', 'score'], 
+                               left_on=['date', 'plot_id', 'score'], 
+                               right_on=['date', 'plot_id', 'score'], 
                                how='left')
     attribution = attribution.set_index('date')
+    attribution.sort_values(by=['date', 'plot_id','score'], inplace=True, ascending=[False, True, False])
     return attribution
 
 def monthly_attribution(attribution):
     # Group by month and finca, sum the scores, and divide by the constant
-    attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'finca'])
+    attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'plot_id'])
             .agg({'total_area': 'first', 'area_score': 'sum','eco_id': lambda x: sorted(list(set(sum(x, []))))}) #'eco_id': lambda x: list(set(x))
             .reset_index())
     attr_month['credits'] = attr_month['area_score'] * (1/60)
-    attr_month.sort_values(by=['date', 'finca'], inplace=True)
+    attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
-    a = attr_month.copy()
+    a = attr_month.copy().sort_values(by=['date', 'plot_id'], ascending=[True, True])
     if start_date is None:
-        start_date = a['date'].min() - pd.DateOffset(days=1)
+        start_date = a['date'].min() 
     else:
-        start_date = pd.Timestamp(start_date)  # Replace with your specific date
-    mask = (a['date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['date'] > start_date)
+        start_date = pd.Timestamp(start_date)  
+    mask = (a['date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['date'] >= start_date)
     a = a[mask]
-    a = a.groupby('finca').agg({'date':'last','total_area':'first','credits':'sum', 'eco_id':lambda x: sorted(list(set(sum(x, []))))})
+    a.sort_values
+    a = a.groupby('plot_id').agg({
+        'date': ['min', 'max'],
+        'total_area': 'first',
+        'credits': 'sum',
+        'eco_id': lambda x: sorted(list(set(sum(x, []))))
+    })
+    a.columns = ['first_date', 'last_date', 'total_area', 'credits', 'eco_id']
     a.reset_index(inplace=True)
+
+    a.sort_values(by=['plot_id'], inplace=True, ascending=[True])
     return a
 
 def delete_all_records_from_airtable(HEADERS, API_URL):
@@ -547,9 +563,34 @@ def trigger_delete_webhook(table):
     config = load_config()
     HEADERS = {"Content-Type": "application/json"}
     url = config["BIOCREDITS-CALC"]["DELETE_TABLE_WEBHOOK"][table]
-    response = requests.post(url, headers=HEADERS, data="{}")
-    print(response.text)
+    requests.post(url, headers=HEADERS, data="{}")
 
 def insert_log_entry(event, info):
     df = pd.DataFrame({'Event': [event],'Info': [info]})
     insert_gdf_to_airtable(df, "Logs", insert_geo=False, delete_all=False)
+
+
+def clear_biocredits_tables(tables):
+    for table in tables:
+        trigger_delete_webhook(table)
+    for table in tables:
+        trigger_delete_webhook(table)
+    time.sleep(5)
+
+    delete_again = []
+    config = load_config()
+    BASE_ID = config['BIOCREDITS-CALC']['BASE_ID']
+    PERSONAL_ACCESS_TOKEN = config['PAT_BIOCREDITS-CALC']
+    for TABLE_NAME in tables:
+        AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
+        headers = {
+            "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
+            "Content-Type": "application/json"
+        }
+
+        response = requests.get(AIRTABLE_ENDPOINT, headers=headers)
+        response_json = response.json()
+        if len(response_json['records']) > 0:
+            delete_again.append(TABLE_NAME)
+    if len(delete_again) > 0:
+        clear_biocredits_tables(delete_again)
