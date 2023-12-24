@@ -1,6 +1,9 @@
-config.json
 .DS_Store
 __pycache__/
+
+config.json
+the-savimbo-project-511c079217f8.json
+
 KML/
 SHP/
 *.html

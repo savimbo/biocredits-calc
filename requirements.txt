@@ -1,0 +1,7 @@
+google-cloud-storage
+geopandas
+numpy
+pandas
+contextily
+shapely
+shutil

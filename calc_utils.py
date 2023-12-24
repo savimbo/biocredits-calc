@@ -1,6 +1,4 @@
-from logging import config
 import os
-from turtle import clear
 import requests
 import shutil
 import json
@@ -16,6 +14,7 @@ from shapely import wkt
 import contextily as ctx
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from google.cloud import storage
 
 def load_config():
     with open('config.json', 'r') as f:
@@ -29,8 +28,6 @@ def download_kml_official(save_directory='KML/'):
         os.makedirs(save_directory)
     else:
         shutil.rmtree(save_directory)
-        os.makedirs(save_directory)
-    if not os.path.exists(save_directory):
         os.makedirs(save_directory)
     config = load_config()
     BASE_ID = config['KML_TABLE']['BASE_ID']
@@ -594,3 +591,23 @@ def clear_biocredits_tables(tables):
             delete_again.append(TABLE_NAME)
     if len(delete_again) > 0:
         clear_biocredits_tables(delete_again)
+
+
+def create_bucket(storage_client, bucket_name):
+    bucket = storage_client.bucket(bucket_name)
+    if not bucket.exists():
+        storage_client.create_bucket(bucket)
+        print(f"Bucket {bucket_name} created.")
+    else:
+        print(f"Bucket {bucket_name} already exists.")
+
+def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
+    storage_client = storage.Client.from_service_account_json('the-savimbo-project-511c079217f8.json')
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    if blob.exists():
+        blob.delete()
+    blob.upload_from_filename(source_file_name)
+    blob.make_public()
+    #print(f"File {source_file_name} uploaded to {destination_blob_name} and is now publicly accessible.")
+    return blob.public_url
