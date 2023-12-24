@@ -388,7 +388,7 @@ def daily_video(daily_score, lands, first_date=None):
             pass
         else:
             npmsp.boundary.plot(ax=ax, color='blue')
-            npmsp.plot(ax=ax, column='score', legend=False, cmap='tab10', alpha=0.5, vmin=0.5, vmax=1)
+            npmsp.plot(ax=ax, column='score', legend=False, cmap='tab10', alpha=0.5, vmin=daily_score['score'].min(), vmax=daily_score['score'].max())
 
         ax.set_title(f"Date: {date.strftime('%Y-%m-%d')}")
         ax.set_xlim(eco_score.total_bounds[0], eco_score.total_bounds[2])
