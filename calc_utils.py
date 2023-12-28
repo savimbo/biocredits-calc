@@ -458,19 +458,21 @@ def monthly_attribution(attribution):
             .reset_index())
     attr_month['credits'] = attr_month['area_score'] * (1/60)
     attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
+    attr_month.plot_id = attr_month.plot_id.astype(int)
+    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'credits', 'eco_id']
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
-    a = attr_month.copy().sort_values(by=['date', 'plot_id'], ascending=[True, True])
+    a = attr_month.copy().sort_values(by=['calc_date', 'plot_id'], ascending=[True, True])
     if start_date is None:
-        start_date = a['date'].min() 
+        start_date = a['calc_date'].min() 
     else:
         start_date = pd.Timestamp(start_date)  
-    mask = (a['date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['date'] >= start_date)
+    mask = (a['calc_date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['calc_date'] >= start_date)
     a = a[mask]
     a.sort_values
     a = a.groupby('plot_id').agg({
-        'date': ['min', 'max'],
+        'calc_date': ['min', 'max'],
         'total_area': 'first',
         'credits': 'sum',
         'eco_id': lambda x: sorted(list(set(sum(x, []))))
