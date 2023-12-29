@@ -452,14 +452,21 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     return attribution
 
 def monthly_attribution(attribution):
-    # Group by month and finca, sum the scores, and divide by the constant
+    # Group by month and finca, sum the scores, and divide by the constant 60 to get bimonthly credits
+    month_dict = {1: "January",2: "February",3: "March",4: "April",5: "May",6: "June",
+        7: "July",8: "August",9: "September",10: "October",11: "November",12: "December"}
     attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'plot_id'])
-            .agg({'total_area': 'first', 'area_score': 'sum','eco_id': lambda x: sorted(list(set(sum(x, []))))}) #'eco_id': lambda x: list(set(x))
+            .agg({'total_area': 'first', 'area_score': 'sum',
+                    'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
     attr_month['credits'] = attr_month['area_score'] * (1/60)
     attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
-    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'credits', 'eco_id']
+    attr_month['eco_id_list'] = attr_month['eco_id']
+    attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
+    attr_month['calc_index'] = attr_month.apply(lambda x: str(x.plot_id) + '-' + month_dict[x.date.month] + '-' + str(x.date.year), axis=1)
+    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'area_score', 'eco_id', 'credits', 'eco_id_list', 'calc_index']
+    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits', 'eco_id_list', 'eco_id']]
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
@@ -475,11 +482,11 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
         'calc_date': ['min', 'max'],
         'total_area': 'first',
         'credits': 'sum',
-        'eco_id': lambda x: sorted(list(set(sum(x, []))))
+        'eco_id_list': lambda x: sorted(list(set(sum(x, []))))
     })
-    a.columns = ['first_date', 'last_date', 'total_area', 'credits', 'eco_id']
+    a.columns = ['first_date', 'last_date', 'total_area', 'credits', 'eco_id_list']
+    a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-
     a.sort_values(by=['plot_id'], inplace=True, ascending=[True])
     return a
 

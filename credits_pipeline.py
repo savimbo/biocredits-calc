@@ -23,13 +23,12 @@ try:
     gdf_normalized = shp_to_land(normalized_shapes)
     plot_land(gdf_normalized, 'fincas0.html')
     insert_log_entry('Fincas plot:', upload_to_gcs('biocredits-calc', 'fincas0.html', 'plots_without_reordering.html'))
-    reorder_lands = ['119','178'] 
+    reorder_lands = [] 
     insert_log_entry('Reorder:', str(reorder_lands))
     normalized_shapes_reordered = reorder_polygons(normalized_shapes, reorder_lands=reorder_lands)
     lands = shp_to_land(normalized_shapes_reordered)
     plot_land(lands, 'fincas1.html')
     insert_log_entry('Fincas plot reordered:', upload_to_gcs('biocredits-calc', 'fincas1.html', 'plots_with_reordering.html'))
-
 
     records = download_observations()
     records = observations_to_circles(records, default_crs=4326, buffer_crs=6262)
@@ -51,9 +50,8 @@ try:
     attr_cumm = cummulative_attribution(attr_month, cutdays = 30, start_date=None)
     insert_log_entry('Cummulative Attribution rows:', str(len(attr_cumm)))
 
-    insert_gdf_to_airtable(attr_cumm, 'Cummulative Attribution', insert_geo = False, delete_all=True)
-    insert_gdf_to_airtable(attr_month, 'Monthly Attribution', insert_geo = False, delete_all=True)
-    #insert_gdf_to_airtable(attribution.reset_index(), 'Daily Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_cumm.drop(columns='eco_id_list'), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_month.drop(columns='eco_id_list'), 'Monthly Attribution', insert_geo = False, delete_all=True)
 
     end_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
     insert_log_entry('End time', end_str)
@@ -62,3 +60,6 @@ except Exception as e:
     insert_log_entry('Error', str(e)) 
     insert_log_entry("Type of exception:", type(e).__name__)
     insert_log_entry("Traceback", error_traceback)
+    print('Error', str(e))
+    print("Type of exception:", type(e).__name__)
+    print(error_traceback)
