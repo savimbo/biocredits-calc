@@ -38,9 +38,6 @@ try:
     obs_expanded = expand_observations(records)
     daily_score = daily_score_union(obs_expanded)
 
-    daily_video(daily_score, lands, first_date=None)
-    insert_log_entry('Raindrops Video:', upload_to_gcs('biocredits-calc', 'raindrops.mp4', 'raindrops.mp4'))
-
     attribution = daily_attibution(daily_score, lands, obs_expanded, crs=6262)
     insert_log_entry('Daily Attribution rows:', str(len(attribution)))
 
@@ -52,6 +49,9 @@ try:
 
     insert_gdf_to_airtable(attr_cumm.drop(columns='eco_id_list'), 'Cummulative Attribution', insert_geo = False, delete_all=True)
     insert_gdf_to_airtable(attr_month.drop(columns='eco_id_list'), 'Monthly Attribution', insert_geo = False, delete_all=True)
+
+    daily_video(daily_score, lands, first_date=None)
+    insert_log_entry('Raindrops Video:', upload_to_gcs('biocredits-calc', 'raindrops.mp4', 'raindrops.mp4'))
 
     end_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
     insert_log_entry('End time', end_str)

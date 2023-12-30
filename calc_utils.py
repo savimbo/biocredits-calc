@@ -32,6 +32,7 @@ def download_kml_official(save_directory='KML/'):
     config = load_config()
     BASE_ID = config['KML_TABLE']['BASE_ID']
     TABLE_NAME = config['KML_TABLE']['TABLE_NAME']
+    VIEW_ID = config['KML_TABLE']['VIEW_ID']
     FIELD = config['KML_TABLE']['FIELD']
     PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
 
@@ -42,10 +43,25 @@ def download_kml_official(save_directory='KML/'):
         "Content-Type": "application/json"
     }
 
-    response = requests.get(AIRTABLE_ENDPOINT, headers=headers)
-    response_json = response.json()
+    all_records = []
+    offset = None
+    while True:
+        params = {'view':VIEW_ID}
+        if offset:
+            params["offset"] = offset
 
-    for record in response_json['records']:
+        response = requests.get(AIRTABLE_ENDPOINT, headers=headers, params=params)
+        response_json = response.json()
+        
+        records = response_json.get('records')
+        all_records.extend(records)
+        
+        offset = response_json.get('offset')
+        if not offset:
+            break
+
+    good_plots = 0
+    for record in all_records:
         field = record['fields'].get(FIELD)
         if field:
             url = field[0]['url']
@@ -57,7 +73,9 @@ def download_kml_official(save_directory='KML/'):
                 with open(save_path, 'wb') as file:
                     for chunk in file_response.iter_content(chunk_size=8192):
                         file.write(chunk)
+            good_plots += 1
             print(f"Downloaded plot_id {plot_id}")
+    insert_log_entry('Total KMLs downloaded:', str(good_plots))
 
 def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
     # Ensure the destination directory exists
@@ -67,15 +85,23 @@ def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
         shutil.rmtree(destination_directory)
         os.makedirs(destination_directory)
     # Loop through all .kml files in the source directory
+    error_list = []
     for filename in os.listdir(source_directory):
         if filename.endswith('.kml'):
             base_name = os.path.splitext(filename)[0]  # Get the file name without extension
+            print("########## Converting", base_name, "##########")
             source_file_path = os.path.join(source_directory, filename)
             destination_file_path = os.path.join(destination_directory, base_name + '.shp')
             # Convert KML to SHP using ogr2ogr
             cmd = ['ogr2ogr', '-f', 'ESRI Shapefile', destination_file_path, source_file_path]
             subprocess.run(cmd)
-            print(f"Converted {filename} to {base_name}.shp")
+            # check if the file was created
+            if not os.path.exists(destination_file_path):
+                error_list.append(base_name)
+                print(f"Error converting {filename} to {base_name}.shp")
+            else:
+                print(f"Converted {filename} to {base_name}.shp")
+    insert_log_entry('Error in plots:', ', '.join(error_list))
 
 def load_shp(directory='SHP/'):
     # Loop through all .shp files in the directory and load them
@@ -180,6 +206,7 @@ def download_observations():
     config = load_config()
     BASE_ID = config['OBS_TABLE']['BASE_ID']
     TABLE_NAME = config['OBS_TABLE']['TABLE_NAME']
+    VIEW_ID = config['OBS_TABLE']['VIEW_ID']
     PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
     AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
 
@@ -192,7 +219,7 @@ def download_observations():
     offset = None
 
     while True:
-        params = {}
+        params = {'view':VIEW_ID}
         if offset:
             params["offset"] = offset
 
@@ -210,14 +237,14 @@ def download_observations():
 
     records = pd.DataFrame([r['fields'] for r in all_records])
     # keep records with NIVEL de CREDITO (from SPECIES (ES))
-    records = records[[not r is np.nan for r in records["NIVEL de CREDITO (from SPECIES (ES))"]]]
-    insert_log_entry('Observations with NIVEL de CREDITO (from SPECIES (ES)):', str(len(records)))
+    records = records[[not r is np.nan for r in records["integrity_score"]]]
+    insert_log_entry('Observations with integrity score:', str(len(records)))
     # transform and create columns
     records['species_id'] = records['species_id'].apply(lambda x: x[0] if len(x)==1 else str(x))
-    records['name_common'] = records['SPECIES ID (EN) (from SPECIES (ES))'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
+    records['name_common'] = records['species_name_es'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
-    records['score'] = records['NIVEL de CREDITO (from SPECIES (ES))'].apply(lambda x: max(x) if type(x)==list else x)
-    records['radius'] = records['species_radius'].apply(lambda x: max(x) if type(x)==list else x)   # using max radius of row
+    records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
+    records['radius'] = records['calc_radius'].apply(lambda x: max(x) if type(x)==list else x)   # using max radius of row
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
     # filter records with radius > 0 and eco_long < 0
