@@ -5,7 +5,7 @@ import json
 import time
 import subprocess
 import geopandas as gpd
-from shapely.geometry import Point, Polygon, MultiPolygon
+from shapely.geometry import Point, Polygon, MultiPolygon, GeometryCollection
 import math
 import numpy as np
 import pandas as pd
@@ -369,9 +369,21 @@ def nonoverlapping_maxscore(obs):
     result = venn_decomposition(polys, scores)
     return result
 
+def convert_to_multipolygon(geometry):
+    if isinstance(geometry, GeometryCollection):
+        polygons = [geom for geom in geometry.geoms if isinstance(geom, (Polygon, MultiPolygon))]
+        return MultiPolygon(polygons)
+    elif isinstance(geometry, MultiPolygon):
+        return geometry
+    elif isinstance(geometry, Polygon):
+        return MultiPolygon([geometry])
+    else:
+        raise ValueError("Geometry is neither a Polygon nor a MultiPolygon nor a GeometryCollection")
+
 def daily_score_union(eco_expanded):
     eco_score = eco_expanded.groupby('date').apply(lambda group: nonoverlapping_maxscore(group)).reset_index()
     eco_score = gpd.GeoDataFrame(eco_score, geometry='geometry', crs=eco_expanded.crs)
+    eco_score['geometry'] = eco_score['geometry'].apply(convert_to_multipolygon)
     return eco_score
     
 def put_missing_dates(union_gdf):
