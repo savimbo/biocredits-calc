@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>plot18.kml</name>
+	<open>1</open>
+	<Style id="failed">
+		<PolyStyle>
+			<color>80ff02fc</color>
+			<outline>0</outline>
+		</PolyStyle>
+	</Style>
+	<Style id="failed2">
+		<PolyStyle>
+			<color>80ff02fc</color>
+			<outline>0</outline>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin23">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#failed2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#failed</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ltblu-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ltblu-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ltblu-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<color>ff00ff00</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_grn-pushpin0">
+		<IconStyle>
+			<color>ff00ff00</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_grn-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ltblu-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ltblu-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<color>ff00ff00</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-pushpin0">
+		<IconStyle>
+			<color>ff00ff00</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ltblu-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ltblu-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_ltblu-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ltblu-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ltblu-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder id="0B627FCAAE2DFF5B4844">
+		<name>plot18</name>
+		<open>1</open>
+		<Placemark id="0D5AAC86D62DFF5B484B">
+			<name>SV-2083</name>
+			<LookAt>
+				<longitude>-76.79519708494982</longitude>
+				<latitude>0.8668249796246564</latitude>
+				<altitude>0</altitude>
+				<heading>6.717309443019324</heading>
+				<tilt>14.94268582819208</tilt>
+				<range>3880.616809217552</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.797815,0.870761,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1DC2D547522DFF5B484B">
+			<name>SV-2084</name>
+			<styleUrl>#msn_ltblu-pushpin</styleUrl>
+			<Point>
+				<coordinates>-76.79333699999999,0.8741030000000001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2A6ADE41B22DFF5B484B">
+			<name>SV-2085</name>
+			<LookAt>
+				<gx:TimeStamp><when>2013-12-26</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-76.78630109659954</longitude>
+				<latitude>0.8691878483884624</latitude>
+				<altitude>0</altitude>
+				<heading>2.167937166085241</heading>
+				<tilt>26.13708769809147</tilt>
+				<range>1740.781237764767</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.787677,0.8708309999999999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="370AE8A7C72DFF5B484B">
+			<name>SV-2086</name>
+			<LookAt>
+				<longitude>-76.7919428059264</longitude>
+				<latitude>0.8720725080111005</latitude>
+				<altitude>0</altitude>
+				<heading>0.002514293222812927</heading>
+				<tilt>59.44356205545521</tilt>
+				<range>5995.959536810248</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.78872200000001,0.8622329999999999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0415BCE8782DFF5B484C">
+			<name>SV-2087</name>
+			<LookAt>
+				<longitude>-76.79582634246884</longitude>
+				<latitude>0.8645898527693309</latitude>
+				<altitude>0</altitude>
+				<heading>4.481758701899066e-05</heading>
+				<tilt>0</tilt>
+				<range>4590.528536677045</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.789489,0.861461,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1F954A36F12DFF5B484C">
+			<name>SV-2088</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2022-12-01T17:25:47Z</when>
+</gx:TimeStamp>
+				<longitude>-76.81624702778693</longitude>
+				<latitude>0.8785612742781703</latitude>
+				<altitude>0</altitude>
+				<heading>-4.272130036336572</heading>
+				<tilt>32.80739465040074</tilt>
+				<range>16762.31522832628</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.791369225,0.8589197333333333,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="22841A6D152DFF5B484C">
+			<name>SV-2089</name>
+			<LookAt>
+				<longitude>-76.77235450954198</longitude>
+				<latitude>0.8641313875795382</latitude>
+				<altitude>0</altitude>
+				<heading>16.32544150458237</heading>
+				<tilt>7.606566507403708</tilt>
+				<range>15510.23434797302</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.792928,0.859931,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="373159D1532DFF5B484C">
+			<name>SV-2090</name>
+			<LookAt>
+				<longitude>-76.79582634246884</longitude>
+				<latitude>0.8645898527693309</latitude>
+				<altitude>0</altitude>
+				<heading>4.481758701899066e-05</heading>
+				<tilt>0</tilt>
+				<range>4590.528536677045</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.794669,0.860272,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="488C2A6B222DFF5B484C">
+			<name>SV-2091</name>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<coordinates>-76.79544300000001,0.861656,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0835D4E8F52DFF5B484D">
+			<name>SV-2092</name>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<coordinates>-76.79709200000001,0.862457,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1D8253E64D2DFF5B484D">
+			<name>SV-2093</name>
+			<LookAt>
+				<longitude>-76.79813246719054</longitude>
+				<latitude>0.8642728295891792</latitude>
+				<altitude>0</altitude>
+				<heading>-8.740598166543313</heading>
+				<tilt>53.2646323422568</tilt>
+				<range>359.9023212330194</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.79859999999999,0.863528,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2677E9B64E2DFF5B484D">
+			<name>plot18</name>
+			<styleUrl>#msn_ylw-pushpin23</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-76.79333109817156,0.874140700845363,0 -76.79781504024139,0.870787379298386,0 -76.7986006649721,0.8635358842893863,0 -76.79709444737622,0.8624727279307521,0 -76.79544162256177,0.8616648129790135,0 -76.79468637992765,0.860292818765769,0 -76.79293846099742,0.859944876056523,0 -76.79136876271784,0.8589261938076047,0 -76.78947236143895,0.8614830044554846,0 -76.78870902301151,0.8622554064664221,0 -76.78767091068937,0.8708401853785525,0 -76.79333109817156,0.874140700845363,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

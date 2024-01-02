@@ -1,0 +1,49 @@
+eco_id,eco_date,species_id,name_common,name_latin,radius,score,lat,long,iNaturalist
+11369,2023-11-30,22,rec4OhXboLvO3936j,Panthera onca ,11,1.0,0.87029,-76.7901,https://www.inaturalist.org/observations/194579313
+11136,2023-11-18,592,recUOMlBGkJ0ngdp1,Minquartia guianensis,2,0.5,0.894,-76.7544,
+10897,2023-11-09,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.89115,-76.75542,
+10905,2023-11-09,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.8928,-76.7553,
+10896,2023-11-09,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.89102,-76.75514,
+10902,2023-11-09,310,rec3b86WnqTSkGHij,Pourouma cecropiifolia ,14,0.5,0.8921,-76.7552,
+10900,2023-11-09,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.89178,-76.75529,
+10899,2023-11-09,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.89138,-76.75536,
+10891,2023-11-07,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.893634,-76.756111,
+10890,2023-11-07,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.893474,-76.756332,
+10817,2023-11-07,1,recPLFap91cyR0RcZ,Cedrela Odorata ,14,0.5,0.88962,-76.756921,
+10210,2023-10-05,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.880558,-76.785692,
+10273,2023-10-05,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.8813,-76.786,
+10380,2023-10-03,1741,recSEI1i1IkU5SoVN,Speothos venaticus,15,1.0,0.875558,-76.803948,https://www.inaturalist.org/observations/187443619
+10028,2023-09-27,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.874999,-76.803827,https://es.savimbo.com/grower/fernandos-farm
+8764,2023-08-20,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.8640910000000013,-76.79404799999998,https://www.inaturalist.org/observations/184427113
+8759,2023-08-19,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.8640910000000013,-76.79404799999998,https://www.inaturalist.org/observations/184999949
+8748,2023-08-18,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.8640910000000012,-76.794048,https://www.inaturalist.org/observations/187902869
+8739,2023-08-17,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.8640910000000005,-76.79404800000009,https://www.inaturalist.org/observations/186052045
+8768,2023-08-15,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.8640910000000013,-76.79404799999998,https://www.inaturalist.org/observations/186052821
+8730,2023-08-15,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.864091,-76.79404800000006,https://www.inaturalist.org/observations/186051123
+8033,2023-08-07,80,reco0vnvmitzJrK9n,Oenocarpus batagua,12,0.5,0.873548,-76.788611,https://www.inaturalist.org/observations/187935873
+8414,2023-08-03,1741,recSEI1i1IkU5SoVN,Speothos venaticus,15,1.0,0.883361,-76.787111,https://www.inaturalist.org/observations/180024441
+7144,2023-07-21,321,recU5PoGYxYtRynSx,Tremarctos ornatus ,7,1.0,0.891033,-76.75605,
+5132,2023-06-08,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.867505,-76.78849,https://www.inaturalist.org/observations/187936466
+2989,2023-05-12,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.867598,-76.788199,https://www.inaturalist.org/observations/186054297
+2974,2023-04-10,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.867598,-76.788199,https://www.savimbo.com/grower/jhonys-farm
+2973,2023-04-08,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.867598,-76.788199,https://www.inaturalist.org/observations/186054297
+4138,2023-04-07,584,recLU287MUJh1NuMw,Boa constrictor ,16,0.5,0.890674,-76.755553,https://www.inaturalist.org/observations/184433882
+2892,2023-03-21,22,rec4OhXboLvO3936j,Panthera onca ,11,1.0,0.867371,-76.788217,https://www.inaturalist.org/observations/184998990
+5275,2023-02-23,310,rec3b86WnqTSkGHij,Pourouma cecropiifolia ,14,0.5,0.895521,-76.753705,
+1253,2022-11-21,1,recPLFap91cyR0RcZ,Cedrela Odorata ,14,0.5,0.88962,-76.756921,https://www.inaturalist.org/observations/187946765
+1268,2022-11-21,283,reczE1ZoSYH34osRg,Austrocedrus chilensis,2,0.5,0.88962,-76.756921,https://www.inaturalist.org/observations/186043060
+1273,2022-11-21,505,recglLbLhaxzglq5n,Persea schiedeana,14,0.5,0.88975,-76.756505,https://www.inaturalist.org/observations/187945919
+1229,2022-11-19,592,recUOMlBGkJ0ngdp1,Minquartia guianensis,2,0.5,0.88962,-76.756921,
+1231,2022-11-19,592,recUOMlBGkJ0ngdp1,Minquartia guianensis,2,0.5,0.88962,-76.756921,
+1230,2022-11-19,592,recUOMlBGkJ0ngdp1,Minquartia guianensis,2,0.5,0.88962,-76.756921,
+1104,2022-11-01,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.893366,-76.753,https://www.inaturalist.org/observations/187947429
+1099,2022-11-01,28,reccyb69IWR64Etqs,Ampelocera albertiae,6,0.5,0.8915,-76.755154,
+426,2022-09-22,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.7882,https://www.inaturalist.org/observations/186055939
+414,2022-09-21,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.7882,https://www.inaturalist.org/observations/186057366
+3990,2022-09-21,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.788217,https://www.inaturalist.org/observations/187813977
+8293,2022-09-21,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.7882,https://www.inaturalist.org/observations/185952862
+3991,2022-09-21,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.788217,https://www.inaturalist.org/observations/186055062
+415,2022-09-21,24,recHD5El70hrrAAed,Tapirus terrestris ,2,0.5,0.870755,-76.7882,https://www.inaturalist.org/observations/186056534
+53,2022-05-17,35,rec4Csmx0LkRsToYa,Ramphastos ambiguus ambiguus,12,0.5,0.871785,-76.786009,https://www.inaturalist.org/observations/186040275
+80,2022-01-06,510,recBGxYlO048qUulO,Lagothrix lagotricha ,2,0.5,0.867371,-76.788217,https://www.inaturalist.org/observations/184895163
+87,2019-01-06,22,rec4OhXboLvO3936j,Panthera onca ,11,1.0,0.867371,-76.788217,https://www.inaturalist.org/observations/182104679

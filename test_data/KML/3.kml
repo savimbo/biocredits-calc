@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>plot3.kml</name>
+	<StyleMap id="msn_ltblu-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ltblu-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ltblu-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-pushpin">
+		<IconStyle>
+			<color>ff06ff21</color>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ff0000</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="msn_ltblu-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ltblu-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ltblu-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-pushpin">
+		<IconStyle>
+			<color>ff06ff21</color>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/grn-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ltblu-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ltblu-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_grn-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ltblu-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ltblu-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>https://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ff0000</color>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder id="0990E4E0242DFF58E7A2">
+		<name>plot3</name>
+		<open>1</open>
+		<Placemark id="03084655762DFF58E7AA">
+			<name>SV-1612</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78986641951303</longitude>
+				<latitude>0.8846294836102705</latitude>
+				<altitude>0</altitude>
+				<heading>0.001318284645781929</heading>
+				<tilt>59.59001859593265</tilt>
+				<range>146.9678940476938</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.79009600000001,0.884568,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1B5C49BD9F2DFF58E7AA">
+			<name>SV-1613</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78704700074375</longitude>
+				<latitude>0.8837537847469258</latitude>
+				<altitude>0</altitude>
+				<heading>-2.935971285278183</heading>
+				<tilt>51.3358143061398</tilt>
+				<range>138.7905797632542</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.78709600000001,0.8835600000000001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2A31BD745A2DFF58E7AA">
+			<name>SV-1614</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78204911630499</longitude>
+				<latitude>0.8840187890737226</latitude>
+				<altitude>0</altitude>
+				<heading>-4.966096239642146</heading>
+				<tilt>60.00108547666057</tilt>
+				<range>139.5488886354273</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.781807,0.884006,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="044019D0162DFF58E7AB">
+			<name>SV-1615</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78429576637942</longitude>
+				<latitude>0.8795735365469409</latitude>
+				<altitude>0</altitude>
+				<heading>-4.963754906797335</heading>
+				<tilt>55.97674970624679</tilt>
+				<range>164.4044661035656</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.784049,0.8801089999999999,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1F585D9FC52DFF58E7AB">
+			<name>SV-1616</name>
+			<LookAt>
+				<longitude>-76.78229830137076</longitude>
+				<latitude>0.8840439586213142</latitude>
+				<altitude>0</altitude>
+				<heading>5.674649915547252e-08</heading>
+				<tilt>45.00000161781566</tilt>
+				<range>1000.254664730678</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_grn-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.785241,0.878512,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2309E682122DFF58E7AB">
+			<name>SV-1617</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78589085154965</longitude>
+				<latitude>0.8776532875941622</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964275208381375</heading>
+				<tilt>53.2636474170521</tilt>
+				<range>205.9520320471598</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.786205,0.877443,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="30C5B8A6F82DFF58E7AB">
+			<name>SV-1618</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78683448228647</longitude>
+				<latitude>0.8762874187031074</latitude>
+				<altitude>0</altitude>
+				<heading>-4.963026512359238</heading>
+				<tilt>60.0014540999336</tilt>
+				<range>186.973525099118</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.78706699999999,0.875888,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="427CC58B3E2DFF58E7AB">
+			<name>SV-1619</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78804174698801</longitude>
+				<latitude>0.8770924132691132</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964084219234842</heading>
+				<tilt>56.10974572330807</tilt>
+				<range>275.9900631876556</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.78780999999999,0.876472,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="02B05095112DFF58E7AC">
+			<name>SV-1620</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.78804174698801</longitude>
+				<latitude>0.8770924132691132</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964084219234842</heading>
+				<tilt>56.10974572330807</tilt>
+				<range>275.9900631876556</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.789344,0.878664,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="1D586A85F42DFF58E7AC">
+			<name>SV-1621</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.79090008897919</longitude>
+				<latitude>0.8785961183799625</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964395590394768</heading>
+				<tilt>54.85315735487541</tilt>
+				<range>195.1483378537773</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.790989,0.87871,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="2B38433FA72DFF58E7AC">
+			<name>SV-1622</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.79263635289252</longitude>
+				<latitude>0.8783605460689073</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964422208086071</heading>
+				<tilt>54.85308139133903</tilt>
+				<range>184.8055892967133</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.79312899999999,0.878529,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="3F2400B5902DFF58E7AC">
+			<name>SV-1624</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.79282898500756</longitude>
+				<latitude>0.8803141602550446</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964418806093412</heading>
+				<tilt>54.86456125473058</tilt>
+				<range>223.2994502325478</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.792771,0.880734,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="43DF8248642DFF58E7AC">
+			<name>SV-1625</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2023-01-08T17:26:45Z</begin>
+					<end>2023-01-08T21:57:30Z</end>
+				</gx:TimeSpan>
+				<longitude>-76.79131710816759</longitude>
+				<latitude>0.8832178605683967</latitude>
+				<altitude>0</altitude>
+				<heading>-4.964784345864833</heading>
+				<tilt>52.84706717463458</tilt>
+				<range>258.1088648355794</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ltblu-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-76.79113945831854,0.8836406009993002,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0B95DB6EC92DFF58E7AD">
+			<name>plot3</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-76.79113794295898,0.8836449769878013,0 -76.79277174958436,0.8807353098194767,0 -76.79312957260258,0.8785326124168433,0 -76.79098181865575,0.8787041583241453,0 -76.78935033506644,0.8786807722795941,0 -76.78780773135837,0.8764717237880053,0 -76.78706875938586,0.8758897563891126,0 -76.78620076794077,0.8774400391280516,0 -76.7852394437824,0.8785228307964549,0 -76.78405505038707,0.8801056213032804,0 -76.78180910779372,0.8840079612179289,0 -76.78710815312786,0.8835822743036982,0 -76.79012204087175,0.8846021918154455,0 -76.79113794295898,0.8836449769878013,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
