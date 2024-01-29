@@ -77,7 +77,7 @@ def download_kml_official(save_directory='KML/'):
             print(f"Downloaded plot_id {plot_id}")
     insert_log_entry('Total KMLs downloaded:', str(good_plots))
 
-def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
+def kml_to_shp(source_directory='KML/', destination_directory='SHP/'):
     # Ensure the destination directory exists
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
