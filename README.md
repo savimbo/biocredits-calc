@@ -50,16 +50,16 @@ pip install -r requirements.txt
 With the environment set up and activated, you can now run the Jupyter notebook.
 
 1. **Start Jupyter Notebook**
-
+   ```bash
+   jupyter notebook
+   ```
 
 2. **Open `testing_notebook.ipynb`**
 
 Navigate through the Jupyter Notebook interface in your browser to the location of the cloned repository. Open the `testing_notebook.ipynb` notebook.
 
 3. **Run the Notebook**
-   ```bash
-   jupyter notebook
-   ```
+
 
 Execute the cells in the notebook to perform the calculations or analyses contained within.
 
