@@ -74,7 +74,7 @@ def download_kml_official(save_directory='KML/'):
                     for chunk in file_response.iter_content(chunk_size=8192):
                         file.write(chunk)
             good_plots += 1
-            print(f"Downloaded plot_id {plot_id}")
+            print(f"Downloaded plot_id {plot_id}")   
     insert_log_entry('Total KMLs downloaded:', str(good_plots))
 
 def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
@@ -244,7 +244,7 @@ def download_observations():
     records['name_common'] = records['species_name_es'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
-    records['radius'] = records['calc_radius'].apply(lambda x: max(x) if type(x)==list else x)   # using max radius of row
+    records['radius'] = records['calc_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
     # filter records with radius > 0 and eco_long < 0
@@ -259,8 +259,8 @@ def download_observations():
     records = records[keep_columns].sort_values(by=['eco_date'])
     records['eco_date'] = pd.to_datetime(records['eco_date'])
     # filtering out observations older than 5 years
-    records = records[records['eco_date'] >= (pd.Timestamp.now() - pd.DateOffset(years=5))]
-    insert_log_entry('Observations < 5 years old:', str(len(records)))
+    records = records[records['eco_date'] >= (pd.Timestamp.now() - pd.DateOffset(years=10))]
+    insert_log_entry('Observations < 10 years old:', str(len(records)))
     insert_log_entry('Observations WITHOUT iNaturalist:', str(records['iNaturalist'].isna().sum()))
     insert_log_entry('Observations used:', str(len(records)))
     insert_log_entry('Scores seen:', str(list(np.sort(records['score' ].unique())[::-1])))
@@ -498,14 +498,14 @@ def monthly_attribution(attribution):
             .agg({'total_area': 'first', 'area_score': 'sum',
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
-    attr_month['credits'] = attr_month['area_score'] * (1/60)
+    attr_month['credits_all'] = attr_month['area_score'] * (1/60)
     attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
     attr_month['calc_index'] = attr_month.apply(lambda x: str(x.plot_id) + '-' + month_dict[x.date.month] + '-' + str(x.date.year), axis=1)
-    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'area_score', 'eco_id', 'credits', 'eco_id_list', 'calc_index']
-    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits', 'eco_id_list', 'eco_id']]
+    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
+    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits_all', 'eco_id_list', 'eco_id']]
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
@@ -520,10 +520,10 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     a = a.groupby('plot_id').agg({
         'calc_date': ['min', 'max'],
         'total_area': 'first',
-        'credits': 'sum',
+        'credits_all': 'sum',
         'eco_id_list': lambda x: sorted(list(set(sum(x, []))))
     })
-    a.columns = ['first_date', 'last_date', 'total_area', 'credits', 'eco_id_list']
+    a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
     a.sort_values(by=['plot_id'], inplace=True, ascending=[True])
@@ -659,3 +659,43 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
     blob.make_public()
     #print(f"File {source_file_name} uploaded to {destination_blob_name} and is now publicly accessible.")
     return blob.public_url
+
+def get_area_certifier():
+    config = load_config()
+    BASE_ID = config['KML_TABLE']['BASE_ID']
+    TABLE_NAME = config['KML_TABLE']['TABLE_NAME']
+    VIEW_ID = config['KML_TABLE']['VIEW_ID']
+    FIELD = config['KML_TABLE']['FIELD']
+    PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
+    AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
+    headers = {
+        "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+
+    all_records = []
+    offset = None
+    while True:
+        params = {'view':VIEW_ID}
+        if offset:
+            params["offset"] = offset
+
+        response = requests.get(AIRTABLE_ENDPOINT, headers=headers, params=params)
+        response_json = response.json()
+        
+        records = response_json.get('records')
+        all_records.extend(records)
+        
+        offset = response_json.get('offset')
+        if not offset:
+            break
+
+    area_cert = []
+    for record in all_records:
+        a = {}
+        a['plot_id'] = record['fields'].get('plot_id')
+        a['area_certifier'] = record['fields'].get('area_certifier')
+        area_cert.append(a)
+    return pd.DataFrame(area_cert).fillna(0)
+
+        

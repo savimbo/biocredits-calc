@@ -4,7 +4,7 @@ from datetime import datetime
 from calc_utils import clear_biocredits_tables, download_kml_official, kml_to_shp, load_shp, normalize_shps, \
                        reorder_polygons, shp_to_land, plot_land, download_observations, observations_to_circles, \
                        expand_observations, daily_score_union, daily_video, daily_attibution, monthly_attribution, \
-                       cummulative_attribution, insert_gdf_to_airtable, insert_log_entry, upload_to_gcs
+                       cummulative_attribution, insert_gdf_to_airtable, insert_log_entry, upload_to_gcs, get_area_certifier
 try:
     colombia_tz = pytz.timezone('America/Bogota')
     start_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
@@ -41,14 +41,24 @@ try:
     attribution = daily_attibution(daily_score, lands, obs_expanded, crs=6262)
     insert_log_entry('Daily Attribution rows:', str(len(attribution)))
 
+    area_cert = get_area_certifier()
+
     attr_month = monthly_attribution(attribution)
+    attr_month = attr_month.merge(area_cert, on='plot_id', how='left')
+    attr_month['proportion_certified'] = attr_month.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
+    attr_month['credits_certified'] = attr_month['credits_all'] * attr_month['proportion_certified']
+    attr_month['credits_imrv'] = attr_month['credits_all'] * (1 - attr_month['proportion_certified'])
     insert_log_entry('Monthly Attribution rows:', str(len(attr_month)))
 
     attr_cumm = cummulative_attribution(attr_month, cutdays = 30, start_date=None)
+    attr_cumm = attr_cumm.merge(area_cert, on='plot_id', how='left')
+    attr_cumm['proportion_certified'] = attr_cumm.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
+    attr_cumm['credits_certified'] = attr_cumm['credits_all'] * attr_cumm['proportion_certified']
+    attr_cumm['credits_imrv'] = attr_cumm['credits_all'] * (1 - attr_cumm['proportion_certified'])
     insert_log_entry('Cummulative Attribution rows:', str(len(attr_cumm)))
 
-    insert_gdf_to_airtable(attr_cumm.drop(columns='eco_id_list'), 'Cummulative Attribution', insert_geo = False, delete_all=True)
-    insert_gdf_to_airtable(attr_month.drop(columns='eco_id_list'), 'Monthly Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_cumm.drop(columns=['eco_id_list','proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_month.drop(columns=['eco_id_list','proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
 
     daily_video(daily_score, lands, first_date=None)
     insert_log_entry('Raindrops Video:', upload_to_gcs('biocredits-calc', 'raindrops.mp4', 'raindrops.mp4'))
