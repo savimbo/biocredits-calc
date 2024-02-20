@@ -5,3 +5,5 @@ pandas
 contextily
 shapely
 shutil
+matplotlib
+jupyter
