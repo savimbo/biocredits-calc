@@ -10,6 +10,7 @@ import math
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from shapely import wkt
 import contextily as ctx
 import matplotlib.pyplot as plt
@@ -177,27 +178,66 @@ def reorder_polygons(gdfs, reorder_lands=[]):
         lands[key] = polygon
     return lands
 
-def shp_to_land(lands, crs = "EPSG:4326"):
+def shp_to_land(lands, crs = "EPSG:4326", area_crs = "EPSG:6262"):
     lands = gpd.GeoSeries(lands)
     lands = gpd.GeoDataFrame(lands, columns=['geometry'])
+    
     lands.crs = crs
+    lands = lands.to_crs(area_crs)
+    lands['total_area'] = lands['geometry'].area / 10000
+    lands = lands.to_crs(crs)
     return lands
 
 def plot_land(lands, filename='lands.html'):
-    # plot fincas with plotly
     centroid = lands[lands['geometry'].is_valid].unary_union.centroid
     fig = px.choropleth_mapbox(lands, geojson=lands.geometry, locations=lands.index, color=lands.index,
                                 color_discrete_sequence=["red"], zoom=9.8, center = {"lat": centroid.coords.xy[1][0], "lon": centroid.coords.xy[0][0]},
                                 opacity=0.5, labels={'index':'Finca'})
     fig.update_layout(mapbox_style="carto-positron")
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    # hide the legend
     fig.update_layout(showlegend=False)
-    # make square
     fig.update_layout(height=600, width=600)
-    # save 
     fig.write_html(filename)
-    #fig.show()
+
+def create_value_lands(lands, platinum):
+    lands['plot_id'] = lands.index
+    platinum_gdf = gpd.GeoDataFrame({'geometry': [platinum]}, crs=lands.crs)
+    difference_gdf = gpd.overlay(lands, platinum_gdf, how='difference')
+    difference_gdf['value'] = 'gold'
+    intersection_gdf = gpd.overlay(lands, platinum_gdf, how='intersection')
+    intersection_gdf['value'] = 'platinum'
+    value_lands = pd.concat([intersection_gdf, difference_gdf], ignore_index=True)
+    return value_lands, platinum_gdf
+
+def plot_value_lands(value_lands, platinum_gdf, filename='lands_value.html'):
+    platinum_geojson = platinum_gdf.__geo_interface__
+
+    fig = go.Figure(go.Choroplethmapbox(geojson=platinum_geojson, locations=[0], z=[1],
+                                        colorscale=["#54BF59", "#54BF59"],
+                                        marker_opacity=0.5, 
+                                        marker_line_width=0,
+                                        showscale=False,
+                                        hoverinfo='none',
+                                        hovertemplate='Platinum Value Area (Tropical Andes)<extra></extra>'))
+
+    combined_geojson = value_lands.__geo_interface__
+    for i, row in value_lands.iterrows():
+        hover_text = f"Plot ID: {row['plot_id']}<br>Value: {row['value']}"
+        colorscale = ["#F2B52A", "#F2B52A"] if row['value'] == 'gold' else ["#4A4F4A", "#4A4F4A"]  
+        fig.add_trace(go.Choroplethmapbox(geojson=combined_geojson,
+                                        locations=[i],  
+                                        z=[0],  
+                                        colorscale=colorscale,
+                                        showscale=False,
+                                        hoverinfo='none',  
+                                        hovertemplate=hover_text+ '<extra></extra>' 
+                                        ))
+    fig.update_layout(mapbox_style="carto-positron",
+                    mapbox_zoom=9, 
+                    mapbox_center={"lat": 0.7, "lon": -77},
+                    margin={"r":0,"t":0,"l":0,"b":0},
+                    showlegend=False, width=800, height=800)
+    fig.write_html(filename)
 
 def download_observations():
     """
@@ -446,8 +486,9 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     eco_score6262 = eco_score.to_crs(epsg=crs)
     obs_expanded6262 = obs_expanded.to_crs(epsg=crs)
     result_df = pd.DataFrame()
-    fincas_reset = fincas6262.reset_index().rename(columns={'index': 'finca_name'})
-    fincas_reset['total_area'] = fincas_reset['geometry'].area / 10000
+    fincas_reset = fincas6262.reset_index().rename(columns={'index': 'plot_id'}) if not 'plot_id' in fincas6262.columns else fincas6262
+
+    #fincas_reset['total_area'] = fincas_reset['geometry'].area / 10000
     # For each unique date and score in eco_score
     for (date, score), group in eco_score6262.groupby(['date', 'score']):
         # Spatial join between group and fincas
@@ -459,11 +500,14 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
         # Add to result dataframe
         temp_df = pd.DataFrame({
             'date': [date] * len(intersections),
-            'plot_id': intersections['finca_name'],
+            'plot_id': intersections['plot_id'],
+            'value': intersections['value'] if 'value' in intersections.columns else None,
             'score': [score] * len(intersections),
             'total_area': intersections['total_area'],
             'area_intersect': intersections['area']
         })
+        if not 'value' in intersections.columns:
+            temp_df.drop(columns=['value'], inplace=True, errors='ignore')
         
         result_df = pd.concat([result_df, temp_df])
     result_df['area_score'] = result_df['area_intersect'] * result_df['score']
@@ -478,13 +522,13 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     # Finding observations for each finca/date/score combination
     fincas_to_obs = gpd.sjoin(fincas6262, obs_expanded6262, how="inner", predicate="intersects")
     # Group by date, farm, and score and aggregate the eco_id into lists
-    fincas_to_obs = (fincas_to_obs.groupby([fincas_to_obs.index, 'date', 'score'])
+    groupcols = ['plot_id', 'value', 'date', 'score'] if 'value' in fincas_to_obs.columns else ['plot_id', 'date', 'score']  
+    fincas_to_obs = (fincas_to_obs.groupby(groupcols)
                 .agg({'eco_id': list})
                 .reset_index())
-    fincas_to_obs.rename(columns={'level_0': 'plot_id'}, inplace=True)
     attribution = attribution.merge(fincas_to_obs, 
-                               left_on=['date', 'plot_id', 'score'], 
-                               right_on=['date', 'plot_id', 'score'], 
+                               left_on=groupcols, 
+                               right_on=groupcols, 
                                how='left')
     attribution = attribution.set_index('date')
     attribution.sort_values(by=['date', 'plot_id','score'], inplace=True, ascending=[False, True, False])
@@ -494,22 +538,27 @@ def monthly_attribution(attribution):
     # Group by month and finca, sum the scores, and divide by the constant 60 to get bimonthly credits
     month_dict = {1: "January",2: "February",3: "March",4: "April",5: "May",6: "June",
         7: "July",8: "August",9: "September",10: "October",11: "November",12: "December"}
-    attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'plot_id'])
+    with_value = 'value' in attribution.columns
+    groupcols = [pd.Grouper(freq='M'), 'plot_id', 'value'] if with_value else [pd.Grouper(freq='M'), 'plot_id']
+    attr_month = (attribution.groupby(groupcols)
             .agg({'total_area': 'first', 'area_score': 'sum',
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
+    groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
     attr_month['credits_all'] = attr_month['area_score'] * (1/60)
-    attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
+    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
     attr_month['calc_index'] = attr_month.apply(lambda x: str(x.plot_id) + '-' + month_dict[x.date.month] + '-' + str(x.date.year), axis=1)
-    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
-    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits_all', 'eco_id_list', 'eco_id']]
+    attr_month.columns = ['calc_date','plot_id'] + (['value'] if with_value else []) + ['total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
+    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id'] + (['value'] if with_value else []) + ['total_area', 'credits_all', 'eco_id_list', 'eco_id']]
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
-    a = attr_month.copy().sort_values(by=['calc_date', 'plot_id'], ascending=[True, True])
+    with_value = 'value' in attr_month.columns
+    groupcols = ['plot_id', 'value'] if with_value else ['plot_id']
+    a = attr_month.copy().sort_values(by=['calc_date']+groupcols, ascending=[True, True, False] if with_value else [True, True])
     if start_date is None:
         start_date = a['calc_date'].min() 
     else:
@@ -517,7 +566,7 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     mask = (a['calc_date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['calc_date'] >= start_date)
     a = a[mask]
     a.sort_values
-    a = a.groupby('plot_id').agg({
+    a = a.groupby(groupcols).agg({
         'calc_date': ['min', 'max'],
         'total_area': 'first',
         'credits_all': 'sum',
@@ -526,7 +575,7 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-    a.sort_values(by=['plot_id'], inplace=True, ascending=[True])
+    a.sort_values(by=groupcols, inplace=True, ascending=[True, False] if with_value else [True])
     return a
 
 def delete_all_records_from_airtable(HEADERS, API_URL):
