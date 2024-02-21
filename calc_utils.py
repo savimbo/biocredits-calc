@@ -535,7 +535,7 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     return attribution
 
 def monthly_attribution(attribution):
-    # Group by month and finca, sum the scores, and divide by the constant 60 to get bimonthly credits
+    # Group by month and finca, sum the scores, and divide by the constant 30 to get bimonthly credits
     month_dict = {1: "January",2: "February",3: "March",4: "April",5: "May",6: "June",
         7: "July",8: "August",9: "September",10: "October",11: "November",12: "December"}
     with_value = 'value' in attribution.columns
@@ -545,7 +545,7 @@ def monthly_attribution(attribution):
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
     groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
-    attr_month['credits_all'] = attr_month['area_score'] * (1/60)
+    attr_month['credits_all'] = attr_month['area_score'] * (1/30)
     attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
