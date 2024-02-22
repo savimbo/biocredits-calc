@@ -11,6 +11,17 @@ These instructions will guide you through setting up your environment and runnin
 Ensure you have [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html) installed on your system. These tools provide an easy way to manage environments and packages for your projects.
 
 ### Setting Up Your Environment
+```
+sudo apt-get update
+sudo apt-get install git
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+~/miniconda3/bin/conda init
+source ~/.bashrc
+sudo apt-get install gdal-bin
+sudo apt install ffmpeg
+```
 
 1. **Clone the Repository**
 
