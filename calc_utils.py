@@ -477,6 +477,8 @@ def daily_video(daily_score, lands, first_date=None):
         
         # Add the basemap
         add_basemap(ax, zoom=10, source=ctx.providers.Esri.NatGeoWorldMap)
+        ax.set_xticks([])
+        ax.set_yticks([])
 
     ani = animation.FuncAnimation(fig, update, frames=len(gdf_list), repeat=False)
     ani.save('raindrops.mp4', writer=animation.FFMpegWriter(fps=frame_rate))
