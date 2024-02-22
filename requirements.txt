@@ -7,3 +7,5 @@ shapely
 pytz
 matplotlib
 jupyter
+plotly
+requests
