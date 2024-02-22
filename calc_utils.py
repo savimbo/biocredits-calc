@@ -78,7 +78,7 @@ def download_kml_official(save_directory='KML/'):
             print(f"Downloaded plot_id {plot_id}")   
     insert_log_entry('Total KMLs downloaded:', str(good_plots))
 
-def kml_to_shp(source_directory='KLM/', destination_directory='SHP/'):
+def kml_to_shp(source_directory='KML/', destination_directory='SHP/'):
     # Ensure the destination directory exists
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
@@ -775,3 +775,4 @@ def transform_one_row_per_value(df, mode):
 
     df_one_row_per_value = pd.DataFrame(result).transpose().fillna(0).reset_index().rename(columns={'index': grouper}).sort_values(final_sort[0], ascending=final_sort[1])
     return df_one_row_per_value
+
