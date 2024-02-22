@@ -704,6 +704,7 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
     blob = bucket.blob(destination_blob_name)
     if blob.exists():
         blob.delete()
+    blob.cache_control = 'no-cache, no-store, must-revalidate'
     blob.upload_from_filename(source_file_name)
     blob.make_public()
     #print(f"File {source_file_name} uploaded to {destination_blob_name} and is now publicly accessible.")
