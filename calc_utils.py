@@ -751,7 +751,7 @@ def transform_one_row_per_value(df, mode):
     result = {}
     if mode == 'month':
         grouper = 'calc_index'
-        final_sort = (['calc_index','plot_id'],[False,True])
+        final_sort = (['calc_date','plot_id'],[False,True])
         keys = ['calc_date','plot_id','total_area','area_certifier', 'proportion_certified']
     elif mode == 'cumm':
         grouper = 'plot_id'
