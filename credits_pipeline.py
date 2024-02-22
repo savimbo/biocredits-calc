@@ -78,8 +78,8 @@ try:
     attr_cumm.to_csv('cummulative_attribution.csv')
     insert_log_entry('Cummulative attribution csv:', upload_to_gcs('biocredits-calc', 'cummulative_attribution.csv', 'cummulative_attribution.csv'))
 
-    insert_gdf_to_airtable(attr_cumm.drop(columns=['eco_id_list','proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
-    insert_gdf_to_airtable(attr_month.drop(columns=['eco_id_list','proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
 
     daily_video(daily_score, lands, first_date=None)
     insert_log_entry('Raindrops Video:', upload_to_gcs('biocredits-calc', 'raindrops.mp4', 'raindrops.mp4'))
