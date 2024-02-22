@@ -545,7 +545,7 @@ def monthly_attribution(attribution):
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
     groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
-    attr_month['credits_all'] = attr_month['area_score'] * (1/30)
+    attr_month['credits_all'] = attr_month['area_score'] * (1/60)
     attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
@@ -747,4 +747,30 @@ def get_area_certifier():
         area_cert.append(a)
     return pd.DataFrame(area_cert).fillna(0)
 
+def transform_one_row_per_value(df, mode):
+    result = {}
+    if mode == 'month':
+        grouper = 'calc_index'
+        final_sort = (['calc_index','plot_id'],[False,True])
+        keys = ['calc_date','plot_id','total_area','area_certifier', 'proportion_certified']
+    elif mode == 'cumm':
+        grouper = 'plot_id'
+        final_sort = ('plot_id',True)
+        keys = ['first_date', 'last_date', 'total_area','area_certifier', 'proportion_certified']
+    
+    grouped = df.groupby(grouper)
+    for name, group in grouped:
+        group_dict = {key: group[key].iloc[0] for key in keys}
+
+        group_dict['values'] = ' & '.join(group['value'].values)
+        for _, row in group.iterrows():
+            value = row['value']
+            group_dict[f'credits_all_{value}'] = row['credits_all']
+            group_dict[f'credits_certified_{value}'] = row['credits_certified']
+            group_dict[f'credits_imrv_{value}'] = row['credits_imrv']
+            group_dict[f'eco_id_{value}'] = row['eco_id'] 
         
+        result[name] = group_dict
+
+    df_one_row_per_value = pd.DataFrame(result).transpose().fillna(0).reset_index().rename(columns={'index': grouper}).sort_values(final_sort[0], ascending=final_sort[1])
+    return df_one_row_per_value
