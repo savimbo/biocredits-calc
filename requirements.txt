@@ -4,4 +4,8 @@ numpy
 pandas
 contextily
 shapely
-shutil
+pytz
+matplotlib
+jupyter
+plotly
+requests

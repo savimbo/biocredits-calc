@@ -5,11 +5,12 @@ import json
 import time
 import subprocess
 import geopandas as gpd
-from shapely.geometry import Point, Polygon, MultiPolygon
+from shapely.geometry import Point, Polygon, MultiPolygon, GeometryCollection
 import math
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from shapely import wkt
 import contextily as ctx
 import matplotlib.pyplot as plt
@@ -74,7 +75,7 @@ def download_kml_official(save_directory='KML/'):
                     for chunk in file_response.iter_content(chunk_size=8192):
                         file.write(chunk)
             good_plots += 1
-            print(f"Downloaded plot_id {plot_id}")
+            print(f"Downloaded plot_id {plot_id}")   
     insert_log_entry('Total KMLs downloaded:', str(good_plots))
 
 def kml_to_shp(source_directory='KML/', destination_directory='SHP/'):
@@ -177,27 +178,66 @@ def reorder_polygons(gdfs, reorder_lands=[]):
         lands[key] = polygon
     return lands
 
-def shp_to_land(lands, crs = "EPSG:4326"):
+def shp_to_land(lands, crs = "EPSG:4326", area_crs = "EPSG:6262"):
     lands = gpd.GeoSeries(lands)
     lands = gpd.GeoDataFrame(lands, columns=['geometry'])
+    
     lands.crs = crs
+    lands = lands.to_crs(area_crs)
+    lands['total_area'] = lands['geometry'].area / 10000
+    lands = lands.to_crs(crs)
     return lands
 
 def plot_land(lands, filename='lands.html'):
-    # plot fincas with plotly
     centroid = lands[lands['geometry'].is_valid].unary_union.centroid
     fig = px.choropleth_mapbox(lands, geojson=lands.geometry, locations=lands.index, color=lands.index,
                                 color_discrete_sequence=["red"], zoom=9.8, center = {"lat": centroid.coords.xy[1][0], "lon": centroid.coords.xy[0][0]},
                                 opacity=0.5, labels={'index':'Finca'})
     fig.update_layout(mapbox_style="carto-positron")
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    # hide the legend
     fig.update_layout(showlegend=False)
-    # make square
     fig.update_layout(height=600, width=600)
-    # save 
     fig.write_html(filename)
-    #fig.show()
+
+def create_value_lands(lands, platinum):
+    lands['plot_id'] = lands.index
+    platinum_gdf = gpd.GeoDataFrame({'geometry': [platinum]}, crs=lands.crs)
+    difference_gdf = gpd.overlay(lands, platinum_gdf, how='difference')
+    difference_gdf['value'] = 'gold'
+    intersection_gdf = gpd.overlay(lands, platinum_gdf, how='intersection')
+    intersection_gdf['value'] = 'platinum'
+    value_lands = pd.concat([intersection_gdf, difference_gdf], ignore_index=True)
+    return value_lands, platinum_gdf
+
+def plot_value_lands(value_lands, platinum_gdf, filename='lands_value.html'):
+    platinum_geojson = platinum_gdf.__geo_interface__
+
+    fig = go.Figure(go.Choroplethmapbox(geojson=platinum_geojson, locations=[0], z=[1],
+                                        colorscale=["#54BF59", "#54BF59"],
+                                        marker_opacity=0.5, 
+                                        marker_line_width=0,
+                                        showscale=False,
+                                        hoverinfo='none',
+                                        hovertemplate='Platinum Value Area (Tropical Andes)<extra></extra>'))
+
+    combined_geojson = value_lands.__geo_interface__
+    for i, row in value_lands.iterrows():
+        hover_text = f"Plot ID: {row['plot_id']}<br>Value: {row['value']}"
+        colorscale = ["#F2B52A", "#F2B52A"] if row['value'] == 'gold' else ["#4A4F4A", "#4A4F4A"]  
+        fig.add_trace(go.Choroplethmapbox(geojson=combined_geojson,
+                                        locations=[i],  
+                                        z=[0],  
+                                        colorscale=colorscale,
+                                        showscale=False,
+                                        hoverinfo='none',  
+                                        hovertemplate=hover_text+ '<extra></extra>' 
+                                        ))
+    fig.update_layout(mapbox_style="carto-positron",
+                    mapbox_zoom=9, 
+                    mapbox_center={"lat": 0.7, "lon": -77},
+                    margin={"r":0,"t":0,"l":0,"b":0},
+                    showlegend=False, width=800, height=800)
+    fig.write_html(filename)
 
 def download_observations():
     """
@@ -244,7 +284,7 @@ def download_observations():
     records['name_common'] = records['species_name_es'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
-    records['radius'] = records['calc_radius'].apply(lambda x: max(x) if type(x)==list else x)   # using max radius of row
+    records['radius'] = records['calc_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
     # filter records with radius > 0 and eco_long < 0
@@ -259,8 +299,8 @@ def download_observations():
     records = records[keep_columns].sort_values(by=['eco_date'])
     records['eco_date'] = pd.to_datetime(records['eco_date'])
     # filtering out observations older than 5 years
-    records = records[records['eco_date'] >= (pd.Timestamp.now() - pd.DateOffset(years=5))]
-    insert_log_entry('Observations < 5 years old:', str(len(records)))
+    records = records[records['eco_date'] >= (pd.Timestamp.now() - pd.DateOffset(years=10))]
+    insert_log_entry('Observations < 10 years old:', str(len(records)))
     insert_log_entry('Observations WITHOUT iNaturalist:', str(records['iNaturalist'].isna().sum()))
     insert_log_entry('Observations used:', str(len(records)))
     insert_log_entry('Scores seen:', str(list(np.sort(records['score' ].unique())[::-1])))
@@ -369,9 +409,21 @@ def nonoverlapping_maxscore(obs):
     result = venn_decomposition(polys, scores)
     return result
 
+def convert_to_multipolygon(geometry):
+    if isinstance(geometry, GeometryCollection):
+        polygons = [geom for geom in geometry.geoms if isinstance(geom, (Polygon, MultiPolygon))]
+        return MultiPolygon(polygons)
+    elif isinstance(geometry, MultiPolygon):
+        return geometry
+    elif isinstance(geometry, Polygon):
+        return MultiPolygon([geometry])
+    else:
+        raise ValueError("Geometry is neither a Polygon nor a MultiPolygon nor a GeometryCollection")
+
 def daily_score_union(eco_expanded):
     eco_score = eco_expanded.groupby('date').apply(lambda group: nonoverlapping_maxscore(group)).reset_index()
     eco_score = gpd.GeoDataFrame(eco_score, geometry='geometry', crs=eco_expanded.crs)
+    eco_score['geometry'] = eco_score['geometry'].apply(convert_to_multipolygon)
     return eco_score
     
 def put_missing_dates(union_gdf):
@@ -434,8 +486,9 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     eco_score6262 = eco_score.to_crs(epsg=crs)
     obs_expanded6262 = obs_expanded.to_crs(epsg=crs)
     result_df = pd.DataFrame()
-    fincas_reset = fincas6262.reset_index().rename(columns={'index': 'finca_name'})
-    fincas_reset['total_area'] = fincas_reset['geometry'].area / 10000
+    fincas_reset = fincas6262.reset_index().rename(columns={'index': 'plot_id'}) if not 'plot_id' in fincas6262.columns else fincas6262
+
+    #fincas_reset['total_area'] = fincas_reset['geometry'].area / 10000
     # For each unique date and score in eco_score
     for (date, score), group in eco_score6262.groupby(['date', 'score']):
         # Spatial join between group and fincas
@@ -447,11 +500,14 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
         # Add to result dataframe
         temp_df = pd.DataFrame({
             'date': [date] * len(intersections),
-            'plot_id': intersections['finca_name'],
+            'plot_id': intersections['plot_id'],
+            'value': intersections['value'] if 'value' in intersections.columns else None,
             'score': [score] * len(intersections),
             'total_area': intersections['total_area'],
             'area_intersect': intersections['area']
         })
+        if not 'value' in intersections.columns:
+            temp_df.drop(columns=['value'], inplace=True, errors='ignore')
         
         result_df = pd.concat([result_df, temp_df])
     result_df['area_score'] = result_df['area_intersect'] * result_df['score']
@@ -466,38 +522,43 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     # Finding observations for each finca/date/score combination
     fincas_to_obs = gpd.sjoin(fincas6262, obs_expanded6262, how="inner", predicate="intersects")
     # Group by date, farm, and score and aggregate the eco_id into lists
-    fincas_to_obs = (fincas_to_obs.groupby([fincas_to_obs.index, 'date', 'score'])
+    groupcols = ['plot_id', 'value', 'date', 'score'] if 'value' in fincas_to_obs.columns else ['plot_id', 'date', 'score']  
+    fincas_to_obs = (fincas_to_obs.groupby(groupcols)
                 .agg({'eco_id': list})
                 .reset_index())
-    fincas_to_obs.rename(columns={'level_0': 'plot_id'}, inplace=True)
     attribution = attribution.merge(fincas_to_obs, 
-                               left_on=['date', 'plot_id', 'score'], 
-                               right_on=['date', 'plot_id', 'score'], 
+                               left_on=groupcols, 
+                               right_on=groupcols, 
                                how='left')
     attribution = attribution.set_index('date')
     attribution.sort_values(by=['date', 'plot_id','score'], inplace=True, ascending=[False, True, False])
     return attribution
 
 def monthly_attribution(attribution):
-    # Group by month and finca, sum the scores, and divide by the constant 60 to get bimonthly credits
+    # Group by month and finca, sum the scores, and divide by the constant 30 to get bimonthly credits
     month_dict = {1: "January",2: "February",3: "March",4: "April",5: "May",6: "June",
         7: "July",8: "August",9: "September",10: "October",11: "November",12: "December"}
-    attr_month = (attribution.groupby([pd.Grouper(freq='M'), 'plot_id'])
+    with_value = 'value' in attribution.columns
+    groupcols = [pd.Grouper(freq='M'), 'plot_id', 'value'] if with_value else [pd.Grouper(freq='M'), 'plot_id']
+    attr_month = (attribution.groupby(groupcols)
             .agg({'total_area': 'first', 'area_score': 'sum',
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
-    attr_month['credits'] = attr_month['area_score'] * (1/60)
-    attr_month.sort_values(by=['date', 'plot_id'], inplace=True, ascending=[False, True])
+    groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
+    attr_month['credits_all'] = attr_month['area_score'] * (1/60)
+    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
     attr_month['calc_index'] = attr_month.apply(lambda x: str(x.plot_id) + '-' + month_dict[x.date.month] + '-' + str(x.date.year), axis=1)
-    attr_month.columns = ['calc_date', 'plot_id', 'total_area', 'area_score', 'eco_id', 'credits', 'eco_id_list', 'calc_index']
-    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits', 'eco_id_list', 'eco_id']]
+    attr_month.columns = ['calc_date','plot_id'] + (['value'] if with_value else []) + ['total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
+    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id'] + (['value'] if with_value else []) + ['total_area', 'credits_all', 'eco_id_list', 'eco_id']]
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
-    a = attr_month.copy().sort_values(by=['calc_date', 'plot_id'], ascending=[True, True])
+    with_value = 'value' in attr_month.columns
+    groupcols = ['plot_id', 'value'] if with_value else ['plot_id']
+    a = attr_month.copy().sort_values(by=['calc_date']+groupcols, ascending=[True, True, False] if with_value else [True, True])
     if start_date is None:
         start_date = a['calc_date'].min() 
     else:
@@ -505,16 +566,16 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     mask = (a['calc_date'] < (pd.Timestamp.now() - pd.DateOffset(days=cutdays))) & (a['calc_date'] >= start_date)
     a = a[mask]
     a.sort_values
-    a = a.groupby('plot_id').agg({
+    a = a.groupby(groupcols).agg({
         'calc_date': ['min', 'max'],
         'total_area': 'first',
-        'credits': 'sum',
+        'credits_all': 'sum',
         'eco_id_list': lambda x: sorted(list(set(sum(x, []))))
     })
-    a.columns = ['first_date', 'last_date', 'total_area', 'credits', 'eco_id_list']
+    a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-    a.sort_values(by=['plot_id'], inplace=True, ascending=[True])
+    a.sort_values(by=groupcols, inplace=True, ascending=[True, False] if with_value else [True])
     return a
 
 def delete_all_records_from_airtable(HEADERS, API_URL):
@@ -643,7 +704,75 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
     blob = bucket.blob(destination_blob_name)
     if blob.exists():
         blob.delete()
+    blob.cache_control = 'no-cache, no-store, must-revalidate'
     blob.upload_from_filename(source_file_name)
     blob.make_public()
     #print(f"File {source_file_name} uploaded to {destination_blob_name} and is now publicly accessible.")
     return blob.public_url
+
+def get_area_certifier():
+    config = load_config()
+    BASE_ID = config['KML_TABLE']['BASE_ID']
+    TABLE_NAME = config['KML_TABLE']['TABLE_NAME']
+    VIEW_ID = config['KML_TABLE']['VIEW_ID']
+    FIELD = config['KML_TABLE']['FIELD']
+    PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
+    AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
+    headers = {
+        "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
+        "Content-Type": "application/json"
+    }
+
+    all_records = []
+    offset = None
+    while True:
+        params = {'view':VIEW_ID}
+        if offset:
+            params["offset"] = offset
+
+        response = requests.get(AIRTABLE_ENDPOINT, headers=headers, params=params)
+        response_json = response.json()
+        
+        records = response_json.get('records')
+        all_records.extend(records)
+        
+        offset = response_json.get('offset')
+        if not offset:
+            break
+
+    area_cert = []
+    for record in all_records:
+        a = {}
+        a['plot_id'] = record['fields'].get('plot_id')
+        a['area_certifier'] = record['fields'].get('area_certifier')
+        area_cert.append(a)
+    return pd.DataFrame(area_cert).fillna(0)
+
+def transform_one_row_per_value(df, mode):
+    result = {}
+    if mode == 'month':
+        grouper = 'calc_index'
+        final_sort = (['calc_date','plot_id'],[False,True])
+        keys = ['calc_date','plot_id','total_area','area_certifier', 'proportion_certified']
+    elif mode == 'cumm':
+        grouper = 'plot_id'
+        final_sort = ('plot_id',True)
+        keys = ['first_date', 'last_date', 'total_area','area_certifier', 'proportion_certified']
+    
+    grouped = df.groupby(grouper)
+    for name, group in grouped:
+        group_dict = {key: group[key].iloc[0] for key in keys}
+
+        group_dict['values'] = ' & '.join(group['value'].values)
+        for _, row in group.iterrows():
+            value = row['value']
+            group_dict[f'credits_all_{value}'] = row['credits_all']
+            group_dict[f'credits_certified_{value}'] = row['credits_certified']
+            group_dict[f'credits_imrv_{value}'] = row['credits_imrv']
+            group_dict[f'eco_id_{value}'] = row['eco_id'] 
+        
+        result[name] = group_dict
+
+    df_one_row_per_value = pd.DataFrame(result).transpose().fillna(0).reset_index().rename(columns={'index': grouper}).sort_values(final_sort[0], ascending=final_sort[1])
+    return df_one_row_per_value
+
