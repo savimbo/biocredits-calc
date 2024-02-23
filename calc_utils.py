@@ -247,16 +247,16 @@ def save_without_animations(fig, filename):
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Custom Plotly Plot</title>
+        <title>Observations in time</title>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body>
 
-    <div id="myCustomPlotDiv"></div>
+    <div id="PlotDiv"></div>
 
     <script>
-    var plotData = {fig_json}; // Your Plotly figure data in JSON format
-    Plotly.newPlot('myCustomPlotDiv', plotData.data, plotData.layout, {{
+    var plotData = {fig_json}; 
+    Plotly.newPlot('PlotDiv', plotData.data, plotData.layout, {{
         displayModeBar: false, 
         showLink: false, 
         transition: {{duration: 0}}, 
