@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.io import to_json
 from shapely import wkt
 import contextily as ctx
 import matplotlib.pyplot as plt
@@ -238,6 +239,144 @@ def plot_value_lands(value_lands, platinum_gdf, filename='lands_value.html'):
                     margin={"r":0,"t":0,"l":0,"b":0},
                     showlegend=False, width=800, height=800)
     fig.write_html(filename)
+    return fig
+
+def save_without_animations(fig, filename):
+    fig_json = to_json(fig)
+    html_template = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Custom Plotly Plot</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+
+    <div id="myCustomPlotDiv"></div>
+
+    <script>
+    var plotData = {fig_json}; // Your Plotly figure data in JSON format
+    Plotly.newPlot('myCustomPlotDiv', plotData.data, plotData.layout, {{
+        displayModeBar: false, 
+        showLink: false, 
+        transition: {{duration: 0}}, 
+        frame: {{redraw: false}}, 
+        staticPlot: false
+    }});
+    </script>
+
+    </body>
+    </html>
+    """
+    with open(filename, "w") as file:
+        file.write(html_template)
+def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',filename='plots_slider.html'):
+    base_trace_indices = list(range(len(fig.data)))
+    min_date = pd.to_datetime(min_date)
+    start_date = max(scores_gdf['date'].min(), min_date)
+    end_date = scores_gdf['date'].max()
+    date_range = pd.date_range(start=start_date, end=end_date, freq=f'{n_weeks}W')
+    
+    # Filter the DataFrame for only dates that match the generated date range
+    filtered_gdf = scores_gdf[scores_gdf['date'].isin(date_range)]
+    eco_filtered_gdf = obs_expanded[obs_expanded['date'].isin(date_range)]
+    
+    # Group by date after filtering
+    date_groups = filtered_gdf.groupby('date')
+    
+    green_colorscale = {
+        1.0: "rgba(0, 100, 0, 0.5)",     # Dark green
+        0.9: "rgba(25, 125, 25, 0.5)",   # Slightly lighter
+        0.5: "rgba(75, 175, 75, 0.5)",   # Further lightening
+        0.4: "rgba(150, 250, 150, 0.5)", # Lightest green
+    }
+    orange_colorscale = {
+        1.0: "rgba(255, 140, 0, 0.7)",  # Dark orange
+        0.9: "rgba(255, 165, 0, 0.7)",  # Slightly less dark
+        0.5: "rgba(255, 200, 0, 0.7)",  # Mid-transition
+        0.4: "rgba(255, 220, 0, 0.7)",  # Lightest orange
+    }
+
+    for date, group in date_groups:
+        geojson = group.__geo_interface__
+        for i, row in group.iterrows():
+            hover_text = f"Score: {row['score']:.2f}"
+            color_scale = [[0, orange_colorscale[row['score']]], [1, orange_colorscale[row['score']]]] 
+            score_trace = go.Choroplethmapbox(geojson=geojson, locations=[i], z=[row['score']],
+                                              colorscale=color_scale, 
+                                              zmin=0, zmax=1,
+                                              showscale=False, # Set to True if you want a scale bar
+                                              hoverinfo='none',  
+                                              hovertemplate=hover_text+ '<extra></extra>',
+                                              name=str(date),
+                                              marker_line_width=0,
+                                              ) 
+            score_trace.visible = False
+            fig.add_trace(score_trace)
+
+    for date in date_range:
+        day_data = eco_filtered_gdf[eco_filtered_gdf['date'] == date]
+        if day_data.empty:
+            continue
+
+        lats = day_data['lat'].tolist()
+        lons = day_data['long'].tolist()
+        hover_texts = [
+            f"eco id: {row['eco_id']}<br>species: {row['name_common']}<br>score: {row['score']}<br>radius: {row['radius']}<br>eco date: {row['eco_date'].strftime('%Y-%m-%d')}"
+            for _, row in day_data.iterrows()
+        ]
+        
+        marker_trace = go.Scattermapbox(
+            lat=lats,
+            lon=lons,
+            mode='markers',
+            marker=go.scattermapbox.Marker(size=5, color='#1122D2'),
+            text=hover_texts,
+            hoverinfo='text',
+            name=str(date)
+        )
+        
+        marker_trace.visible = False
+        fig.add_trace(marker_trace)
+    
+    sliders = [{
+        'steps': []
+    }]
+    
+    for date in date_range:
+        visible_traces = [False] * len(fig.data)
+        
+        for idx in base_trace_indices:
+            visible_traces[idx] = True
+        
+        # Then, for the current date, set the visibility for specific traces
+        for i, trace in enumerate(fig.data):
+            if pd.to_datetime(trace.name) == date:
+                visible_traces[i] = True  # Make the trace for the current date visible
+        
+        step = {
+            'method': 'update',
+            'args': [{'visible': visible_traces},
+                    {'title': f"Scores for {date.strftime('%Y-%m-%d')}"}],
+            'label': date.strftime('%Y-%m-%d')
+        }
+        sliders[0]['steps'].append(step)
+    fig.update_layout(sliders=sliders)
+    save_without_animations(fig, filename)
+    return fig
+
+def fetch_linked_record_name(record_id, headers, cache, AIRTABLE_ENDPOINT):
+    if record_id in cache:
+        return cache[record_id]
+    response = requests.get(f"{AIRTABLE_ENDPOINT}/{record_id}", headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        common_name = data['fields'].get('species_name_common_es')
+        cache[record_id] = common_name
+        return common_name
+    else:
+        print(f"Error fetching record {record_id}:", response.text)
+        return None
 
 def download_observations():
     """
@@ -281,10 +420,12 @@ def download_observations():
     insert_log_entry('Observations with integrity score:', str(len(records)))
     # transform and create columns
     records['species_id'] = records['species_id'].apply(lambda x: x[0] if len(x)==1 else str(x))
-    records['name_common'] = records['species_name_es'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
     records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
     records['radius'] = records['calc_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
+    cache = {}
+    records['name_common'] = records['species_name_es'].apply(
+        lambda x: fetch_linked_record_name(x[0], headers, cache, AIRTABLE_ENDPOINT) if type(x)==list and len(x)==1 else None)
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
     # filter records with radius > 0 and eco_long < 0

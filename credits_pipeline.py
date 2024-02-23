@@ -5,7 +5,7 @@ from calc_utils import clear_biocredits_tables, download_kml_official, kml_to_sh
                        reorder_polygons, shp_to_land, plot_land, download_observations, observations_to_circles, \
                        expand_observations, daily_score_union, daily_video, daily_attibution, monthly_attribution, \
                        cummulative_attribution, insert_gdf_to_airtable, insert_log_entry, upload_to_gcs, get_area_certifier, \
-                       create_value_lands, plot_value_lands, transform_one_row_per_value   
+                       create_value_lands, plot_value_lands, transform_one_row_per_value, slider_plot  
 try:
     colombia_tz = pytz.timezone('America/Bogota')
     start_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
@@ -29,7 +29,7 @@ try:
     subtypes = load_shp('credit_subtypes/SHP/')
     platinum = subtypes['Tropical Andes']['geometry'][0]
     value_lands, platinum_gdf = create_value_lands(lands, platinum)
-    plot_value_lands(value_lands, platinum_gdf, filename='plots_value.html')
+    fig = plot_value_lands(value_lands, platinum_gdf, filename='plots_value.html')
     insert_log_entry('Plots with value (platinum, gold):', upload_to_gcs('biocredits-calc', 'plots_value.html', 'plots_value.html'))
 
     value_counts = value_lands.groupby('plot_id').agg({'value':'unique'})
@@ -43,6 +43,9 @@ try:
 
     obs_expanded = expand_observations(records)
     daily_score = daily_score_union(obs_expanded)
+
+    fig = slider_plot(fig, daily_score, obs_expanded, 1,  '2022-01-01','plots_slider.html')
+    insert_log_entry('Time slider plot (since 2022):', upload_to_gcs('biocredits-calc', 'plots_slider.html', 'plots_slider.html'))
 
     # choose one of the following attribution methods 
     # using value_lands or lands
