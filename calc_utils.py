@@ -295,17 +295,21 @@ def interpolate_color(score, color_scale):
     lower_color = color_scale[lower_key]
     upper_color = color_scale[upper_key]
 
-    lower_rgba = [int(c) for c in lower_color[5:-1].split(',')]
-    upper_rgba = [int(c) for c in upper_color[5:-1].split(',')]
+    # Convert the RGBA strings to lists of floats
+    lower_rgba = [float(c) for c in lower_color[5:-1].split(',')]
+    upper_rgba = [float(c) for c in upper_color[5:-1].split(',')]
 
     ratio = (score - lower_key) / (upper_key - lower_key)
 
     interpolated_rgba = [
-        int(lower_rgba[i] + (upper_rgba[i] - lower_rgba[i]) * ratio)
-        for i in range(4)
+        lower_rgba[i] + (upper_rgba[i] - lower_rgba[i]) * ratio
+        for i in range(3)
     ]
 
-    return f"rgba({interpolated_rgba[0]}, {interpolated_rgba[1]}, {interpolated_rgba[2]}, {interpolated_rgba[3] / 255.0:.2f})"
+    # Interpolating the alpha value as well
+    alpha = lower_rgba[3] + (upper_rgba[3] - lower_rgba[3]) * ratio
+
+    return f"rgba({int(interpolated_rgba[0])}, {int(interpolated_rgba[1])}, {int(interpolated_rgba[2])}, {alpha:.2f})"
 
 
 
@@ -344,6 +348,7 @@ def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',
         for i, row in group.iterrows():
             hover_text = f"Score: {row['score']:.2f}"
             color_scale = [[0, interpolate_color(row['score'],orange_colorscale)], [1, interpolate_color(row['score'],orange_colorscale)]] 
+            #color_scale = [[0, orange_colorscale[row['score']]], [1, orange_colorscale[row['score']]]]
             score_trace = go.Choroplethmapbox(geojson=geojson, locations=[i], z=[row['score']],
                                               colorscale=color_scale, 
                                               zmin=0, zmax=1,
