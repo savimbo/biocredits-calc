@@ -270,6 +270,46 @@ def save_without_animations(fig, filename):
     """
     with open(filename, "w") as file:
         file.write(html_template)
+
+
+def interpolate_color(score, color_scale):
+    # Ensure the score is between 0.0 and 1.0
+    if score < 0.0 or score > 1.0:
+        raise ValueError("Score must be between 0.0 and 1.0")
+
+    # Sort the color scale keys
+    keys = sorted(color_scale.keys())
+
+    # If the score is exactly on one of the keys, return the corresponding color
+    if score in color_scale:
+        return color_scale[score]
+
+    # Find the two keys between which the score falls
+    for i in range(len(keys) - 1):
+        if keys[i] <= score <= keys[i + 1]:
+            lower_key = keys[i]
+            upper_key = keys[i + 1]
+            break
+
+    # Linear interpolation of the RGBA values
+    lower_color = color_scale[lower_key]
+    upper_color = color_scale[upper_key]
+
+    lower_rgba = [int(c) for c in lower_color[5:-1].split(',')]
+    upper_rgba = [int(c) for c in upper_color[5:-1].split(',')]
+
+    ratio = (score - lower_key) / (upper_key - lower_key)
+
+    interpolated_rgba = [
+        int(lower_rgba[i] + (upper_rgba[i] - lower_rgba[i]) * ratio)
+        for i in range(4)
+    ]
+
+    return f"rgba({interpolated_rgba[0]}, {interpolated_rgba[1]}, {interpolated_rgba[2]}, {interpolated_rgba[3] / 255.0:.2f})"
+
+
+
+
 def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',filename='plots_slider.html'):
     base_trace_indices = list(range(len(fig.data)))
     min_date = pd.to_datetime(min_date)
@@ -287,12 +327,14 @@ def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',
     green_colorscale = {
         1.0: "rgba(0, 100, 0, 0.5)",     # Dark green
         0.9: "rgba(25, 125, 25, 0.5)",   # Slightly lighter
+        0.8: "rgba(50, 150, 50, 0.5)",
         0.5: "rgba(75, 175, 75, 0.5)",   # Further lightening
         0.4: "rgba(150, 250, 150, 0.5)", # Lightest green
     }
     orange_colorscale = {
         1.0: "rgba(255, 140, 0, 0.7)",  # Dark orange
         0.9: "rgba(255, 165, 0, 0.7)",  # Slightly less dark
+        0.8: "rgba(255, 182, 0, 0.7)",  # Between 0.9 and 0.5
         0.5: "rgba(255, 200, 0, 0.7)",  # Mid-transition
         0.4: "rgba(255, 220, 0, 0.7)",  # Lightest orange
     }
@@ -301,7 +343,7 @@ def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',
         geojson = group.__geo_interface__
         for i, row in group.iterrows():
             hover_text = f"Score: {row['score']:.2f}"
-            color_scale = [[0, orange_colorscale[row['score']]], [1, orange_colorscale[row['score']]]] 
+            color_scale = [[0, interpolate_color(row['score'],orange_colorscale)], [1, interpolate_color(row['score'],orange_colorscale)]] 
             score_trace = go.Choroplethmapbox(geojson=geojson, locations=[i], z=[row['score']],
                                               colorscale=color_scale, 
                                               zmin=0, zmax=1,
@@ -688,7 +730,7 @@ def monthly_attribution(attribution):
                     'eco_id': lambda x: sorted(list(set(sum(x, []))))}) 
             .reset_index())
     groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
-    attr_month['credits_all'] = attr_month['area_score'] * (1/60)
+    attr_month['credits_all'] = attr_month['area_score'] * (1/30)
     attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']

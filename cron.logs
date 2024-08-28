@@ -1,0 +1,1940 @@
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 27 from layer Parcela #163 - Tito Tamayo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #163 - Tito Tamayo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 39 from layer Parcela #62 -  Enrrique Toro.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #62 -  Enrrique Toro (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-polygon (POINT) geometry to POLYGON type shapefile.
+ERROR 1: Unable to write feature 2 from layer *Parcela #128 - Clara Roman.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #128 - Clara Roman (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 17 from layer Parcela #127 - Edilma Rosero.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #127 - Edilma Rosero (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 28 from layer Parcela #140 - Jorge Hernandez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #140 - Jorge Hernandez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 13 from layer Parcela #184 - Ricardo Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #184 - Ricardo Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 38 from layer Parcela #154 - Jairo Melchan.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #154 - Jairo Melchan (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 13 from layer Parcela #125  - Elisa Romero.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #125  - Elisa Romero (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 13 from layer Parcela #186 - Ricardo Rodriguez - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #186 - Ricardo Rodriguez - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer Parcela #91 - Patrica Urbano.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #91 - Patrica Urbano (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #11 - Javier Macias.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #11 - Javier Macias (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 32 from layer Parcela #193 - Alfonso Ayala.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #193 - Alfonso Ayala (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer Parcela  #119 - Ivan Guanga.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela  #119 - Ivan Guanga (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 9 from layer Parcela #50 - Oscar Benjumea.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #50 - Oscar Benjumea (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 31 from layer Parcela #43 - Idaly Cedeno.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #43 - Idaly Cedeno (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer Parcela #165 - Ilda Jamauca..
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #165 - Ilda Jamauca. (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #200 - Estella Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #200 - Estella Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer Parcela #9 - Gremo Lezama.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #9 - Gremo Lezama (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #159 - Jorge Ceron.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #159 - Jorge Ceron (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer *Parcela #105 - Carlos Gomez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #105 - Carlos Gomez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 20 from layer *Parcela #59 - Beatris Pantoja.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #59 - Beatris Pantoja (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer *Parcela #93 - Rolan Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #93 - Rolan Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 44 from layer Parcela #180 Fredy Moyano - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #180 Fredy Moyano - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer Parcela #192 - Lisandro Mora - D20230809.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #192 - Lisandro Mora - D20230809 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #156 - Gerardo Yaqueno.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #156 - Gerardo Yaqueno (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 20 from layer Parcela #178-Jose Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #178-Jose Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 26 from layer Parcela #169 - Fabian Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #169 - Fabian Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer Parcela #69 - Madelaine Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #69 - Madelaine Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 35 from layer Parcela #132 - Jose Gomez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #132 - Jose Gomez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer Parcela #63 Lara Campo - L20230104.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #63 Lara Campo - L20230104 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 9 from layer Parcela #187 - Fabian Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #187 - Fabian Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #182 - Bernardino Iles.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #182 - Bernardino Iles (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer Parcela #23- Hector Insuasti.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #23- Hector Insuasti (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Finca #117 - Jaison Guanga.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Finca #117 - Jaison Guanga (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #95 - Jose Zambrano.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #95 - Jose Zambrano (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 21 from layer Parcela #206 - Robinzon Velasco.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #206 - Robinzon Velasco (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer *Parcela #106 -  Damaris Bernal.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #106 -  Damaris Bernal (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #153 - Esneida Narvaez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #153 - Esneida Narvaez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 40 from layer Parcela #199 - Maria Carvajal.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #199 - Maria Carvajal (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 20 from layer Parcela #88 - Jorge Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #88 - Jorge Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #3 - Fernando Lezama.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #3 - Fernando Lezama (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #138 - Jorge Eliecer Hernandez - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #138 - Jorge Eliecer Hernandez - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #72 - Hernando Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #72 - Hernando Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 35 from layer *Parcela #115 - Felix Erazo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #115 - Felix Erazo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer Parcela #66 - Jhon Montealegre.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #66 - Jhon Montealegre (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer *Parcela #98  - Pedro Gomez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #98  - Pedro Gomez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #96 - Beatriz Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #96 - Beatriz Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer Parcela #173  Efren Bravo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #173  Efren Bravo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 25 from layer Parcela #45 - Maria Quintero.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #45 - Maria Quintero (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 5 from layer Parcela #81 - Ortencia Imbacuan.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #81 - Ortencia Imbacuan (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 5 from layer Parcela  #118 - Margarita Velasco.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela  #118 - Margarita Velasco (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #1 - Gremo Lezama.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #1 - Gremo Lezama (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer Parcela #183 - Benito Oviedo - A20230720.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #183 - Benito Oviedo - A20230720 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #73 - Hermes Ortega.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #73 - Hermes Ortega (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 13 from layer Parcela #40 - Onecimo Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #40 - Onecimo Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer Parcela #191 - Diana Urbano - L20230808.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #191 - Diana Urbano - L20230808 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 21 from layer parcela #201 - Yeny Melo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer parcela #201 - Yeny Melo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 6 from layer Parcela #2-Jhony Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #2-Jhony Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #49 - Gloria Pantoja.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #49 - Gloria Pantoja (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 38 from layer Parcela #139  - Segundo Jurado.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #139  - Segundo Jurado (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 13 from layer Parcela #92 - Rafael Iles.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #92 - Rafael Iles (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 109 from layer Parcela #158 - Hamilton  Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #158 - Hamilton  Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer *Parcela #121 - Cecilia Urbano.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #121 - Cecilia Urbano (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 9 from layer Parcela #188 - Algel torres - A20230721.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #188 - Algel torres - A20230721 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 30 from layer Parcela #174  - Albaro Calpa.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #174  - Albaro Calpa (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 42 from layer Parcela #151 -  Cesar Rubiano.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #151 -  Cesar Rubiano (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #35 - Rubiela Albarado.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #35 - Rubiela Albarado (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #176 -Heriberto Jurado.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #176 -Heriberto Jurado (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #168 - Asdrubal Ocampo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #168 - Asdrubal Ocampo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #29 - Alicia Oyos.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #29 - Alicia Oyos (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 27 from layer Parcela #6 - Lisandro Mora - 0fficial.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #6 - Lisandro Mora - 0fficial (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #5 - Maria Fernandez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #5 - Maria Fernandez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Parcela #20 - Ramon Elias Novoa.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #20 - Ramon Elias Novoa (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 18 from layer Parcela #44 - Duver Quintero - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #44 - Duver Quintero - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 51 from layer Parcela #34 -  Olmer  Salazar.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #34 -  Olmer  Salazar (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer *Parcela #94 - Maria Isandra.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #94 - Maria Isandra (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Parcela #12 - Sandra Muñoz.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #12 - Sandra Muñoz (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #18 - Jhony Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #18 - Jhony Lopez (use -skipfailures to skip errors)
+Downloaded plot_id 001
+Downloaded plot_id 002
+Downloaded plot_id 003
+Downloaded plot_id 004
+Downloaded plot_id 005
+Downloaded plot_id 006
+Downloaded plot_id 008
+Downloaded plot_id 009
+Downloaded plot_id 010
+Downloaded plot_id 011
+Downloaded plot_id 012
+Downloaded plot_id 018
+Downloaded plot_id 020
+Downloaded plot_id 023
+Downloaded plot_id 028
+Downloaded plot_id 029
+Downloaded plot_id 030
+Downloaded plot_id 034
+Downloaded plot_id 035
+Downloaded plot_id 037
+Downloaded plot_id 039
+Downloaded plot_id 040
+Downloaded plot_id 043
+Downloaded plot_id 044
+Downloaded plot_id 045
+Downloaded plot_id 049
+Downloaded plot_id 050
+Downloaded plot_id 059
+Downloaded plot_id 060
+Downloaded plot_id 061
+Downloaded plot_id 062
+Downloaded plot_id 063
+Downloaded plot_id 064
+Downloaded plot_id 066
+Downloaded plot_id 069
+Downloaded plot_id 070
+Downloaded plot_id 071
+Downloaded plot_id 072
+Downloaded plot_id 073
+Downloaded plot_id 074
+Downloaded plot_id 075
+Downloaded plot_id 077
+Downloaded plot_id 078
+Downloaded plot_id 081
+Downloaded plot_id 082
+Downloaded plot_id 087
+Downloaded plot_id 088
+Downloaded plot_id 089
+Downloaded plot_id 091
+Downloaded plot_id 092
+Downloaded plot_id 093
+Downloaded plot_id 094
+Downloaded plot_id 095
+Downloaded plot_id 096
+Downloaded plot_id 097
+Downloaded plot_id 098
+Downloaded plot_id 105
+Downloaded plot_id 106
+Downloaded plot_id 113
+Downloaded plot_id 114
+Downloaded plot_id 115
+Downloaded plot_id 116
+Downloaded plot_id 117
+Downloaded plot_id 118
+Downloaded plot_id 119
+Downloaded plot_id 121
+Downloaded plot_id 122
+Downloaded plot_id 123
+Downloaded plot_id 124
+Downloaded plot_id 125
+Downloaded plot_id 127
+Downloaded plot_id 128
+Downloaded plot_id 129
+Downloaded plot_id 130
+Downloaded plot_id 131
+Downloaded plot_id 132
+Downloaded plot_id 135
+Downloaded plot_id 138
+Downloaded plot_id 139
+Downloaded plot_id 140
+Downloaded plot_id 141
+Downloaded plot_id 142
+Downloaded plot_id 144
+Downloaded plot_id 150
+Downloaded plot_id 151
+Downloaded plot_id 153
+Downloaded plot_id 154
+Downloaded plot_id 155
+Downloaded plot_id 156
+Downloaded plot_id 157
+Downloaded plot_id 158
+Downloaded plot_id 159
+Downloaded plot_id 162
+Downloaded plot_id 163
+Downloaded plot_id 164
+Downloaded plot_id 165
+Downloaded plot_id 166
+Downloaded plot_id 168
+Downloaded plot_id 169
+Downloaded plot_id 171
+Downloaded plot_id 173
+Downloaded plot_id 174
+Downloaded plot_id 175
+Downloaded plot_id 176
+Downloaded plot_id 177
+Downloaded plot_id 178
+Downloaded plot_id 179
+Downloaded plot_id 180
+Downloaded plot_id 181
+Downloaded plot_id 182
+Downloaded plot_id 183
+Downloaded plot_id 184
+Downloaded plot_id 185
+Downloaded plot_id 186
+Downloaded plot_id 187
+Downloaded plot_id 188
+Downloaded plot_id 189
+Downloaded plot_id 190
+Downloaded plot_id 191
+Downloaded plot_id 192
+Downloaded plot_id 193
+Downloaded plot_id 199
+Downloaded plot_id 200
+Downloaded plot_id 201
+Downloaded plot_id 202
+Downloaded plot_id 204
+Downloaded plot_id 206
+Downloaded plot_id 207
+########## Converting 163 ##########
+Converted 163.kml to 163.shp
+########## Converting 062 ##########
+Converted 062.kml to 062.shp
+########## Converting 128 ##########
+Converted 128.kml to 128.shp
+########## Converting 127 ##########
+Converted 127.kml to 127.shp
+########## Converting 140 ##########
+Converted 140.kml to 140.shp
+########## Converting 184 ##########
+Converted 184.kml to 184.shp
+########## Converting 154 ##########
+Converted 154.kml to 154.shp
+########## Converting 125 ##########
+Converted 125.kml to 125.shp
+########## Converting 186 ##########
+Converted 186.kml to 186.shp
+########## Converting 091 ##########
+Converted 091.kml to 091.shp
+########## Converting 011 ##########
+Converted 011.kml to 011.shp
+########## Converting 193 ##########
+Converted 193.kml to 193.shp
+########## Converting 119 ##########
+Converted 119.kml to 119.shp
+########## Converting 050 ##########
+Converted 050.kml to 050.shp
+########## Converting 043 ##########
+Converted 043.kml to 043.shp
+########## Converting 165 ##########
+Converted 165.kml to 165.shp
+########## Converting 200 ##########
+Converted 200.kml to 200.shp
+########## Converting 009 ##########
+Converted 009.kml to 009.shp
+########## Converting 159 ##########
+Converted 159.kml to 159.shp
+########## Converting 105 ##########
+Converted 105.kml to 105.shp
+########## Converting 059 ##########
+Converted 059.kml to 059.shp
+########## Converting 093 ##########
+Converted 093.kml to 093.shp
+########## Converting 180 ##########
+Converted 180.kml to 180.shp
+########## Converting 192 ##########
+Converted 192.kml to 192.shp
+########## Converting 156 ##########
+Converted 156.kml to 156.shp
+########## Converting 078 ##########
+Converted 078.kml to 078.shp
+########## Converting 178 ##########
+Converted 178.kml to 178.shp
+########## Converting 169 ##########
+Converted 169.kml to 169.shp
+########## Converting 069 ##########
+Converted 069.kml to 069.shp
+########## Converting 132 ##########
+Converted 132.kml to 132.shp
+########## Converting 063 ##########
+Converted 063.kml to 063.shp
+########## Converting 187 ##########
+Converted 187.kml to 187.shp
+########## Converting 182 ##########
+Converted 182.kml to 182.shp
+########## Converting 023 ##########
+Converted 023.kml to 023.shp
+########## Converting 117 ##########
+Converted 117.kml to 117.shp
+########## Converting 095 ##########
+Converted 095.kml to 095.shp
+########## Converting 206 ##########
+Converted 206.kml to 206.shp
+########## Converting 106 ##########
+Converted 106.kml to 106.shp
+########## Converting 153 ##########
+Converted 153.kml to 153.shp
+########## Converting 199 ##########
+Converted 199.kml to 199.shp
+########## Converting 088 ##########
+Converted 088.kml to 088.shp
+########## Converting 003 ##########
+Converted 003.kml to 003.shp
+########## Converting 138 ##########
+Converted 138.kml to 138.shp
+########## Converting 072 ##########
+Converted 072.kml to 072.shp
+########## Converting 115 ##########
+Converted 115.kml to 115.shp
+########## Converting 066 ##########
+Converted 066.kml to 066.shp
+########## Converting 098 ##########
+Converted 098.kml to 098.shp
+########## Converting 096 ##########
+Converted 096.kml to 096.shp
+########## Converting 173 ##########
+Converted 173.kml to 173.shp
+########## Converting 045 ##########
+Converted 045.kml to 045.shp
+########## Converting 081 ##########
+Converted 081.kml to 081.shp
+########## Converting 118 ##########
+Converted 118.kml to 118.shp
+########## Converting 001 ##########
+Converted 001.kml to 001.shp
+########## Converting 183 ##########
+Converted 183.kml to 183.shp
+########## Converting 073 ##########
+Converted 073.kml to 073.shp
+########## Converting 040 ##########
+Converted 040.kml to 040.shp
+########## Converting 191 ##########
+Converted 191.kml to 191.shp
+########## Converting 201 ##########
+Converted 201.kml to 201.shp
+########## Converting 002 ##########
+Converted 002.kml to 002.shp
+########## Converting 049 ##########
+Converted 049.kml to 049.shp
+########## Converting 139 ##########
+Converted 139.kml to 139.shp
+########## Converting 092 ##########
+Converted 092.kml to 092.shp
+########## Converting 158 ##########
+Converted 158.kml to 158.shp
+########## Converting 121 ##########
+Converted 121.kml to 121.shp
+########## Converting 188 ##########
+Converted 188.kml to 188.shp
+########## Converting 174 ##########
+Converted 174.kml to 174.shp
+########## Converting 151 ##########
+Converted 151.kml to 151.shp
+########## Converting 035 ##########
+Converted 035.kml to 035.shp
+########## Converting 176 ##########
+Converted 176.kml to 176.shp
+########## Converting 168 ##########
+Converted 168.kml to 168.shp
+########## Converting 029 ##########
+Converted 029.kml to 029.shp
+########## Converting 006 ##########
+Converted 006.kml to 006.shp
+########## Converting 005 ##########
+Converted 005.kml to 005.shp
+########## Converting 020 ##########
+Converted 020.kml to 020.shp
+########## Converting 044 ##########
+Converted 044.kml to 044.shp
+########## Converting 034 ##########
+Converted 034.kml to 034.shp
+########## Converting 094 ##########
+Converted 094.kml to 094.shp
+########## Converting 012 ##########
+Converted 012.kml to 012.shp
+########## Converting 018 ##########
+Converted 018.kml to 018.shp
+########## Converting 113 Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #113  Cristobal Arrollo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #113  Cristobal Arrollo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 23 from layer Parcela #141 - Alicia Narvaez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #141 - Alicia Narvaez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 12 from layer Parcela #135 - Segundo Estrella.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #135 - Segundo Estrella (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 23 from layer Parcela #144 - Griselda Noguera - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #144 - Griselda Noguera - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 25 from layer Parcela #70- Hernando Portilla -.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #70- Hernando Portilla - (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer Parcela #60 -  Mauricio Pantoja.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #60 -  Mauricio Pantoja (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 24 from layer Parcela #162 - Tito Tamayo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #162 - Tito Tamayo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Parcela #89 - Marleny Imbacuam.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #89 - Marleny Imbacuam (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Parcela #97 -  Antonia Mutumbajoy.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #97 -  Antonia Mutumbajoy (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 30 from layer Parcela #190 - Pedro Zabala - A20230809...
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #190 - Pedro Zabala - A20230809.. (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 14 from layer Parcela #82 - Ortencia Imbacuam.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #82 - Ortencia Imbacuam (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 193 from layer Reserva #202 - Tigres del Alto.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Reserva #202 - Tigres del Alto (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 25 from layer *Parcela #122 - Libia Guaca.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #122 - Libia Guaca (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 6 from layer *Parcela #129 - Orfelia Claros.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #129 - Orfelia Claros (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #166 - Ilda Jamauca..
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #166 - Ilda Jamauca. (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 5 from layer Parcela #4 - Fernando Lezama.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #4 - Fernando Lezama (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #155 - Lucio Solarte.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #155 - Lucio Solarte (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer *Parcela #124 - Tulio Isandra.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #124 - Tulio Isandra (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 6 from layer Parcela #37 - Ivan Castro.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #37 - Ivan Castro (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer Parcela #181 - Laura Mejia.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #181 - Laura Mejia (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer Parcela #87 - Ortencia Imbacuan.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #87 - Ortencia Imbacuan (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 15 from layer Parcela #204 - Evelio Bravo - D20230907.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #204 - Evelio Bravo - D20230907 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 16 from layer Parcela #142 - Blanca Figueroa.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #142 - Blanca Figueroa (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 21 from layer Parcela #75 - Henrry Bolaños.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #75 - Henrry Bolaños (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer Parcela #114 - Rovinson Velasco.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #114 - Rovinson Velasco (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 41 from layer *Parcela #77 - Heriberto Jurado.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #77 - Heriberto Jurado (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 7 from layer Parcela #171 - Carmen arteaga -L2023062023.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #171 - Carmen arteaga -L2023062023 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 76 from layer Plot #179 - Cofan - L20231020.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Plot #179 - Cofan - L20231020 (use -skipfailures to skip errors)
+Warning 1: ERROR parsing kml Style: No id
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer Parcela #177 - Venancio Zambrano.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #177 - Venancio Zambrano (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 10 from layer Parcela  #123 - Oneiro Acosta.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela  #123 - Oneiro Acosta (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 23 from layer Parcela #175 - Natalie Galindo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #175 - Natalie Galindo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 11 from layer Parcela #157 - Jose Almeida.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #157 - Jose Almeida (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 9 from layer Finca #8 -  Luis Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Finca #8 -  Luis Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 47 from layer Parcela #61 - Abelino Ortega - L20230212.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #61 - Abelino Ortega - L20230212 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 20 from layer Parcela #189 - Leida Rodriguez - Official.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #189 - Leida Rodriguez - Official (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 414 from layer Resguardo #207 - Chandia Na'en - L20231026.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Resguardo #207 - Chandia Na'en - L20231026 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer *Parcela #116 - Carlos Lopez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #116 - Carlos Lopez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 21 from layer Parcela #64 -  William Caicedo.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #64 -  William Caicedo (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 22 from layer Parcela #131 - Lucia Vargas.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #131 - Lucia Vargas (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 26 from layer Parcela #150 - Franco Toro.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #150 - Franco Toro (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 19 from layer Parcela #30 – Fabio Gaviria.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #30 – Fabio Gaviria (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 20 from layer Parcela #71 - Hernando Portilla.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #71 - Hernando Portilla (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 25 from layer Parcela  #39 -  Ramiro Delgado.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela  #39 -  Ramiro Delgado (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 8 from layer *Parcela #74 - Bernardo Caguasango.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer *Parcela #74 - Bernardo Caguasango (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 35 from layer Parcela #164 - Luz Madronero -.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #164 - Luz Madronero - (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 9 from layer Parcela #130 - Alejandro Rodriguez - L20231504.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #130 - Alejandro Rodriguez - L20231504 (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 24 from layer Parcela #185 - Ricardo Rodriguez.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #185 - Ricardo Rodriguez (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+ERROR 1: Attempt to write non-point (POLYGON) geometry to point shapefile.
+ERROR 1: Unable to write feature 25 from layer Parcela #10 - Jesus Iles.
+ERROR 1: Terminating translation prematurely after failed
+translation of layer Parcela #10 - Jesus Iles (use -skipfailures to skip errors)
+Warning 6: Normalized/laundered field name: 'description' to 'descriptio'
+Warning 1: The output driver does not natively support DateTime type for field timestamp. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field timestamp create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field begin. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field begin create as date field, though DateTime requested.
+Warning 1: The output driver does not natively support DateTime type for field end. Misconversion can happen. -mapFieldType can be used to control field type conversion.
+Warning 6: Field end create as date field, though DateTime requested.
+Warning 6: Normalized/laundered field name: 'altitudeMode' to 'altitudeMo'
+##########
+Converted 113.kml to 113.shp
+########## Converting 141 ##########
+Converted 141.kml to 141.shp
+########## Converting 135 ##########
+Converted 135.kml to 135.shp
+########## Converting 144 ##########
+Converted 144.kml to 144.shp
+########## Converting 070 ##########
+Converted 070.kml to 070.shp
+########## Converting 060 ##########
+Converted 060.kml to 060.shp
+########## Converting 162 ##########
+Converted 162.kml to 162.shp
+########## Converting 089 ##########
+Converted 089.kml to 089.shp
+########## Converting 097 ##########
+Converted 097.kml to 097.shp
+########## Converting 190 ##########
+Converted 190.kml to 190.shp
+########## Converting 082 ##########
+Converted 082.kml to 082.shp
+########## Converting 202 ##########
+Converted 202.kml to 202.shp
+########## Converting 122 ##########
+Converted 122.kml to 122.shp
+########## Converting 129 ##########
+Converted 129.kml to 129.shp
+########## Converting 166 ##########
+Converted 166.kml to 166.shp
+########## Converting 004 ##########
+Converted 004.kml to 004.shp
+########## Converting 155 ##########
+Converted 155.kml to 155.shp
+########## Converting 124 ##########
+Converted 124.kml to 124.shp
+########## Converting 037 ##########
+Converted 037.kml to 037.shp
+########## Converting 181 ##########
+Converted 181.kml to 181.shp
+########## Converting 087 ##########
+Converted 087.kml to 087.shp
+########## Converting 204 ##########
+Converted 204.kml to 204.shp
+########## Converting 142 ##########
+Converted 142.kml to 142.shp
+########## Converting 075 ##########
+Converted 075.kml to 075.shp
+########## Converting 114 ##########
+Converted 114.kml to 114.shp
+########## Converting 077 ##########
+Converted 077.kml to 077.shp
+########## Converting 171 ##########
+Converted 171.kml to 171.shp
+########## Converting 179 ##########
+Converted 179.kml to 179.shp
+########## Converting 177 ##########
+Converted 177.kml to 177.shp
+########## Converting 123 ##########
+Converted 123.kml to 123.shp
+########## Converting 175 ##########
+Converted 175.kml to 175.shp
+########## Converting 157 ##########
+Converted 157.kml to 157.shp
+########## Converting 008 ##########
+Converted 008.kml to 008.shp
+########## Converting 061 ##########
+Converted 061.kml to 061.shp
+########## Converting 189 ##########
+Converted 189.kml to 189.shp
+########## Converting 207 ##########
+Converted 207.kml to 207.shp
+########## Converting 116 ##########
+Converted 116.kml to 116.shp
+########## Converting 064 ##########
+Converted 064.kml to 064.shp
+########## Converting 131 ##########
+Converted 131.kml to 131.shp
+########## Converting 150 ##########
+Converted 150.kml to 150.shp
+########## Converting 030 ##########
+Converted 030.kml to 030.shp
+########## Converting 071 ##########
+Converted 071.kml to 071.shp
+########## Converting 039 ##########
+Converted 039.kml to 039.shp
+########## Converting 074 ##########
+Converted 074.kml to 074.shp
+########## Converting 164 ##########
+Converted 164.kml to 164.shp
+########## Converting 028 ##########
+Converted 028.kml to 028.shp
+########## Converting 130 ##########
+Converted 130.kml to 130.shp
+########## Converting 185 ##########
+Converted 185.kml to 185.shp
+########## Converting 010 ##########
+Converted 010.kml to 010.shp
+########## Converting Tropical Andes ##########
+Converted Tropical Andes.kml to Tropical Andes.shp
+Error 0.8
+Type of exception: KeyError
+Traceback (most recent call last):
+  File "/home/dev/biocredits-calc/credits_pipeline.py", line 47, in <module>
+    fig = slider_plot(fig, daily_score, obs_expanded, 1,  '2022-01-01','plots_slider.html')
+  File "/home/dev/biocredits-calc/calc_utils.py", line 304, in slider_plot
+    color_scale = [[0, orange_colorscale[row['score']]], [1, orange_colorscale[row['score']]]]
+KeyError: 0.8
+
