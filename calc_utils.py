@@ -462,14 +462,15 @@ def download_observations():
     insert_log_entry('Total observations fetched:', str(len(all_records)))
 
     records = pd.DataFrame([r['fields'] for r in all_records])
+    records.to_csv('records.csv')
     # keep records with NIVEL de CREDITO (from SPECIES (ES))
-    records = records[[not r is np.nan for r in records["integrity_score"]]]
+    records = records[[not r is np.nan for r in records["score_integrity"]]]
     insert_log_entry('Observations with integrity score:', str(len(records)))
     # transform and create columns
     records['species_id'] = records['species_id'].apply(lambda x: x[0] if len(x)==1 else str(x))
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
-    records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
-    records['radius'] = records['calc_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
+    records['score'] = records['score_integrity'].apply(lambda x: max(x) if type(x)==list else x)
+    records['radius'] = records['observacion_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
     cache = {}
     records['name_common'] = records['species_name_es'].apply(
         lambda x: fetch_linked_record_name(x[0], headers, cache, AIRTABLE_ENDPOINT) if type(x)==list and len(x)==1 else None)
