@@ -431,10 +431,10 @@ def download_observations():
     """
     config = load_config()
     BASE_ID = config['OBS_TABLE']['BASE_ID']
-    TABLE_NAME = config['OBS_TABLE']['TABLE_NAME']
+    TABLE_ID = config['OBS_TABLE']['TABLE_ID']
     VIEW_ID = config['OBS_TABLE']['VIEW_ID']
     PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
-    AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
+    AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_ID}"
 
     headers = {
         "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
@@ -462,17 +462,17 @@ def download_observations():
     insert_log_entry('Total observations fetched:', str(len(all_records)))
 
     records = pd.DataFrame([r['fields'] for r in all_records])
-    records.to_csv('records.csv')
     # keep records with NIVEL de CREDITO (from SPECIES (ES))
-    records = records[[not r is np.nan for r in records["score_integrity"]]]
+    records = records[[not r is np.nan for r in records["integrity_score"]]]
     insert_log_entry('Observations with integrity score:', str(len(records)))
     # transform and create columns
-    records['species_id'] = records['species_id'].apply(lambda x: x[0] if len(x)==1 else str(x))
+    #records['species_id'] = records['species_id'].apply(lambda x: x[0] if type(x)==list else x) # we might need a fetch_linked_record_name
     records['name_latin'] = records['name_latin'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
-    records['score'] = records['score_integrity'].apply(lambda x: max(x) if type(x)==list else x)
-    records['radius'] = records['observacion_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
+    records['score'] = records['integrity_score'].apply(lambda x: max(x) if type(x)==list else x)
+    records['radius'] = records['calc_radius'].apply(lambda x: round(max(x),2) if type(x)==list else x)   # using max radius of row
     cache = {}
-    records['name_common'] = records['species_name_es'].apply(
+    records['name_common'] = records['name_common_es'].apply(lambda x: x[0] if type(x)==list and len(x)==1 else str(x))
+    records['name_common_'] = records['species_type'].apply(
         lambda x: fetch_linked_record_name(x[0], headers, cache, AIRTABLE_ENDPOINT) if type(x)==list and len(x)==1 else None)
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
@@ -484,7 +484,7 @@ def download_observations():
 
     # renaming and keeping columns
     records = records.rename(columns={'# ECO':'eco_id', 'eco_lat':'lat', 'eco_long':'long'})
-    keep_columns = ['eco_id','eco_date','species_id', 'name_common', 'name_latin', 'radius', 'score', 'lat','long','iNaturalist']
+    keep_columns = ['eco_id','eco_date', 'name_common', 'name_latin', 'radius', 'score', 'lat','long','iNaturalist']
     records = records[keep_columns].sort_values(by=['eco_date'])
     records['eco_date'] = pd.to_datetime(records['eco_date'])
     # filtering out observations older than 5 years
