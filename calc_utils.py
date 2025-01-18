@@ -5,7 +5,7 @@ import json
 import time
 import subprocess
 import geopandas as gpd
-from shapely.geometry import Point, Polygon, MultiPolygon, GeometryCollection
+from shapely.geometry import Point, Polygon, MultiPolygon, GeometryCollection, LineString
 import math
 import numpy as np
 import pandas as pd
@@ -17,20 +17,27 @@ import contextily as ctx
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from google.cloud import storage
+from collections import defaultdict
+import zipfile
+import traceback
 
 def load_config():
     with open('config.json', 'r') as f:
         return json.load(f)
 
-def download_kml_official(save_directory='KML/'):
+def download_kml_official(save_directory='KML/', save_shp_directory=None):
     """
-    Download KML files from Airtable
+    Download KML files and shapefiles from Airtable, and additional metadata.
+    Only process rows that have either KML or shapefile data.
     """
-    if not os.path.exists(save_directory):
-        os.makedirs(save_directory)
-    else:
-        shutil.rmtree(save_directory)
-        os.makedirs(save_directory)
+    # Create directories if they don't exist
+    for directory in [save_directory, save_shp_directory]:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        else:
+            shutil.rmtree(directory)
+            os.makedirs(directory)
+
     config = load_config()
     BASE_ID = config['KML_TABLE']['BASE_ID']
     TABLE_NAME = config['KML_TABLE']['TABLE_NAME']
@@ -38,12 +45,15 @@ def download_kml_official(save_directory='KML/'):
     FIELD = config['KML_TABLE']['FIELD']
     PERSONAL_ACCESS_TOKEN = config['PERSONAL_ACCESS_TOKEN']
 
-    SAVE_DIRECTORY = save_directory
     AIRTABLE_ENDPOINT = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_NAME}"
     headers = {
         "Authorization": f"Bearer {PERSONAL_ACCESS_TOKEN}",
         "Content-Type": "application/json"
     }
+
+    # Create caches for POD and project_biodiversity lookups
+    pod_cache = {}
+    proj_bio_cache = {}
 
     all_records = []
     offset = None
@@ -62,58 +72,170 @@ def download_kml_official(save_directory='KML/'):
         if not offset:
             break
 
+    # Create a list to store metadata
+    metadata = []
     good_plots = 0
+    total_records = 0
+    
     for record in all_records:
-        field = record['fields'].get(FIELD)
-        if field:
-            url = field[0]['url']
-            plot_id = str(record['fields'].get('plot_id'))
-            plot_id = f"{plot_id:0>3}"
-            save_path = os.path.join(SAVE_DIRECTORY, plot_id+'.kml')
+        fields = record['fields']
+        kml_field = fields.get(FIELD)
+        shapefile = fields.get('shapefile_polygon')
+        
+        # Skip if neither KML nor shapefile is available
+        if not kml_field and not shapefile:
+            continue
+            
+        total_records += 1
+        plot_id = str(fields.get('plot_id'))
+        plot_id = f"{plot_id:0>3}"
+        
+        # Download KML if available
+        if kml_field:
+            url = kml_field[0]['url']
+            save_path = os.path.join(save_directory, plot_id+'.kml')
             
             with requests.get(url, stream=True) as file_response:
                 with open(save_path, 'wb') as file:
                     for chunk in file_response.iter_content(chunk_size=8192):
                         file.write(chunk)
             good_plots += 1
-            print(f"Downloaded plot_id {plot_id}")   
-    insert_log_entry('Total KMLs downloaded:', str(good_plots))
+            print(f"Downloaded KML for plot_id {plot_id}")
 
-def kml_to_shp(source_directory='KML/', destination_directory='SHP/'):
+        # Download and extract shapefile if available
+        if shapefile:
+            url = shapefile[0]['url']
+            # Create a directory for this plot's shapefile
+            plot_shp_dir = os.path.join(save_shp_directory, plot_id)
+            if not os.path.exists(plot_shp_dir):
+                os.makedirs(plot_shp_dir)
+            
+            # Download the zip file
+            zip_path = os.path.join(plot_shp_dir, f"{plot_id}.zip")
+            with requests.get(url, stream=True) as file_response:
+                with open(zip_path, 'wb') as file:
+                    for chunk in file_response.iter_content(chunk_size=8192):
+                        file.write(chunk)
+            
+            # Extract the zip file
+            try:
+                with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                    zip_ref.extractall(plot_shp_dir)
+                print(f"Downloaded and extracted shapefile for plot_id {plot_id}")
+                # Remove the zip file after extraction
+                os.remove(zip_path)
+            except zipfile.BadZipFile:
+                print(f"Error: Invalid zip file for plot_id {plot_id}")
+                continue
+
+        # Fetch actual values for POD and project_biodiversity
+        pod_id = fields.get('POD', [''])[0] if isinstance(fields.get('POD'), list) else fields.get('POD', '')
+        proj_bio_id = fields.get('project_biodiversity', [''])[0] if isinstance(fields.get('project_biodiversity'), list) else fields.get('project_biodiversity', '')
+
+        pod_name = fetch_linked_record_name(pod_id, headers, pod_cache, AIRTABLE_ENDPOINT, 'CODE') if pod_id else ''
+        proj_bio_name = fetch_linked_record_name(proj_bio_id, headers, proj_bio_cache, AIRTABLE_ENDPOINT, 'project_id') if proj_bio_id else ''
+
+        # Collect metadata with actual values
+        metadata.append({
+            'plot_id': plot_id.zfill(3),
+            'POD': pod_name,
+            'project_biodiversity': proj_bio_name,
+            'area_certifier': fields.get('area_certifier', 0)
+        })
+
+    # Save metadata to DataFrame
+    metadata_df = pd.DataFrame(metadata)
+    metadata_df.to_csv('land_metadata.csv', index=False)
+    
+    # Add logging for linked records
+    insert_log_entry('Unique PODs found:', str(len(set(metadata_df['POD'].dropna()))))
+    insert_log_entry('Unique Project Biodiversity found:', str(len(set(metadata_df['project_biodiversity'].dropna()))))
+    
+    insert_log_entry('Total records with KML or shapefile:', str(total_records))
+    insert_log_entry('Total KMLs downloaded:', str(good_plots))
+    return metadata_df
+
+def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/'):
     # Ensure the destination directory exists
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
     else:
         shutil.rmtree(destination_directory)
         os.makedirs(destination_directory)
-    # Loop through all .kml files in the source directory
+
+    # First, move original shapefiles to the destination directory
+    if original_shp_directory is not None:
+        for plot_id_folder in os.listdir(original_shp_directory):
+            plot_id_path = os.path.join(original_shp_directory, plot_id_folder)
+            if os.path.isdir(plot_id_path):
+                # Skip __MACOSX folders
+                if plot_id_folder == '__MACOSX':
+                    continue
+            
+            # Create a directory for this plot's shapefile in the destination
+            plot_shp_dir = os.path.join(destination_directory, plot_id_folder)
+            if not os.path.exists(plot_shp_dir):
+                os.makedirs(plot_shp_dir)
+            
+            # Find the actual shapefile folder (skipping __MACOSX)
+            for subfolder in os.listdir(plot_id_path):
+                subfolder_path = os.path.join(plot_id_path, subfolder)
+                if os.path.isdir(subfolder_path) and not subfolder.startswith('__MACOSX'):
+                    # Move and rename files
+                    for file in os.listdir(subfolder_path):
+                        if file.endswith(('.cpg', '.shp', '.shx', '.dbf', '.prj')):
+                            src_file_path = os.path.join(subfolder_path, file)
+                            extension = os.path.splitext(file)[1]
+                            dest_file_path = os.path.join(plot_shp_dir, f'{plot_id_folder}{extension}')
+                            shutil.copy2(src_file_path, dest_file_path)
+                    print(f"Moved original shapefile for plot_id {plot_id_folder}")
+
+    # Then convert KMLs to SHP only if no original shapefile exists
     error_list = []
     for filename in os.listdir(source_directory):
         if filename.endswith('.kml'):
             base_name = os.path.splitext(filename)[0]  # Get the file name without extension
-            print("########## Converting", base_name, "##########")
+            plot_shp_dir = os.path.join(destination_directory, base_name)
+            
+            # Skip if we already have the original shapefile
+            if os.path.exists(plot_shp_dir) and any(f.endswith('.shp') for f in os.listdir(plot_shp_dir)):
+                print(f"Skipping KML conversion for {base_name} - original shapefile exists")
+                continue
+                
+            # Create directory if it doesn't exist
+            if not os.path.exists(plot_shp_dir):
+                os.makedirs(plot_shp_dir)
+                
+            print(f"########## Converting {base_name} ##########")
             source_file_path = os.path.join(source_directory, filename)
-            destination_file_path = os.path.join(destination_directory, base_name + '.shp')
+            destination_file_path = os.path.join(plot_shp_dir, base_name + '.shp')
+            
             # Convert KML to SHP using ogr2ogr
             cmd = ['ogr2ogr', '-f', 'ESRI Shapefile', destination_file_path, source_file_path]
             subprocess.run(cmd)
-            # check if the file was created
+            
+            # Check if the file was created
             if not os.path.exists(destination_file_path):
                 error_list.append(base_name)
                 print(f"Error converting {filename} to {base_name}.shp")
             else:
                 print(f"Converted {filename} to {base_name}.shp")
+    
     insert_log_entry('Error in plots:', ', '.join(error_list))
 
 def load_shp(directory='SHP/'):
-    # Loop through all .shp files in the directory and load them
+    # Loop through all subdirectories in the SHP directory
     gdfs = {}
-    for filename in sorted(os.listdir(directory)):
-        if filename.endswith('.shp'):
-            filepath = os.path.join(directory, filename)
-            gdf = gpd.read_file(filepath)
-            base_name = os.path.splitext(filename)[0]
-            gdfs[base_name] = gdf
+    for plot_folder in sorted(os.listdir(directory)):
+        plot_path = os.path.join(directory, plot_folder)
+        if os.path.isdir(plot_path):
+            # Look for the .shp file in the plot's folder
+            shp_file = os.path.join(plot_path, f"{plot_folder}.shp")
+            if os.path.exists(shp_file):
+                gdf = gpd.read_file(shp_file)
+                gdfs[plot_folder] = gdf
+            else:
+                print(f"Warning: No shapefile found for plot {plot_folder}")
     return gdfs
 
 def reorder_polygon(polygon):
@@ -131,39 +253,99 @@ def reorder_polygon(polygon):
 
 def set_z_to_zero(coord):
     """Given a coordinate tuple, set its Z value to zero."""
+    if len(coord) == 2:
+        x, y = coord
+        return (x, y, 0)
     x, y, _ = coord
     return (x, y, 0)
 
 def normalize_shps(gdfs):
     """
-    Given a list with .shp files loaded as GeoDataFrames, then:
-        1) ensure the third coordinates are zero
-        2) convert them to polygons
-        3) reorder the vertices in clockwise order (if included in reorder_fincas)
-        4) return a GeoDataFrame with the polygons 
+    Given a dictionary of GeoDataFrames:
+        1) Convert each geometry to Polygon or MultiPolygon
+        2) Ensure coordinates are in lat/long (EPSG:4326)
+        3) Return a dictionary of normalized geometries
     """
     lands = {}
-    point_shps = []
-    polygon_shps = []
-    for key in gdfs.keys():
-        geometries = gdfs[key]['geometry']
-        if len(geometries) == 0:
+    geometry_types_found = {}
+    
+    for key, gdf in gdfs.items():
+        if len(gdf['geometry']) == 0:
             print(f"warning: {key} GeoDataFrame is empty!")
             continue
 
-        # Convert the series of points to a list of coordinate tuples with Z set to zero
-        if isinstance(geometries.iloc[0], Point): 
-            point_shps.append(key)     
-            coords = [set_z_to_zero(point.coords[0]) for point in geometries]
-        elif isinstance(geometries.iloc[0], Polygon):
-            polygon_shps.append(key)
-            coords = [set_z_to_zero(coord) for coord in geometries.iloc[0].exterior.coords]
+        # Ensure the GeoDataFrame is in EPSG:4326 (lat/long)
+        found_crs_count = defaultdict(int)
+        if gdf.crs is None:
+            #print(f"warning: {key} has no CRS defined, assuming EPSG:4326")
+            gdf.set_crs(epsg=4326, inplace=True)
+            found_crs_count['no_crs'] += 1
+        elif gdf.crs != "EPSG:4326":
+            #print(f"warning: {key} has CRS {gdf.crs}, converting to EPSG:4326")
+            gdf = gdf.to_crs(epsg=4326)
+            found_crs_count[str(gdf.crs)] += 1
         else:
-            raise ValueError("Unsupported geometry type!")
-        lands[key] = Polygon(coords)
+            found_crs_count['EPSG:4326'] += 1
+
+        # Get the first geometry and its type
+        first_geom = gdf['geometry'].iloc[0]
+        geom_type = first_geom.__class__.__name__
+        if geom_type not in geometry_types_found:
+            geometry_types_found[geom_type] = []
+        geometry_types_found[geom_type].append(key)
         
-    insert_log_entry('Point KMLs:', str(point_shps))
-    insert_log_entry('Polygon KMLs:', str(polygon_shps))
+        try:
+            if isinstance(first_geom, (Polygon, MultiPolygon)):
+                if len(gdf['geometry']) == 1:
+                    lands[key] = first_geom
+                else:
+                    lands[key] = MultiPolygon(gdf['geometry'].tolist())
+
+            elif isinstance(first_geom, Point):
+                # Use all points to create a polygon
+                points = [(geom.x, geom.y) for geom in gdf['geometry']]
+                if len(points) >= 3:  # Need at least 3 points to make a polygon
+                    lands[key] = Polygon(points)
+                else:
+                    print(f"warning: {key} has only {len(points)} points, need at least 3 to create a polygon")
+                    continue
+            elif isinstance(first_geom, LineString):
+                # Convert LineString to Polygon if it's closed
+                coords = list(first_geom.coords)
+                if coords[0] == coords[-1] and len(coords) >= 4:  # Need at least 4 points for a closed polygon (first=last)
+                    lands[key] = Polygon(coords)
+                else:
+                    print(f"warning: {key} LineString is not closed or has too few points")
+                    continue
+            elif isinstance(first_geom, GeometryCollection):
+                # Extract all polygons from the collection
+                polygons = [g for g in first_geom.geoms if isinstance(g, (Polygon, MultiPolygon))]
+                if polygons:
+                    if len(polygons) == 1:
+                        lands[key] = polygons[0]
+                    else:
+                        lands[key] = MultiPolygon(polygons)
+                else:
+                    print(f"warning: {key} GeometryCollection contains no polygons")
+                    continue
+            else:
+                print(f"warning: {key} has unsupported geometry type: {geom_type}")
+                continue
+        except Exception as e:
+            print(f"error processing {key}: {str(e)}")
+            # print traceback
+            print(traceback.format_exc())
+            continue
+
+    # Log the geometry types found
+    for geom_type, plot_ids in geometry_types_found.items():
+        insert_log_entry(f'Geometry type {geom_type} found in plots:', ', '.join(plot_ids))
+        print(f'Geometry type {geom_type} found in plots:', ', '.join(plot_ids))
+    
+    insert_log_entry('CRS found in plots:', ', '.join([f'{crs}: {count}' for crs, count in found_crs_count.items()]))
+    print('CRS found in plots:', ', '.join([f'{crs}: {count}' for crs, count in found_crs_count.items()]))
+    insert_log_entry('Total plots processed:', str(len(lands)))
+    print('Total plots processed:', str(len(lands)))
     return lands
 
 def reorder_polygons(gdfs, reorder_lands=[]):
@@ -412,15 +594,19 @@ def slider_plot(fig, scores_gdf, obs_expanded, n_weeks=1, min_date='2023-01-01',
     save_without_animations(fig, filename)
     return fig
 
-def fetch_linked_record_name(record_id, headers, cache, AIRTABLE_ENDPOINT):
+def fetch_linked_record_name(record_id, headers, cache, AIRTABLE_ENDPOINT, field_name='species_name_common_es'):
+    """
+    Fetch the name of a linked record from Airtable.
+    Modified to handle different field names for different tables.
+    """
     if record_id in cache:
         return cache[record_id]
     response = requests.get(f"{AIRTABLE_ENDPOINT}/{record_id}", headers=headers)
     if response.status_code == 200:
         data = response.json()
-        common_name = data['fields'].get('species_name_common_es')
-        cache[record_id] = common_name
-        return common_name
+        value = data['fields'].get(field_name)
+        cache[record_id] = value
+        return value
     else:
         print(f"Error fetching record {record_id}:", response.text)
         return None
@@ -944,11 +1130,13 @@ def transform_one_row_per_value(df, mode):
     if mode == 'month':
         grouper = 'calc_index'
         final_sort = (['calc_date','plot_id'],[False,True])
-        keys = ['calc_date','plot_id','total_area','area_certifier', 'proportion_certified']
+        keys = ['calc_date','plot_id','total_area','area_certifier', 'proportion_certified', 
+               'POD', 'project_biodiversity']  # Added new fields
     elif mode == 'cumm':
         grouper = 'plot_id'
         final_sort = ('plot_id',True)
-        keys = ['first_date', 'last_date', 'total_area','area_certifier', 'proportion_certified']
+        keys = ['first_date', 'last_date', 'total_area','area_certifier', 'proportion_certified',
+               'POD', 'project_biodiversity']  # Added new fields
     
     grouped = df.groupby(grouper)
     for name, group in grouped:

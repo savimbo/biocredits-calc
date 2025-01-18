@@ -12,10 +12,11 @@ try:
     clear_biocredits_tables(["Logs", "Observations", "Monthly Attribution", "Cummulative Attribution"])
     insert_log_entry('Start time', start_str)
 
-    # Download KMLs
-    download_kml_official()
+    # Download KMLs and metadata
+    land_metadata = download_kml_official()
+    
     # KML to SHP
-    kml_to_shp(source_directory='KML/', destination_directory='SHP/')
+    kml_to_shp(source_directory='KML/', destination_directory='SHP/', save_shp_directory='SHPoriginal/')
     kml_to_shp(source_directory='credit_subtypes/KML/', destination_directory='credit_subtypes/SHP/')
 
     shp = load_shp('SHP/')
@@ -23,8 +24,12 @@ try:
 
     normalized_shapes = normalize_shps(shp)
     gdf_normalized = shp_to_land(normalized_shapes)
-    normalized_shapes_reordered = reorder_polygons(normalized_shapes, reorder_lands=[])
-    lands = shp_to_land(normalized_shapes_reordered)
+    
+    # Merge metadata with the geographic data
+    gdf_normalized = gdf_normalized.reset_index()
+    gdf_normalized['plot_id'] = gdf_normalized['index'].astype(str).str.zfill(3)
+    lands = gdf_normalized.merge(land_metadata, on='plot_id', how='left')
+    
 
     subtypes = load_shp('credit_subtypes/SHP/')
     platinum = subtypes['Tropical Andes']['geometry'][0]
