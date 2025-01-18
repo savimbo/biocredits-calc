@@ -12,8 +12,8 @@ try:
     clear_biocredits_tables(["Logs", "Observations", "Monthly Attribution", "Cummulative Attribution"])
     
     # Download KMLs and metadata
-    land_metadata = download_kml_official()
     insert_log_entry('Start time', start_str)
+    land_metadata = download_kml_official()
     
     # KML to SHP
     kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/')

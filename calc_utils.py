@@ -271,6 +271,7 @@ def normalize_shps(gdfs):
     """
     lands = {}
     geometry_types_found = {}
+    found_crs_count = defaultdict(int)
     
     for key, gdf in gdfs.items():
         if len(gdf['geometry']) == 0:
@@ -278,15 +279,15 @@ def normalize_shps(gdfs):
             continue
 
         # Ensure the GeoDataFrame is in EPSG:4326 (lat/long)
-        found_crs_count = defaultdict(int)
+        
         if gdf.crs is None:
             #print(f"warning: {key} has no CRS defined, assuming EPSG:4326")
             gdf.set_crs(epsg=4326, inplace=True)
             found_crs_count['no_crs'] += 1
         elif gdf.crs != "EPSG:4326":
             #print(f"warning: {key} has CRS {gdf.crs}, converting to EPSG:4326")
-            gdf = gdf.to_crs(epsg=4326)
             found_crs_count[str(gdf.crs)] += 1
+            gdf = gdf.to_crs(epsg=4326)
         else:
             found_crs_count['EPSG:4326'] += 1
 
@@ -1082,6 +1083,7 @@ def clear_biocredits_tables(tables):
     if len(delete_again) > 0:
         clear_biocredits_tables(delete_again)
 
+    time.sleep(10)
 
 def create_bucket(storage_client, bucket_name):
     bucket = storage_client.bucket(bucket_name)
