@@ -25,7 +25,7 @@ def load_config():
     with open('config.json', 'r') as f:
         return json.load(f)
 
-def download_kml_official(save_directory='KML/', save_shp_directory=None):
+def download_kml_official(save_directory='KML/', save_shp_directory='SHPoriginal/'):
     """
     Download KML files and shapefiles from Airtable, and additional metadata.
     Only process rows that have either KML or shapefile data.
@@ -75,6 +75,7 @@ def download_kml_official(save_directory='KML/', save_shp_directory=None):
     # Create a list to store metadata
     metadata = []
     good_plots = 0
+    shp_downloaded = 0
     total_records = 0
     
     for record in all_records:
@@ -124,6 +125,7 @@ def download_kml_official(save_directory='KML/', save_shp_directory=None):
                 print(f"Downloaded and extracted shapefile for plot_id {plot_id}")
                 # Remove the zip file after extraction
                 os.remove(zip_path)
+                shp_downloaded += 1
             except zipfile.BadZipFile:
                 print(f"Error: Invalid zip file for plot_id {plot_id}")
                 continue
@@ -148,11 +150,12 @@ def download_kml_official(save_directory='KML/', save_shp_directory=None):
     metadata_df.to_csv('land_metadata.csv', index=False)
     
     # Add logging for linked records
-    insert_log_entry('Unique PODs found:', str(len(set(metadata_df['POD'].dropna()))))
-    insert_log_entry('Unique Project Biodiversity found:', str(len(set(metadata_df['project_biodiversity'].dropna()))))
+    insert_log_entry('Unique PODs found:', str(metadata_df['POD'].value_counts(dropna=False).to_dict()))
+    insert_log_entry('Unique Project Biodiversity found:', str(metadata_df['project_biodiversity'].value_counts(dropna=False).to_dict()))
     
     insert_log_entry('Total records with KML or shapefile:', str(total_records))
     insert_log_entry('Total KMLs downloaded:', str(good_plots))
+    insert_log_entry('Total shapefiles downloaded:', str(shp_downloaded))
     return metadata_df
 
 def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/'):
@@ -878,6 +881,9 @@ def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
         temp_df = pd.DataFrame({
             'date': [date] * len(intersections),
             'plot_id': intersections['plot_id'],
+            'POD': intersections['POD'] if 'POD' in intersections.columns else None,
+            'project_biodiversity': intersections['project_biodiversity'] if 'project_biodiversity' in intersections.columns else None,
+            'area_certifier': intersections['area_certifier'] if 'area_certifier' in intersections.columns else None,
             'value': intersections['value'] if 'value' in intersections.columns else None,
             'score': [score] * len(intersections),
             'total_area': intersections['total_area'],
@@ -929,13 +935,20 @@ def monthly_attribution(attribution):
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
     attr_month['calc_index'] = attr_month.apply(lambda x: str(x.plot_id) + '-' + month_dict[x.date.month] + '-' + str(x.date.year), axis=1)
     attr_month.columns = ['calc_date','plot_id'] + (['value'] if with_value else []) + ['total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
-    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id'] + (['value'] if with_value else []) + ['total_area', 'credits_all', 'eco_id_list', 'eco_id']]
+
+    area_cert = attribution[['plot_id', 'POD', 'project_biodiversity', 'area_certifier']].drop_duplicates()
+    attr_month = attr_month.merge(area_cert, on='plot_id', how='left')
+    attr_month['area_certifier'] = attr_month['area_certifier'].astype(float)
+    attr_month['proportion_certified'] = attr_month.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
+    attr_month['credits_certified'] = attr_month['credits_all'] * attr_month['proportion_certified']
+    attr_month['credits_imrv'] = (attr_month['credits_all'] * (1 - attr_month['proportion_certified'])).apply(lambda x: max(x,0))
+    attr_month = attr_month[['calc_index', 'calc_date', 'plot_id', 'POD', 'project_biodiversity', 'area_certifier'] + (['value'] if with_value else []) + ['total_area', 'credits_all', 'eco_id_list', 'eco_id'] + ['proportion_certified', 'credits_certified', 'credits_imrv']]
     return attr_month
 
 def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     with_value = 'value' in attr_month.columns
-    groupcols = ['plot_id', 'value'] if with_value else ['plot_id']
-    a = attr_month.copy().sort_values(by=['calc_date']+groupcols, ascending=[True, True, False] if with_value else [True, True])
+    groupcols = ['plot_id', 'POD', 'project_biodiversity', 'area_certifier', 'value'] if with_value else ['plot_id', 'POD', 'project_biodiversity', 'area_certifier']
+    a = attr_month.copy().sort_values(by=['calc_date']+groupcols, ascending=[True, True, False, False, False, False] if with_value else [True, True, False, False, False])
     if start_date is None:
         start_date = a['calc_date'].min() 
     else:
@@ -952,7 +965,10 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-    a.sort_values(by=groupcols, inplace=True, ascending=[True, False] if with_value else [True])
+    a.sort_values(by=groupcols, inplace=True, ascending=[True, False, False, False, False] if with_value else [True, False, False, False])
+    a['proportion_certified'] = a.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
+    a['credits_certified'] = a['credits_all'] * a['proportion_certified']
+    a['credits_imrv'] = (a['credits_all'] * (1 - a['proportion_certified'])).apply(lambda x: max(x,0))
     return a
 
 def delete_all_records_from_airtable(HEADERS, API_URL):

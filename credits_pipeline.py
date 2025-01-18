@@ -10,14 +10,14 @@ try:
     colombia_tz = pytz.timezone('America/Bogota')
     start_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
     clear_biocredits_tables(["Logs", "Observations", "Monthly Attribution", "Cummulative Attribution"])
-    insert_log_entry('Start time', start_str)
-
+    
     # Download KMLs and metadata
     land_metadata = download_kml_official()
+    insert_log_entry('Start time', start_str)
     
     # KML to SHP
-    kml_to_shp(source_directory='KML/', destination_directory='SHP/', save_shp_directory='SHPoriginal/')
-    kml_to_shp(source_directory='credit_subtypes/KML/', destination_directory='credit_subtypes/SHP/')
+    kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/')
+    kml_to_shp(source_directory='credit_subtypes/KML/', destination_directory='credit_subtypes/SHP/', original_shp_directory=None)
 
     shp = load_shp('SHP/')
     insert_log_entry('Number of fincas', str(len(shp)))
@@ -60,20 +60,9 @@ try:
     attribution.to_csv('daily_attribution.csv')
     insert_log_entry('Daily attribution csv:', upload_to_gcs('biocredits-calc', 'daily_attribution.csv', 'daily_attribution.csv'))
 
-    area_cert = get_area_certifier()
-
     attr_month = monthly_attribution(attribution)
-    attr_month = attr_month.merge(area_cert, on='plot_id', how='left')
-    attr_month['proportion_certified'] = attr_month.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
-    attr_month['credits_certified'] = attr_month['credits_all'] * attr_month['proportion_certified']
-    attr_month['credits_imrv'] = (attr_month['credits_all'] * (1 - attr_month['proportion_certified'])).apply(lambda x: max(x,0))
 
     attr_cumm = cummulative_attribution(attr_month, cutdays = 30, start_date=None)
-    attr_cumm = attr_cumm.merge(area_cert, on='plot_id', how='left')
-    attr_cumm['proportion_certified'] = attr_cumm.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
-    attr_cumm['credits_certified'] = attr_cumm['credits_all'] * attr_cumm['proportion_certified']
-    attr_cumm['credits_imrv'] = (attr_cumm['credits_all'] * (1 - attr_cumm['proportion_certified'])).apply(lambda x: max(x,0))
-
 
     attr_month = transform_one_row_per_value(attr_month, 'month')
     insert_log_entry('Monthly Attribution rows:', str(len(attr_month)))
