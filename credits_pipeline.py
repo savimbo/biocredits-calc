@@ -5,7 +5,7 @@ from calc_utils import clear_biocredits_tables, download_kml_official, kml_to_sh
                        reorder_polygons, shp_to_land, plot_land, download_observations, observations_to_circles, \
                        expand_observations, daily_score_union, daily_video, daily_attibution, monthly_attribution, \
                        cummulative_attribution, insert_gdf_to_airtable, insert_log_entry, upload_to_gcs, get_area_certifier, \
-                       create_value_lands, plot_value_lands, transform_one_row_per_value, slider_plot  
+                       create_value_lands, plot_value_lands, transform_one_row_per_value, slider_plot, project_buffer_areas, project_buffer_credits, plot_project_credits   
 try:
     colombia_tz = pytz.timezone('America/Bogota')
     start_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
@@ -74,6 +74,15 @@ try:
     insert_log_entry('Cummulative Attribution rows:', str(len(attr_cumm)))
     attr_cumm.to_csv('cummulative_attribution.csv')
     insert_log_entry('Cummulative attribution csv:', upload_to_gcs('biocredits-calc', 'cummulative_attribution.csv', 'cummulative_attribution.csv'))
+
+    pbc_buffer, pbc_union = project_buffer_areas(lands)
+    project_credits = project_buffer_credits(pbc_buffer, pbc_union, daily_score, obs_expanded)
+    project_credits.to_csv('project_credits.csv')
+    insert_log_entry('Project credits csv:', upload_to_gcs('biocredits-calc', 'project_credits.csv', 'project_credits.csv'))
+    for project_biodiversity in project_credits['project_biodiversity'].unique().sort_values():
+        credits_fig, ratio_fig = plot_project_credits(project_credits, project_biodiversity)
+        insert_log_entry('Project credits plot {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'project_credits_{project_biodiversity}.html', f'project_credits_{project_biodiversity}.html'))
+        insert_log_entry('Project ratio plot {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'project_ratio_{project_biodiversity}.html', f'project_ratio_{project_biodiversity}.html'))
 
     insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
     insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)

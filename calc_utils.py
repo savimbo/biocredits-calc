@@ -20,6 +20,7 @@ from google.cloud import storage
 from collections import defaultdict
 import zipfile
 import traceback
+from plotly.subplots import make_subplots
 
 def load_config():
     with open('config.json', 'r') as f:
@@ -930,7 +931,7 @@ def monthly_attribution(attribution):
             .reset_index())
     groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
     attr_month['credits_all'] = attr_month['area_score'] * (1/30)
-    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, False] if with_value else [False, True])
+    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
@@ -938,6 +939,7 @@ def monthly_attribution(attribution):
     attr_month.columns = ['calc_date','plot_id'] + (['value'] if with_value else []) + ['total_area', 'area_score', 'eco_id', 'credits_all', 'eco_id_list', 'calc_index']
 
     area_cert = attribution[['plot_id', 'POD', 'project_biodiversity', 'area_certifier']].drop_duplicates()
+    area_cert['plot_id'] = area_cert['plot_id'].astype(int)
     attr_month = attr_month.merge(area_cert, on='plot_id', how='left')
     attr_month['area_certifier'] = attr_month['area_certifier'].astype(float)
     attr_month['proportion_certified'] = attr_month.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
@@ -966,7 +968,7 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-    a.sort_values(by=groupcols, inplace=True, ascending=[True, False, False, False, False] if with_value else [True, False, False, False])
+    a.sort_values(by=groupcols, inplace=True, ascending=[True, False, False, False] if with_value else [True, False, False, False])
     a['proportion_certified'] = a.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
     a['credits_certified'] = a['credits_all'] * a['proportion_certified']
     a['credits_imrv'] = (a['credits_all'] * (1 - a['proportion_certified'])).apply(lambda x: max(x,0))
@@ -1173,3 +1175,188 @@ def transform_one_row_per_value(df, mode):
     df_one_row_per_value = pd.DataFrame(result).transpose().fillna(0).reset_index().rename(columns={'index': grouper}).sort_values(final_sort[0], ascending=final_sort[1])
     return df_one_row_per_value
 
+def project_buffer_areas(lands, buffer_distance=7000, crs=6262):
+    """
+    Takes a GeoDataFrame of lands, groups by project_biodiversity, creates a buffer,
+    and calculates credits for the buffer area excluding the original lands.
+    
+    Args:
+        lands (GeoDataFrame): Input lands with project_biodiversity column
+        buffer_distance (float): Buffer distance in meters (default 7km)
+        crs (int): EPSG code for the projection to use for buffer calculation
+    
+    Returns:
+        GeoDataFrame: Buffer areas with credit calculations
+    """
+    # Convert to the specified CRS for accurate buffer calculation
+    lands_proj = lands.to_crs(epsg=crs)
+    lands_proj['total_area'] = lands_proj['total_area'].astype(float)
+    lands_proj['area_certifier'] = lands_proj['area_certifier'].astype(float)
+
+    
+    # Group by project_biodiversity and create union
+    project_unions = lands_proj.dissolve(by='project_biodiversity', aggfunc= 'sum')
+    
+    # Create buffers and calculate differences
+    buffer_areas = []
+    union_areas = []
+    for project_id, row in project_unions.iterrows():
+        if pd.isna(project_id) or project_id == '':
+            continue
+            
+        # Create buffer
+        buffer = row.geometry.buffer(buffer_distance)
+        
+        # Subtract original area
+        buffer_diff = buffer.difference(row.geometry)
+        
+        # Create record
+        buffer_areas.append({
+            'plot_id': project_id,
+            'geometry': buffer_diff,
+            'total_area': buffer_diff.area / 10000,  # Convert to hectares
+            # 'original_area': row.geometry.area / 10000,
+            # 'buffer_ratio': (buffer_diff.area / row.geometry.area) if row.geometry.area > 0 else 0,
+            'area_certifier': 0
+        })
+
+        union_areas.append({
+            'plot_id': project_id,
+            'geometry': row.geometry,
+            'total_area': row.geometry.area / 10000,
+            'area_certifier': row.area_certifier
+        })
+    
+    # Create GeoDataFrame from results
+    buffer_gdf = gpd.GeoDataFrame(buffer_areas, crs=f"EPSG:{crs}")
+    union_gdf = gpd.GeoDataFrame(union_areas, crs=f"EPSG:{crs}")
+    
+    # Convert back to original CRS (assumed to be 4326)
+    buffer_gdf = buffer_gdf.to_crs(epsg=4326)
+    union_gdf = union_gdf.to_crs(epsg=4326)
+    
+    return buffer_gdf, union_gdf
+
+def project_buffer_credits(buffer_gdf, union_gdf, daily_score, obs_expanded):
+    buffer_attribution = daily_attibution(daily_score, buffer_gdf, obs_expanded, crs=6262).fillna(0)
+    buffer_attr_month = monthly_attribution(buffer_attribution)
+    union_attribution = daily_attibution(daily_score, union_gdf, obs_expanded, crs=6262).fillna(0)
+    union_attr_month = monthly_attribution(union_attribution)
+    union_attr_month = union_attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits_all', 'eco_id_list']]
+    union_attr_month.columns = ['calc_index', 'calc_date', 'project_biodiversity', 'total_area', 'credits_all', 'eco_id_list']
+    buffer_attr_month = buffer_attr_month[['calc_index', 'calc_date', 'plot_id', 'total_area', 'credits_all', 'eco_id_list']]
+    buffer_attr_month.columns = ['calc_index', 'calc_date', 'project_biodiversity', 'total_area', 'credits_all', 'eco_id_list']
+    union_attr_month['type'] = 'union'
+    buffer_attr_month['type'] = 'buffer'
+    project_credits = pd.concat([buffer_attr_month, union_attr_month])
+    return project_credits
+
+def plot_project_credits(project_credits, project_id):
+    """
+    Creates two independent figures:
+    1. Credits evolution over time with dual y-axes (union left, buffer right)
+    2. Bar plot showing buffer/union ratio
+    
+    Args:
+        project_credits (DataFrame): DataFrame with project credits data
+        project_id (str): project_biodiversity identifier to plot
+    
+    Returns:
+        tuple: (credits_fig, ratio_fig) The generated figures
+    """
+    # Filter data for the specific project
+    proj_data = project_credits[project_credits['project_biodiversity'] == project_id].copy()
+    
+    # Create continuous monthly date range
+    min_date = proj_data['calc_date'].min()
+    max_date = proj_data['calc_date'].max()
+    dates = pd.date_range(start=min_date, end=max_date, freq='M')  # 'M' gives end of month dates
+    
+    # Pivot data for easier plotting
+    union_data = proj_data[proj_data['type'] == 'union'].set_index('calc_date')['credits_all'].reindex(dates, fill_value=0)
+    buffer_data = proj_data[proj_data['type'] == 'buffer'].set_index('calc_date')['credits_all'].reindex(dates, fill_value=0)
+    
+    # Calculate ratio
+    ratios = buffer_data / union_data.replace(0, float('inf'))
+    ratios = ratios.replace(float('inf'), 0)
+    
+    # Create credits figure
+    credits_fig = go.Figure()
+    
+    # Add union credits (left y-axis)
+    credits_fig.add_trace(
+        go.Scatter(x=dates, y=union_data,
+                  name="Union Credits",
+                  line=dict(color='blue', width=2))
+    )
+    
+    # Add buffer credits (right y-axis)
+    credits_fig.add_trace(
+        go.Scatter(x=dates, y=buffer_data,
+                  name="Buffer Credits",
+                  line=dict(color='green', width=2),
+                  yaxis="y2")
+    )
+    
+    # Update credits figure layout
+    credits_fig.update_layout(
+        title=f"Credits Evolution - project_id {project_id}",
+        showlegend=True,
+        plot_bgcolor='rgba(240,240,240,0.5)',
+        hovermode='x unified',
+        yaxis=dict(
+            title="Union Credits",
+            titlefont=dict(color="blue"),
+            tickfont=dict(color="blue"),
+            showgrid=True,
+            gridcolor='white',
+            side='left'
+        ),
+        yaxis2=dict(
+            title="Buffer Credits",
+            titlefont=dict(color="green"),
+            tickfont=dict(color="green"),
+            overlaying="y",
+            side="right",
+            showgrid=False
+        ),
+        xaxis=dict(
+            title="Date",
+            showgrid=True,
+            gridcolor='white'
+        )
+    )
+    
+    # Create ratio figure
+    ratio_fig = go.Figure()
+    
+    # Add ratio bars
+    ratio_fig.add_trace(
+        go.Bar(x=dates, y=ratios,
+               name="Buffer/Union Ratio",
+               marker_color='red')
+    )
+    
+    # Update ratio figure layout
+    ratio_fig.update_layout(
+        title="Buffer/Union Ratio",
+        showlegend=True,
+        plot_bgcolor='rgba(240,240,240,0.5)',
+        yaxis=dict(
+            title=dict(
+                text="Buffer/Union Ratio",
+                font=dict(color="red")
+            ),
+            tickfont=dict(color="red"),
+            showgrid=True,
+            gridcolor='white'
+        ),
+        xaxis=dict(
+            title="Date",
+            showgrid=True,
+            gridcolor='white'
+        )
+    )
+    credits_fig.write_html(f'project_credits_{project_id}.html')
+    ratio_fig.write_html(f'project_ratio_{project_id}.html')
+    return credits_fig, ratio_fig
