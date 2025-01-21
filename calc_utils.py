@@ -931,7 +931,7 @@ def monthly_attribution(attribution):
             .reset_index())
     groupcols = ['date', 'plot_id', 'value'] if with_value else ['date', 'plot_id']
     attr_month['credits_all'] = attr_month['area_score'] * (1/30)
-    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True] if with_value else [False, True])
+    attr_month.sort_values(by=groupcols, inplace=True, ascending=[False, True, True] if with_value else [False, True])
     attr_month.plot_id = attr_month.plot_id.astype(int)
     attr_month['eco_id_list'] = attr_month['eco_id']
     attr_month['eco_id'] = attr_month['eco_id'].apply(lambda x: ', '.join([str(i) for i in x]))
@@ -968,7 +968,7 @@ def cummulative_attribution(attr_month, cutdays= 30, start_date = None):
     a.columns = ['first_date', 'last_date', 'total_area', 'credits_all', 'eco_id_list']
     a['eco_id'] = a['eco_id_list'].apply(lambda x: ', '.join([str(i) for i in x]))
     a.reset_index(inplace=True)
-    a.sort_values(by=groupcols, inplace=True, ascending=[True, False, False, False] if with_value else [True, False, False, False])
+    a.sort_values(by=groupcols, inplace=True, ascending=[True, True, False, False, False, False] if with_value else [True, False, False, False, False])
     a['proportion_certified'] = a.apply(lambda row: min(1,row['area_certifier']/row['total_area']), axis=1)
     a['credits_certified'] = a['credits_all'] * a['proportion_certified']
     a['credits_imrv'] = (a['credits_all'] * (1 - a['proportion_certified'])).apply(lambda x: max(x,0))
