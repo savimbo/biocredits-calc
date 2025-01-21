@@ -79,7 +79,7 @@ try:
     project_credits = project_buffer_credits(pbc_buffer, pbc_union, daily_score, obs_expanded)
     project_credits.to_csv('project_credits.csv')
     insert_log_entry('Project credits csv:', upload_to_gcs('biocredits-calc', 'project_credits.csv', 'project_credits.csv'))
-    for project_biodiversity in project_credits['project_biodiversity'].unique().sort_values():
+    for project_biodiversity in sorted(project_credits['project_biodiversity'].unique().tolist()):
         credits_fig, ratio_fig = plot_project_credits(project_credits, project_biodiversity)
         insert_log_entry('Project credits plot {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'project_credits_{project_biodiversity}.html', f'project_credits_{project_biodiversity}.html'))
         insert_log_entry('Project ratio plot {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'project_ratio_{project_biodiversity}.html', f'project_ratio_{project_biodiversity}.html'))
