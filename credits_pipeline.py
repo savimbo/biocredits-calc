@@ -92,7 +92,8 @@ try:
         xlim = (total_bounds[0], total_bounds[2])
         ylim = (total_bounds[1], total_bounds[3])
         print(f'total bounds {project_biodiversity}:', total_bounds)
-        daily_video(daily_score, lands.query(f'project_biodiversity == "{project_biodiversity}"'), first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
+        proj_lands = lands[lands['project_biodiversity'] == project_biodiversity].copy()
+        daily_video(daily_score, proj_lands, first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
     
     insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
