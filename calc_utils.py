@@ -814,7 +814,14 @@ def put_missing_dates(union_gdf):
     merged_gdf = gpd.GeoDataFrame(merged_gdf, geometry='geometry', crs=union_gdf.crs)
     return merged_gdf
 
-def daily_video(daily_score, lands, first_date=None):
+def daily_video(
+    daily_score,
+    lands,
+    first_date=None,
+    xlim=None,
+    ylim=None,
+    video_title='raindrops.mp4'
+):
     if first_date is None:
         first_date = daily_score['date'].min()
     eco_score = daily_score.query(f'date>"{first_date}"').copy()
@@ -850,18 +857,27 @@ def daily_video(daily_score, lands, first_date=None):
             npmsp.plot(ax=ax, column='score', legend=False, cmap='tab10', alpha=0.5, vmin=daily_score['score'].min(), vmax=daily_score['score'].max())
 
         ax.set_title(f"Date: {date.strftime('%Y-%m-%d')}")
-        ax.set_xlim(eco_score.total_bounds[0], eco_score.total_bounds[2])
-        ax.set_ylim(eco_score.total_bounds[1], eco_score.total_bounds[3])
-        fincas3857.boundary.plot(ax=ax, color='green', linewidth=0.8)  # adjust color and other styling as needed
+        
+        # Use provided xlim/ylim if available, otherwise use total_bounds
+        if xlim is not None:
+            ax.set_xlim(xlim[0], xlim[1])
+        else:
+            ax.set_xlim(eco_score.total_bounds[0], eco_score.total_bounds[2])
+            
+        if ylim is not None:
+            ax.set_ylim(ylim[0], ylim[1])
+        else:
+            ax.set_ylim(eco_score.total_bounds[1], eco_score.total_bounds[3])
+            
+        fincas3857.boundary.plot(ax=ax, color='green', linewidth=0.8)
         fincas3857.plot(ax=ax, facecolor='none', edgecolor='green', linewidth=0.8, alpha=0.5) 
         
-        # Add the basemap
         add_basemap(ax, zoom=10, source=ctx.providers.Esri.NatGeoWorldMap)
         ax.set_xticks([])
         ax.set_yticks([])
 
     ani = animation.FuncAnimation(fig, update, frames=len(gdf_list), repeat=False)
-    ani.save('raindrops.mp4', writer=animation.FFMpegWriter(fps=frame_rate))
+    ani.save(video_title, writer=animation.FFMpegWriter(fps=frame_rate))
 
 def daily_attibution(eco_score, lands, obs_expanded, crs=6262):
     fincas6262 = lands.to_crs(epsg=crs)
