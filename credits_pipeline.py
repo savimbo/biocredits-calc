@@ -86,10 +86,12 @@ try:
 
     for project_biodiversity in sorted(project_credits['project_biodiversity'].unique().tolist()):
         video_title=f"raindrops_project_{project_biodiversity}.mp4"
-        total_bounds = pbc_buffer.query(f'plot_id == "{project_biodiversity}"').to_crs(epsg=3857).total_bounds
+        proj_buff = pbc_buffer[pbc_buffer['plot_id'] == project_biodiversity].copy().to_crs(epsg=3857)
+        print(f'project buffer {project_biodiversity}:', proj_buff)
+        total_bounds = proj_buff.total_bounds
         xlim = (total_bounds[0], total_bounds[2])
         ylim = (total_bounds[1], total_bounds[3])
-        print(f'total bouds {project_biodiversity}:', total_bounds)
+        print(f'total bounds {project_biodiversity}:', total_bounds)
         daily_video(daily_score, lands.query(f'project_biodiversity == "{project_biodiversity}"'), first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
     
