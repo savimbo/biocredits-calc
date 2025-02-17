@@ -84,16 +84,17 @@ try:
         insert_log_entry(f'Leakage Report credits plot project: {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'leakage_report_credits_{project_biodiversity}.html', f'leakage_report_credits_{project_biodiversity}.html'))
         insert_log_entry(f'Leakage Report ratio project: {project_biodiversity}:', upload_to_gcs('biocredits-calc', f'leakage_report_ratio_{project_biodiversity}.html', f'leakage_report_ratio_{project_biodiversity}.html'))
 
-    insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
-    insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
-
     for project_biodiversity in sorted(project_credits['project_biodiversity'].unique().tolist()):
         video_title=f"raindrops_project_{project_biodiversity}.mp4"
         total_bounds = pbc_buffer.query(f'plot_id == "{project_biodiversity}"').to_crs(epsg=3857).total_bounds
         xlim = (total_bounds[0], total_bounds[2])
         ylim = (total_bounds[1], total_bounds[3])
+        print(f'total bouds {project_biodiversity}:', total_bounds)
         daily_video(daily_score, lands.query(f'project_biodiversity == "{project_biodiversity}"'), first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
+    
+    insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
 
     end_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
     insert_log_entry('End time', end_str)
