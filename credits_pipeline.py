@@ -92,7 +92,7 @@ try:
         total_bounds = pbc_buffer.query(f'plot_id == "{project_biodiversity}"').to_crs(epsg=3857).total_bounds
         xlim = (total_bounds[0], total_bounds[2])
         ylim = (total_bounds[1], total_bounds[3])
-        daily_video(daily_score, lands, first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
+        daily_video(daily_score, lands.query(f'project_biodiversity == "{project_biodiversity}"'), first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
 
     end_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
