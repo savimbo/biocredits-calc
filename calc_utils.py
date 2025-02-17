@@ -1300,7 +1300,7 @@ def plot_project_credits(project_credits, project_id):
     
     # Update credits figure layout
     credits_fig.update_layout(
-        title=f"Credits Evolution - project_id {project_id}",
+        title=f"Leakage Report - Credits Evolution - project_id {project_id}",
         showlegend=True,
         plot_bgcolor='rgba(240,240,240,0.5)',
         hovermode='x unified',
@@ -1339,7 +1339,7 @@ def plot_project_credits(project_credits, project_id):
     
     # Update ratio figure layout
     ratio_fig.update_layout(
-        title="Buffer/Union Ratio",
+        title=f"Leakage Report - Buffer/Union Ratio - project_id {project_id}",
         showlegend=True,
         plot_bgcolor='rgba(240,240,240,0.5)',
         yaxis=dict(
@@ -1357,6 +1357,6 @@ def plot_project_credits(project_credits, project_id):
             gridcolor='white'
         )
     )
-    credits_fig.write_html(f'project_credits_{project_id}.html')
-    ratio_fig.write_html(f'project_ratio_{project_id}.html')
+    credits_fig.write_html(f'leakage_report_credits_{project_id}.html')
+    ratio_fig.write_html(f'leakage_report_ratio_{project_id}.html')
     return credits_fig, ratio_fig
