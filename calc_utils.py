@@ -388,7 +388,7 @@ def plot_land(lands, filename='lands.html'):
     fig.write_html(filename)
 
 def create_value_lands(lands, platinum):
-    lands['plot_id'] = lands.index
+    lands['plot_id'] = lands['index']
     platinum_gdf = gpd.GeoDataFrame({'geometry': [platinum]}, crs=lands.crs)
     difference_gdf = gpd.overlay(lands, platinum_gdf, how='difference')
     difference_gdf['value'] = 'gold'
