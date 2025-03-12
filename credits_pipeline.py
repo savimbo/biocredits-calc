@@ -16,13 +16,13 @@ try:
     land_metadata = download_kml_official()
     
     # KML to SHP
-    kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/')
-    kml_to_shp(source_directory='credit_subtypes/KML/', destination_directory='credit_subtypes/SHP/', original_shp_directory=None)
+    kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/', verbose=True)
+    kml_to_shp(source_directory='credit_subtypes/KML/', destination_directory='credit_subtypes/SHP/', original_shp_directory=None, verbose=True)
 
     shp = load_shp('SHP/')
     insert_log_entry('Number of fincas', str(len(shp)))
 
-    normalized_shapes = normalize_shps(shp)
+    normalized_shapes = normalize_shps(shp, logs=True)
     gdf_normalized = shp_to_land(normalized_shapes)
     
     # Merge metadata with the geographic data
@@ -93,6 +93,7 @@ try:
         ylim = (total_bounds[1], total_bounds[3])
         print(f'total bounds {project_biodiversity}:', total_bounds)
         proj_lands = lands[lands['project_biodiversity'] == project_biodiversity].copy()
+        print(f'project lands {project_biodiversity}:', proj_lands)
         daily_video(daily_score, proj_lands, first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
     
