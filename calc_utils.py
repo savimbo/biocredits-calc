@@ -472,6 +472,13 @@ def interpolate_color(score, color_scale):
     # If the score is exactly on one of the keys, return the corresponding color
     if score in color_scale:
         return color_scale[score]
+    
+    # print(f" Interpolating for score {score}, len(keys): {len(keys)}, keys: {keys}")
+    # error: Interpolating for score 0.3, len(keys): 5, keys: [0.4, 0.5, 0.8, 0.9, 1.0]
+    if score < keys[0]:  
+        return color_scale[keys[0]]
+    if score > keys[-1]:
+        return color_scale[keys[-1]]
 
     # Find the two keys between which the score falls
     for i in range(len(keys) - 1):
