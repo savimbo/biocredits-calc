@@ -159,7 +159,7 @@ def download_kml_official(save_directory='KML/', save_shp_directory='SHPoriginal
     insert_log_entry('Total shapefiles downloaded:', str(shp_downloaded))
     return metadata_df
 
-def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/'):
+def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/', verbose=False):
     # Ensure the destination directory exists
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
@@ -224,8 +224,8 @@ def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_s
                 print(f"Error converting {filename} to {base_name}.shp")
             else:
                 print(f"Converted {filename} to {base_name}.shp")
-    
-    insert_log_entry('Error in plots:', ', '.join(error_list))
+    if verbose:
+        insert_log_entry('Error in plots:', ', '.join(error_list))
 
 def load_shp(directory='SHP/'):
     # Loop through all subdirectories in the SHP directory
@@ -263,7 +263,7 @@ def set_z_to_zero(coord):
     x, y, _ = coord
     return (x, y, 0)
 
-def normalize_shps(gdfs):
+def normalize_shps(gdfs, logs=False):
     """
     Given a dictionary of GeoDataFrames:
         1) Convert each geometry to Polygon or MultiPolygon
@@ -344,12 +344,14 @@ def normalize_shps(gdfs):
 
     # Log the geometry types found
     for geom_type, plot_ids in geometry_types_found.items():
-        insert_log_entry(f'Geometry type {geom_type} found in plots:', ', '.join(plot_ids))
+        if logs:
+            insert_log_entry(f'Geometry type {geom_type} found in plots:', ', '.join(plot_ids))
         print(f'Geometry type {geom_type} found in plots:', ', '.join(plot_ids))
     
-    insert_log_entry('CRS found in plots:', ', '.join([f'{crs}: {count}' for crs, count in found_crs_count.items()]))
+    if logs:
+        insert_log_entry('CRS found in plots:', ', '.join([f'{crs}: {count}' for crs, count in found_crs_count.items()]))
+        insert_log_entry('Total plots processed:', str(len(lands)))
     print('CRS found in plots:', ', '.join([f'{crs}: {count}' for crs, count in found_crs_count.items()]))
-    insert_log_entry('Total plots processed:', str(len(lands)))
     print('Total plots processed:', str(len(lands)))
     return lands
 
@@ -470,6 +472,13 @@ def interpolate_color(score, color_scale):
     # If the score is exactly on one of the keys, return the corresponding color
     if score in color_scale:
         return color_scale[score]
+    
+    # print(f" Interpolating for score {score}, len(keys): {len(keys)}, keys: {keys}")
+    # error: Interpolating for score 0.3, len(keys): 5, keys: [0.4, 0.5, 0.8, 0.9, 1.0]
+    if score < keys[0]:  
+        return color_scale[keys[0]]
+    if score > keys[-1]:
+        return color_scale[keys[-1]]
 
     if score < keys[0]:
         return color_scale[keys[0]]
