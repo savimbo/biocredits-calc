@@ -471,12 +471,19 @@ def interpolate_color(score, color_scale):
     if score in color_scale:
         return color_scale[score]
 
+    if score < keys[0]:
+        return color_scale[keys[0]]
+    if score > keys[-1]:
+        return color_scale[keys[-1]]
+
     # Find the two keys between which the score falls
     for i in range(len(keys) - 1):
         if keys[i] <= score <= keys[i + 1]:
             lower_key = keys[i]
             upper_key = keys[i + 1]
             break
+
+    print(f" Interpolating for score {score}, len(keys): {len(keys)}, keys: {keys}")
 
     # Linear interpolation of the RGBA values
     lower_color = color_scale[lower_key]
