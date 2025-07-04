@@ -32,7 +32,7 @@ try:
     
 
     subtypes = load_shp('credit_subtypes/SHP/')
-    platinum = subtypes['Tropical Andes']['geometry'][0]
+    platinum = subtypes['hotspots']['geometry'][0]
     value_lands, platinum_gdf = create_value_lands(lands, platinum)
     fig = plot_value_lands(value_lands, platinum_gdf, filename='plots_value.html')
     insert_log_entry('Plots with value (platinum, gold):', upload_to_gcs('biocredits-calc', 'plots_value.html', 'plots_value.html'))

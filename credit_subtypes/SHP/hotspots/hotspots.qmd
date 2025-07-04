@@ -1,0 +1,63 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.42.0-Münster">
+  <identifier>hotspots_2011_Polygons</identifier>
+  <parentidentifier></parentidentifier>
+  <language>ENG</language>
+  <type>dataset</type>
+  <title>hotspots_2011_Polygons</title>
+  <abstract>The biodiversity hotspots are regions known to hold especially high numbers of species found nowhere else, yet their remaining habitat combined covers a little more than two percent of Earth's land surface. According to the criteria developed by Myers et al. (2000), a hotspot must meet two thresholds in order to qualify: 1) it must have at least 1500 endemic, native vascular plant species, and 2) it must have already lost at least 70% of its primary, native vegetation. In the updated analysis, Mittermeier et al. (2004) recognize 34 hotspots which together hold 50% of the world's plant species and 42% of all terrestrial vertebrates as endemics. As evidence of their urgency for global conservation, hotspots also hold exceptionally high numbers of threatened vertebrates, including 50% of threatened mammals, 73% of threatened birds and 79% of threatened amphibians as endemics. There are an estimated two billion people living in the hotspots, with 300 million people within less than 10 km of existing protected areas.
+
+To show the location and extent of the 35 biodiversity hotspots (highly threatened biogeographic regions with high-biodiversity endemism), as defined by Mittermeier et al. (2011).
+
+The ecoregional classification of the World Wildlife Fund-U.S. is the most widely-used bioregional classification system for global scale bioregionalization (Wikramanayake et al. 2002). In order to facilitate analysis, interoperability, and collaboration, we have gone to considerable lengths to ensure that the boundaries of hotspots correspond directly to those of the World Wildlife Fund-U.S. ecoregions (Olson et al. 2001). Thus, our calculations of hotspot extents are based on ecoregional data. In total, the hotspots incorporate 374 ecoregions, 43% of the total. The only significant exceptions to the match between hotspots and ecoregions are in three cases where recent maps update ecoregional boundaries: the Albertine Rift (Plumptre et al. 2003); Maputaland-Pondoland-Albany (van Wyk &amp; Smith 2001); and the Caucasus (Krever et al. 2001).</abstract>
+  <keywords vocabulary="gmd:topicCategory">
+    <keyword>Biodiversity Hotspots</keyword>
+  </keywords>
+  <contact>
+    <contactAddress>
+      <type>mailing and physical address</type>
+      <address>1919 M Street ,NW, Suite 600</address>
+      <city>Washington</city>
+      <administrativearea>District of Columbia</administrativearea>
+      <postalcode>20036</postalcode>
+      <country>USA</country>
+    </contactAddress>
+    <name>Conservation International</name>
+    <organization>Conservation International</organization>
+    <position></position>
+    <voice>+1 202 912 1000</voice>
+    <fax>+1 202 912 0773</fax>
+    <email>hotspots@conservation.org</email>
+    <role>Punto de contacto</role>
+  </contact>
+  <links>
+    <link size="" description="" url="file://\\CI-FILES1\PDRIVE\Kellee\GIS_basedata\biodiversity.gdb" mimeType="" type="Local Area Network" name="File Geodatabase Feature Class" format=""/>
+  </links>
+  <dates/>
+  <fees></fees>
+  <constraints type="Acceso">NONE</constraints>
+  <rights>Terms of use: Copyright notice and terms of use. PLEASE READ THIS COPYRIGHT NOTICE AND TERMS OF USE BEFORE USING THIS SHAPEFILE. BY CONTINUING TO USE THIS SHAPEFILE, YOU AGREE TO ABIDE BY THE CONDITIONS OF THE TERMS OF USE. © 2012 Conservation International Foundation (CI) 1. Ownership and Distribution. This shapefile may be freely distributed and used only under the following conditions and criteria: a. This shapefile remains the property of Conservation International Foundation. Conservation International Foundation reserves full copyright over the shapefile and its intellectual content. b. This metadata file, and in particular, this Terms of Use statement, forms an integral part of the shapefile, and must be distributed and stored with the shapefile. c. Any use of this shapefile in analysis, on any report about the analysis or findings, or in display whatsoever, must be clearly and prominently credited to Conservation International Foundation. This data source credit shall not state or imply that Conservation International Foundation is a party to or endorses any analysis, or any report about an analysis or finding unless some other agreement between the parties involved and CI provides otherwise. Please see Item 2. (Output Limitations) below, for an appropriate data credit wording. d. The shapefile may not be modified or altered in any manner. Modification of this shapefile includes modification (editing) of the graphic shapes and / or alteration of any tabular attribute data (either in regard to individual records or to tabular item type definitions) associated with a graphic shape. Transformation of the spatial coordinate system of the data set (reprojection) shall not be construed as disallowed modification, but the shapefile thus reprojected must not be distributed without express written consent of Conservation International Foundation. e. The shapefile may not be offered for sale, rent, lease, or sublicense, in any state, format, or form, either in whole or in part, alone or bundled with other data or data sets, without express written consent of Conservation International Foundation. 2. Output Limitations. Any map or graphics file that is generated from this data set will be referred to in this section as a "Reproduction". You may create and reproduce an unlimited number of Reproductions for your personal, in-house study, or intra-institutional use, subject to the property rights notice and credit requirements set forth below. We ask that Conservation International Foundation copyright credit notice appears in legible form on or adjacent to the reproduction in the following form: "Hotspots Revisited 2011", Conservation International 2012. You may distribute Reproductions on paper, as long as the Reproductions are distributed freely, without charge and the Conservation International Foundation copyright notice appears in legible form or Conservation International Foundation is given legible credit as described in paragraph 1 of the output limitations section. This credit notice, and the use of this data set, shall not state or imply any connection between CI and any other person or organization, or any association with, or endorsement by, CI of any position implied or forwarded by any Reproduction (as defined in this section). We ask that you obtain a supplementary license in writing from Conservation International Foundation before you reproduce and distribute any Reproductions over the Internet or other electronic networks, or in a publication that is for sale, resale, or that contains paid advertisement. These publications shall include, but not be limited to: periodicals (both learned journals and commercial and trade publications), books (including textbooks, atlases, and other books), posters, pamphlets, and other printed materials, and electronic publications (including e-books, web sites, and electronically distributed documents). In most cases this license is available free of charge. Please contact Conservation International Foundation for more details of publication use licenses: data@conservation.org or GIS Data Manager, S+K-GIS and Mapping Laboratory, Conservation International, 2011 Crystal Drive, Suite 500, Arlington, VA 22202. 3. Referenced Data Disclaimer. This shapefile metadata contains references to and citations of data sets generated, and work carried out, by third parties not associated with CI. Referenced data sets are versions current at the time of this shapefile's creation. Alterations to these referenced data sets by the third parties involved, subsequent to CI's analysis, has no effect upon any area delineated in this shapefile. 4. Linked Sites Disclaimer. This shapefile metadata contains links and references to third-party Internet Web sites including Web sites not affiliated with CI ("Linked Sites"). The Linked Sites are not under the control of CI and CI is not responsible for the contents of any linked sites or of any link contained in a linked site. The linked sites are referenced for the convenience of the user only, and may be accessed by the user only at the user's own risk. The inclusion of a link or reference does not imply endorsement of the linked site by CI. Additional use restrictions and copyright limitations may apply to materials and information available on Linked Sites. 5. Disclaimer of Warranties. Files, data and metadata materials, are distributed and provided "AS IS" and CI makes no warranties or representations, express or implied, regarding the use of this shapefile with regard to the correctness, reliability, accuracy of the shapefile, data or metadata materials. Neither CI, nor its affiliated or related entities, or its content providers shall be responsible or liable to any person, firm, or corporation for any loss, damage, injury, claim, or liability of any kind or character based on or resulting from any information contained in this shapefile. 6. Governing Law. This Agreement shall be governed by the laws of the United States and the District of Columbia. If any term or provision of this Agreement is for any reason held to be invalid, such invalidity shall not affect any other term or provision, and this Agreement shall be interpreted as if such term or provision had never been contained in this Agreement. This Agreement contains the entire understanding of CI and user with respect to its subject matter.</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+      <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+      <srsid>3452</srsid>
+      <srid>4326</srid>
+      <authid>EPSG:4326</authid>
+      <description>WGS 84</description>
+      <projectionacronym>longlat</projectionacronym>
+      <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+      <geographicflag>true</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial dimensions="2" miny="-57.21032999999999902" crs="EPSG:4326" maxx="180" maxz="0" maxy="47.26247599999999949" minx="-180" minz="0"/>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>
