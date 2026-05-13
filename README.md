@@ -82,5 +82,9 @@ Feel free to fork the repository and submit pull requests with enhancements or f
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Support
+
+Documentation supported by GitBook. https://www.gitbook.com/ 
+
 
 
