@@ -160,6 +160,8 @@ def download_kml_official(save_directory='KML/', save_shp_directory='SHPoriginal
     return metadata_df
 
 def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_shp_directory='SHPoriginal/', verbose=False):
+    fail_on_files_in_zip_root = False  # classic mode: True (it's buggy, should not be used)
+    SHAPEFILE_EXTENSIONS = ('.cpg', '.shp', '.shx', '.dbf', '.prj')
     # Ensure the destination directory exists
     if not os.path.exists(destination_directory):
         os.makedirs(destination_directory)
@@ -169,30 +171,58 @@ def kml_to_shp(source_directory='KML/', destination_directory='SHP/', original_s
 
     # First, move original shapefiles to the destination directory
     if original_shp_directory is not None:
-        for plot_id_folder in os.listdir(original_shp_directory):
-            plot_id_path = os.path.join(original_shp_directory, plot_id_folder)
-            if os.path.isdir(plot_id_path):
-                # Skip __MACOSX folders
-                if plot_id_folder == '__MACOSX':
+        if fail_on_files_in_zip_root:
+            for plot_id_folder in os.listdir(original_shp_directory):
+                plot_id_path = os.path.join(original_shp_directory, plot_id_folder)
+                if os.path.isdir(plot_id_path):
+                    # Skip __MACOSX folders
+                    if plot_id_folder == '__MACOSX':
+                        continue
+                
+                # Create a directory for this plot's shapefile in the destination
+                plot_shp_dir = os.path.join(destination_directory, plot_id_folder)
+                if not os.path.exists(plot_shp_dir):
+                    os.makedirs(plot_shp_dir)
+                
+                # Find the actual shapefile folder (skipping __MACOSX)
+                for subfolder in os.listdir(plot_id_path):
+                    subfolder_path = os.path.join(plot_id_path, subfolder)
+                    if os.path.isdir(subfolder_path) and not subfolder.startswith('__MACOSX'):
+                        # Move and rename files
+                        for file in os.listdir(subfolder_path):
+                            if file.endswith(('.cpg', '.shp', '.shx', '.dbf', '.prj')):
+                                src_file_path = os.path.join(subfolder_path, file)
+                                extension = os.path.splitext(file)[1]
+                                dest_file_path = os.path.join(plot_shp_dir, f'{plot_id_folder}{extension}')
+                                shutil.copy2(src_file_path, dest_file_path)
+                        print(f"Moved original shapefile for plot_id {plot_id_folder}")
+        else:
+            for plot_id_folder in os.listdir(original_shp_directory):
+                plot_id_path = os.path.join(original_shp_directory, plot_id_folder)
+                if plot_id_folder == '__MACOSX' or not os.path.isdir(plot_id_path):
                     continue
-            
-            # Create a directory for this plot's shapefile in the destination
-            plot_shp_dir = os.path.join(destination_directory, plot_id_folder)
-            if not os.path.exists(plot_shp_dir):
-                os.makedirs(plot_shp_dir)
-            
-            # Find the actual shapefile folder (skipping __MACOSX)
-            for subfolder in os.listdir(plot_id_path):
-                subfolder_path = os.path.join(plot_id_path, subfolder)
-                if os.path.isdir(subfolder_path) and not subfolder.startswith('__MACOSX'):
-                    # Move and rename files
-                    for file in os.listdir(subfolder_path):
-                        if file.endswith(('.cpg', '.shp', '.shx', '.dbf', '.prj')):
-                            src_file_path = os.path.join(subfolder_path, file)
-                            extension = os.path.splitext(file)[1]
-                            dest_file_path = os.path.join(plot_shp_dir, f'{plot_id_folder}{extension}')
+                plot_shp_dir = os.path.join(destination_directory, plot_id_folder)
+                os.makedirs(plot_shp_dir, exist_ok=True)
+                copied_any = False
+                for root, dirs, files in os.walk(plot_id_path):
+                    # Prevent walking into __MACOSX folders
+                    dirs[:] = [d for d in dirs if not d.startswith('__MACOSX')]
+                    if '__MACOSX' in root:
+                        continue
+                    for file in files:
+                        if file.lower().endswith(SHAPEFILE_EXTENSIONS):
+                            src_file_path = os.path.join(root, file)
+                            extension = os.path.splitext(file)[1].lower()
+                            dest_file_path = os.path.join(
+                                plot_shp_dir,
+                                f'{plot_id_folder}{extension}'
+                            )
                             shutil.copy2(src_file_path, dest_file_path)
+                            copied_any = True
+                if copied_any:
                     print(f"Moved original shapefile for plot_id {plot_id_folder}")
+                else:
+                    print(f"No shapefile found for plot_id {plot_id_folder}")
 
     # Then convert KMLs to SHP only if no original shapefile exists
     error_list = []
@@ -683,11 +713,17 @@ def download_observations():
         lambda x: fetch_linked_record_name(x[0], headers, cache, AIRTABLE_ENDPOINT) if type(x)==list and len(x)==1 else None)
     # We are assuming one observation per record, so we can use the first element of the list, max radius, etc.
 
-    # filter records with radius > 0 and eco_long < 0
-    records = records.query('radius>0')
-    insert_log_entry('Observations with radius > 0:', str(len(records)))
-    records = records.query('eco_long<0')
-    insert_log_entry('Observations with eco_long < 0:', str(len(records)))
+    # trim_recordset has always been applied, but filter 'radius>0' not working well and longitude filter will be applied on intersection time so we trim valid records
+    # however, the version of this program running in production launches exceptions when trim_recordset is False
+    trim_recordset = True  
+    if trim_recordset:
+        # filter records with radius > 0 and eco_long < 0
+        badradius = records.query('radius<=0')
+        print('Observations with radius <= 0:', " ".join(map(str, sorted(badradius["eco_id"]))))
+        records = records.query('radius>0')
+        insert_log_entry('Observations with radius > 0:', str(len(records)))
+        records = records.query('eco_long<0')
+        insert_log_entry('Observations with eco_long < 0:', str(len(records)))
 
     # renaming and keeping columns
     records = records.rename(columns={'# ECO':'eco_id', 'eco_lat':'lat', 'eco_long':'long'})

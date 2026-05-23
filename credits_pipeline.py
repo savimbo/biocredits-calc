@@ -75,6 +75,10 @@ try:
     attr_cumm.to_csv('cummulative_attribution.csv')
     insert_log_entry('Cummulative attribution csv:', upload_to_gcs('biocredits-calc', 'cummulative_attribution.csv', 'cummulative_attribution.csv'))
 
+    # Upload to airtable before creating artifacts in order to have the data available as soon as possible, even if the rest of the pipeline fails or takes a long time
+    insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
+
     pbc_buffer, pbc_union = project_buffer_areas(lands)
     project_credits = project_buffer_credits(pbc_buffer, pbc_union, daily_score, obs_expanded)
     project_credits.to_csv('project_credits.csv')
@@ -97,8 +101,8 @@ try:
         daily_video(daily_score, proj_lands, first_date=None, xlim=xlim, ylim=ylim, video_title=video_title)
         insert_log_entry(f'Raindrops Video for project {project_biodiversity}:', upload_to_gcs('biocredits-calc', video_title, video_title))
     
-    insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
-    insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
+    # insert_gdf_to_airtable(attr_cumm.drop(columns=['proportion_certified']), 'Cummulative Attribution', insert_geo = False, delete_all=True)
+    # insert_gdf_to_airtable(attr_month.drop(columns=['proportion_certified']), 'Monthly Attribution', insert_geo = False, delete_all=True)
 
     end_str = datetime.now(colombia_tz).strftime('%Y-%m-%d %H:%M:%S')
     insert_log_entry('End time', end_str)
