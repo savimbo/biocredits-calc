@@ -34,7 +34,8 @@ try:
     subtypes = load_shp('credit_subtypes/SHP/')
     platinum = subtypes['hotspots'].unary_union #['geometry'][0]
     value_lands, platinum_gdf = create_value_lands(lands, platinum)
-    fig = plot_value_lands(value_lands, platinum_gdf, filename='plots_value.html')
+    # Ha empezado a dar excepciones OOM killed así que comentamos esto y la siguiente funcion que usa fig
+    # fig = plot_value_lands(value_lands, platinum_gdf, filename='plots_value.html')
     insert_log_entry('Plots with value (platinum, gold):', upload_to_gcs('biocredits-calc', 'plots_value.html', 'plots_value.html'))
 
     value_counts = value_lands.groupby('plot_id').agg({'value':'unique'})
@@ -49,7 +50,8 @@ try:
     obs_expanded = expand_observations(records)
     daily_score = daily_score_union(obs_expanded)
 
-    fig = slider_plot(fig, daily_score, obs_expanded, 1,  '2022-01-01','plots_slider.html')
+    # Ha empezado a dar excepciones OOM killed más arriba así que comentamos esto
+    # fig = slider_plot(fig, daily_score, obs_expanded, 1,  '2022-01-01','plots_slider.html')
     insert_log_entry('Time slider plot (since 2022):', upload_to_gcs('biocredits-calc', 'plots_slider.html', 'plots_slider.html'))
 
     # choose one of the following attribution methods 
